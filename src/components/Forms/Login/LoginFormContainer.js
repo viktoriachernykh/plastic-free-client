@@ -7,8 +7,7 @@ class LoginFormContainer extends Component {
   state = { email: "", password: "" };
 
   onSubmit = event => {
-    console.log("log in form values?", this.state);
-
+    // console.log("log in form values?", this.state);
     event.preventDefault();
     this.props.login(this.state.email, this.state.password);
   };

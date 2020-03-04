@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { signup } from "../../../store/user/actions";
 import SignupForm from "./SignupForm";
-// import LoginForm from "../Login/LoginForm";
+import LoginFormContainer from "../Login/LoginFormContainer";
 
 class SignupFormContainer extends React.Component {
   state = { name: "", email: "", password: "" };
@@ -25,31 +25,21 @@ class SignupFormContainer extends React.Component {
   };
 
   render() {
-    // if (Object.keys(this.props.user).length) {
-    //   return (
-    //     <div>
-    //       <h1>Sign up</h1>
-    //       <SignupForm
-    //         onSubmit={this.onSubmit}
-    //         onChange={this.onChange}
-    //         values={this.state}
-    //       />
-    //       <p>You have signed up!</p>
-    //       <h1>Login</h1>
-    //       <LoginForm
-    //         onSubmit={this.onSubmit}
-    //         onChange={this.onChange}
-    //         values={this.state}
-    //       />
-    //     </div>
-    //   );
-    // }
-    // if (Object.keys(this.props.user).length) {
-    //   setTimeout(() => {
-    //     this.props.history.push("/login");
-    //   }, 500);
-    //   return <p>You have signed up!</p>;
-    // }
+    if (Object.keys(this.props.user).length) {
+      return (
+        <div>
+          <h1>Sign up</h1>
+          <SignupForm
+            onSubmit={this.onSubmit}
+            onChange={this.onChange}
+            values={this.state}
+          />
+          <p>You have signed up!</p>
+          <LoginFormContainer />
+        </div>
+      );
+    }
+
     return (
       <div>
         <h1>Sign up</h1>
@@ -65,7 +55,7 @@ class SignupFormContainer extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    // user: { ...state.session.user }
+    user: { ...state.session.user }
   };
 }
 

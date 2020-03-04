@@ -38,9 +38,9 @@ function mapStateToProps(state) {
   console.log(state);
   return {
     stores: state.stores,
-    products: state.products
-    // user: state.session.user,
-    // token: state.session.jwt
+    products: state.products,
+    user: state.session.user,
+    token: state.session.jwt
   };
 }
 
