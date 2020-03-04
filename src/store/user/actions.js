@@ -8,13 +8,12 @@ export function logout() {
   };
 }
 
-export const signup = (name, email, password, logo) => {
+export const signup = (name, email, password) => {
   return dispatch => {
     const data = {
       name: name,
       email: email,
-      password: password,
-      logo: logo
+      password: password
     };
     request
       .post(`${baseUrl}/user`)
