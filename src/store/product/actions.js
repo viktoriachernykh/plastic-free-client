@@ -23,7 +23,7 @@ export const addProduct = newProduct => dispatch => {
     // .set("Authorization", `Bearer ${token}`)
     .send(newProduct)
     .then(res => {
-      console.log("res", res);
+      // console.log("res", res);
       dispatch(productAdded(res.body));
     })
     .catch(console.error);
@@ -34,3 +34,30 @@ function productAdded(newProduct) {
     newProduct
   };
 }
+
+export const findProduct = key => dispatch => {
+  // console.log("key from actions", key);
+  request(`${baseUrl}/product/${key}`)
+    .then(res => {
+      // console.log(res.body);
+      dispatch(productsFetched(res.body));
+    })
+    .catch(console.error);
+};
+// function productsFetched(products) {
+// return {
+//   type: "ALL_PRODUCTS",
+//   products
+// };
+// }
+
+// fetch(`${baseUrl}/${key}`)
+//   .then(res => res.json())
+//   .then(fetchedData => {
+//     const matchingQuotes = fetchedData.results;
+//     // console.log("matchingQuotes", matchingQuotes); // returns array with matching quotes objects
+//     this.updateQuotes(matchingQuotes);
+//   })
+//   .catch(console.error);
+// };
+// }
