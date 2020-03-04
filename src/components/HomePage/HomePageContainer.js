@@ -1,0 +1,44 @@
+import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import { fetchStores } from "../../store/store/actions";
+import { fetchProducts } from "../../store/product/actions";
+
+class HomePageContainer extends Component {
+  componentDidMount() {
+    console.log("this", this);
+
+    this.props.fetchStores();
+    this.props.fetchProducts();
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>all stores</h2>
+        {this.props.stores &&
+          this.props.stores.map((store, index) => (
+            <p key={index}>{store.name}</p>
+          ))}
+        <h2>all products</h2>
+        {this.props.products &&
+          this.props.products.map((product, index) => (
+            <p key={index}>{product.name}</p>
+          ))}
+      </div>
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  console.log(state);
+  return {
+    stores: state.stores,
+    products: state.products
+  };
+}
+
+export default connect(mapStateToProps, {
+  fetchStores,
+  fetchProducts
+})(HomePageContainer);
