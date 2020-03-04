@@ -6,6 +6,7 @@ import HomePageContainer from "./components/HomePage/HomePageContainer";
 import SignupFormContainer from "./components/Forms/Signup/SignupFormContainer";
 import LoginFormContainer from "./components/Forms/Login/LoginFormContainer";
 import Logout from "./components/Forms/Logout/Logout";
+// import ResultsPageContainer from "./components/ResultsPage/ResultsPageContainer";
 
 class App extends Component {
   render() {
