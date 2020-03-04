@@ -6,9 +6,9 @@ export default function reducer(state = initialState, action) {
       console.log("stores in reducer?", action);
       return action.stores;
     }
-    // case "ADD_STORE": {
-    //   return [...state, action.newStore];
-    // }
+    case "ADD_STORE": {
+      return [...state, action.newStore];
+    }
     default: {
       return state;
     }

@@ -16,3 +16,21 @@ function productsFetched(products) {
     products
   };
 }
+
+export const addProduct = newProduct => dispatch => {
+  request
+    .post(`${baseUrl}/product`)
+    // .set("Authorization", `Bearer ${token}`)
+    .send(newProduct)
+    .then(res => {
+      console.log("res", res);
+      dispatch(productAdded(res.body));
+    })
+    .catch(console.error);
+};
+function productAdded(newProduct) {
+  return {
+    type: "ADD_PRODUCT",
+    newProduct
+  };
+}

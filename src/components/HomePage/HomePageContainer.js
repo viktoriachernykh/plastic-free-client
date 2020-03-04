@@ -4,10 +4,12 @@ import { connect } from "react-redux";
 import { fetchStores } from "../../store/store/actions";
 import { fetchProducts } from "../../store/product/actions";
 
+import AddStoreFormContainer from "../Forms/AddStore/AddStoreFormContainer";
+import AddProductFormContainer from "../Forms/AddProduct/AddProductFormContainer";
+
 class HomePageContainer extends Component {
   componentDidMount() {
-    console.log("this", this);
-
+    console.log("props", this.props);
     this.props.fetchStores();
     this.props.fetchProducts();
   }
@@ -25,6 +27,8 @@ class HomePageContainer extends Component {
           this.props.products.map((product, index) => (
             <p key={index}>{product.name}</p>
           ))}
+        <AddStoreFormContainer />
+        <AddProductFormContainer />
       </div>
     );
   }
@@ -35,6 +39,8 @@ function mapStateToProps(state) {
   return {
     stores: state.stores,
     products: state.products
+    // user: state.session.user,
+    // token: state.session.jwt
   };
 }
 

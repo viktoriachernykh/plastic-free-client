@@ -6,9 +6,9 @@ export default function reducer(state = initialState, action) {
       console.log("products in reducer?", action);
       return action.products;
     }
-    // case "ADD_PRODUCT": {
-    //   return [...state, action.newProduct];
-    // }
+    case "ADD_PRODUCT": {
+      return [...state, action.newProduct];
+    }
     default: {
       return state;
     }
