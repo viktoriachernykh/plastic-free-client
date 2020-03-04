@@ -18,3 +18,21 @@ function storesFetched(stores) {
     stores
   };
 }
+
+export const addStore = newStore => dispatch => {
+  request
+    .post(`${baseUrl}/store`)
+    // .set("Authorization", `Bearer ${token}`)
+    .send(newStore)
+    .then(res => {
+      console.log("res", res);
+      dispatch(storeAdded(res.body));
+    })
+    .catch(console.error);
+};
+function storeAdded(newStore) {
+  return {
+    type: "ADD_STORE",
+    newStore
+  };
+}
