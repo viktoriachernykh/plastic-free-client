@@ -6,11 +6,11 @@ import { fetchProducts } from "../../store/product/actions";
 
 import AddStoreFormContainer from "../Forms/AddStore/AddStoreFormContainer";
 import AddProductFormContainer from "../Forms/AddProduct/AddProductFormContainer";
-import Search from "./Search";
+import SearchProductInput from "./SearchProductInput";
+import Map from "../Map/Map";
 
 class HomePageContainer extends Component {
   componentDidMount() {
-    // console.log("props", this.props);
     this.props.fetchStores();
     this.props.fetchProducts();
   }
@@ -18,20 +18,23 @@ class HomePageContainer extends Component {
   render() {
     return (
       <div>
-        <Search />
+        <SearchProductInput />
+        <h2>all products</h2>
+        {this.props.products &&
+          this.props.products.map((product, index) => (
+            <p key={index}>{product.name}</p>
+          ))}
+        <br />
 
         {/* <h2>all stores</h2>
         {this.props.stores &&
           this.props.stores.map((store, index) => (
             <p key={index}>{store.name}</p>
           ))} */}
-        <h2>all products</h2>
-        {this.props.products &&
-          this.props.products.map((product, index) => (
-            <p key={index}>{product.name}</p>
-          ))}
+
         <AddStoreFormContainer />
         <AddProductFormContainer />
+        <Map />
       </div>
     );
   }
