@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { findProduct } from "../../store/product/actions";
 
-class Search extends Component {
+class SearchProductInput extends Component {
   state = { keyword: "" };
 
   onSubmit = event => {
     event.preventDefault();
-    // console.log("this.state.keyword", this.state.keyword); // returns keyword from input
     this.props.findProduct(this.state.keyword);
     this.setState({
       keyword: ""
@@ -42,4 +41,4 @@ class Search extends Component {
   }
 }
 
-export default connect(null, { findProduct })(Search);
+export default connect(null, { findProduct })(SearchProductInput);
