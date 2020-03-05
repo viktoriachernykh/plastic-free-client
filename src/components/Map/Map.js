@@ -1,7 +1,6 @@
 import React from "react";
 import {
   GoogleMap,
-  //
   withGoogleMap,
   Marker
   // InfoWindow
@@ -13,11 +12,6 @@ export default class Map extends React.Component {
   state = {
     markers: []
   };
-
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { markers: [] };
-  // }
 
   addStore = async address => {
     console.log("address in Map", address);
@@ -36,6 +30,8 @@ export default class Map extends React.Component {
   };
 
   render() {
+    console.log("rendering map");
+
     const WrappedMap = withGoogleMap(() => (
       <GoogleMap
         defaultZoom={this.state.markers.length > 0 ? 15 : 10}
@@ -70,7 +66,8 @@ export default class Map extends React.Component {
           ))}
         <WrappedMap
           googleMapURL={`
-          https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
+          https://maps.googleapis.com/maps/api/js?v=weekly&key=${process.env.REACT_APP_GOOGLE_API_KEY}&libraries=places`}
+          // https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_GOOGLE_API_KEY}`}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={
             <div style={{ margin: `auto`, width: `800px`, height: `600px` }} />
