@@ -40,16 +40,16 @@ export const findProduct = key => dispatch => {
   request(`${baseUrl}/product/${key}`)
     .then(res => {
       // console.log(res.body);
-      dispatch(productsFetched(res.body));
+      dispatch(productFetched(res.body));
     })
     .catch(console.error);
 };
-// function productsFetched(products) {
-// return {
-//   type: "ALL_PRODUCTS",
-//   products
-// };
-// }
+function productFetched(product) {
+  return {
+    type: "ONE_PRODUCT",
+    product
+  };
+}
 
 // fetch(`${baseUrl}/${key}`)
 //   .then(res => res.json())
