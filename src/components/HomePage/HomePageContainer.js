@@ -8,7 +8,7 @@ import { fetchProducts } from "../../store/product/actions";
 // import AddStoreFormContainer from "../Forms/AddStore/AddStoreFormContainer";
 // import AddProductFormContainer from "../Forms/AddProduct/AddProductFormContainer";
 import SearchProductInput from "./SearchProductInput";
-// import Map from "../Map/Map";
+import Map from "../Map/Map";
 
 class HomePageContainer extends Component {
   componentDidMount() {
@@ -42,7 +42,7 @@ class HomePageContainer extends Component {
 
         {/* <AddProductFormContainer /> */}
 
-        {/* <Map /> */}
+        <Map />
       </div>
     );
   }

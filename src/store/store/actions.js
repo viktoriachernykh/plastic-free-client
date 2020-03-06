@@ -17,6 +17,7 @@ function storesFetched(stores) {
 }
 
 export const addStore = newStore => dispatch => {
+  console.log("newStore here?", newStore);
   request
     .post(`${baseUrl}/store`)
     // .set("Authorization", `Bearer ${token}`)

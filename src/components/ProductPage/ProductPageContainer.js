@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
-import AddStoreFormContainer from "../Forms/AddStore/AddStoreFormContainer";
-
+import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
+import SearchPlaceInput from "./SearchPlaceInput";
+// import AddStoreFormContainer from "../Forms/AddStore/AddStoreFormContainer";
+// import AddStoreSearch from "./SearchPlaceInputContainer";
 // import { fetchStores } from "../../store/store/actions";
 import { findProduct } from "../../store/product/actions";
+import { addStore } from "../../store/store/actions";
 
 export class ProductPageContainer extends Component {
   state = { toggle: false };
@@ -18,6 +20,25 @@ export class ProductPageContainer extends Component {
     this.setState({
       toggle: !this.state.toggle
     });
+  };
+
+  addStore = async address => {
+    console.log("address ProductPage", address);
+    const results = await geocodeByAddress(address);
+    const latLng = await getLatLng(results[0]);
+    const newLocation = {
+      name: address,
+      address: results[0].formatted_address,
+      opening_hours: "10-20",
+      google_place_id: results[0].place_id,
+      // userId: this.props.user.id
+      // products: this.props.product[0].id,
+      coordinate_lat: latLng.lat,
+      coordinate_lng: latLng.lng
+    };
+    console.log("results", results);
+    console.log("newLocation", newLocation);
+    this.props.addStore(newLocation);
   };
 
   render() {
@@ -41,7 +62,7 @@ export class ProductPageContainer extends Component {
                 <button onClick={this.toggleAddForm}>Add it</button>
               </p>
             )}
-            {this.state.toggle && <AddStoreFormContainer />}
+            {this.state.toggle && <SearchPlaceInput addStore={this.addStore} />}
           </div>
         ) : (
           <div>
@@ -55,7 +76,7 @@ export class ProductPageContainer extends Component {
                 <button onClick={this.toggleAddForm}>Add it!</button>
               </p>
             )}
-            {this.state.toggle && <AddStoreFormContainer />}
+            {this.state.toggle && <SearchPlaceInput addStore={this.addStore} />}
           </div>
         )}
         {/* <p>name {product && product.name}</p> */}
@@ -76,4 +97,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { findProduct })(ProductPageContainer);
+export default connect(mapStateToProps, { findProduct, addStore })(
+  ProductPageContainer
+);
