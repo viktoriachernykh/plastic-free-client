@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { fetchStores } from "../../store/store/actions";
 import { fetchProducts } from "../../store/product/actions";
 
-import AddStoreFormContainer from "../Forms/AddStore/AddStoreFormContainer";
-import AddProductFormContainer from "../Forms/AddProduct/AddProductFormContainer";
+// import AddStoreFormContainer from "../Forms/AddStore/AddStoreFormContainer";
+// import AddProductFormContainer from "../Forms/AddProduct/AddProductFormContainer";
 import SearchProductInput from "./SearchProductInput";
-import Map from "../Map/Map";
+// import Map from "../Map/Map";
 
 class HomePageContainer extends Component {
   componentDidMount() {
@@ -22,7 +23,9 @@ class HomePageContainer extends Component {
         <h2>all products</h2>
         {this.props.products &&
           this.props.products.map((product, index) => (
-            <p key={index}>{product.name}</p>
+            <Link to={`/product/${product.name}`} key={product.id}>
+              <p key={index}>{product.name}</p>
+            </Link>
           ))}
         <br />
 
@@ -32,9 +35,11 @@ class HomePageContainer extends Component {
             <p key={index}>{store.name}</p>
           ))} */}
 
-        <AddStoreFormContainer />
-        <AddProductFormContainer />
-        <Map />
+        {/* <AddStoreFormContainer /> */}
+
+        {/* <AddProductFormContainer /> */}
+
+        {/* <Map /> */}
       </div>
     );
   }
