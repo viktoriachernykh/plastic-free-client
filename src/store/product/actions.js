@@ -1,5 +1,4 @@
 import request from "superagent";
-// import axios from "axios";
 
 const baseUrl = "http://localhost:4000";
 
@@ -36,10 +35,9 @@ function productAdded(newProduct) {
 }
 
 export const findProduct = key => dispatch => {
-  // console.log("key from actions", key);
   request(`${baseUrl}/product/${key}`)
     .then(res => {
-      // console.log(res.body);
+      console.log(res.body);
       dispatch(productFetched(res.body));
     })
     .catch(console.error);
@@ -50,14 +48,3 @@ function productFetched(product) {
     product
   };
 }
-
-// fetch(`${baseUrl}/${key}`)
-//   .then(res => res.json())
-//   .then(fetchedData => {
-//     const matchingQuotes = fetchedData.results;
-//     // console.log("matchingQuotes", matchingQuotes); // returns array with matching quotes objects
-//     this.updateQuotes(matchingQuotes);
-//   })
-//   .catch(console.error);
-// };
-// }

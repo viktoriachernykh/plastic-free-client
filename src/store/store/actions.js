@@ -1,5 +1,4 @@
 import request from "superagent";
-// import axios from "axios";
 
 const baseUrl = "http://localhost:4000";
 
@@ -32,5 +31,19 @@ function storeAdded(newStore) {
   return {
     type: "ADD_STORE",
     newStore
+  };
+}
+
+export const findStore = id => dispatch => {
+  request(`${baseUrl}/store/${id}`)
+    .then(res => {
+      dispatch(storeFetched(res.body));
+    })
+    .catch(console.error);
+};
+function storeFetched(store) {
+  return {
+    type: "ONE_STORE",
+    store
   };
 }

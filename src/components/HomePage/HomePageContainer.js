@@ -23,17 +23,20 @@ class HomePageContainer extends Component {
         <h2>all products</h2>
         {this.props.products &&
           this.props.products.map((product, index) => (
-            <Link to={`/product/${product.name}`} key={product.id}>
-              <p key={index}>{product.name}</p>
+            <Link to={`/product/${product.name}`} key={index}>
+              <p>{product.name}</p>
             </Link>
           ))}
         <br />
 
-        {/* <h2>all stores</h2>
+        <h2>all stores</h2>
         {this.props.stores &&
+          this.props.stores.length > 0 &&
           this.props.stores.map((store, index) => (
-            <p key={index}>{store.name}</p>
-          ))} */}
+            <Link to={`/store/${store.id}`} key={index}>
+              <p>{store.name}</p>
+            </Link>
+          ))}
 
         {/* <AddStoreFormContainer /> */}
 
@@ -46,7 +49,7 @@ class HomePageContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  // console.log(state);
+  console.log(state);
   return {
     stores: state.stores,
     products: state.products,
