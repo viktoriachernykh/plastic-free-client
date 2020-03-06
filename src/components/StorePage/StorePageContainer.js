@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import { findStore } from "../../store/store/actions";
 
-export class ProductPageContainer extends Component {
+export class StorePageContainer extends Component {
   state = { toggle: false };
 
   componentDidMount() {
@@ -80,4 +80,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { findStore })(ProductPageContainer);
+export default connect(mapStateToProps, { findStore })(StorePageContainer);
