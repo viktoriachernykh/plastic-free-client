@@ -28,6 +28,8 @@ export const addProduct = newProduct => dispatch => {
     .catch(console.error);
 };
 function productAdded(newProduct) {
+  console.log("product ?", newProduct);
+
   return {
     type: "ADD_PRODUCT",
     newProduct
@@ -49,15 +51,15 @@ function productFetched(product) {
 }
 
 export const findProduct = keyword => dispatch => {
-  request(`${baseUrl}/product/${keyword}`)
+  request(`${baseUrl}/product/find/${keyword}`)
     .then(res => {
       dispatch(productFound(res.body));
     })
     .catch(console.error);
 };
-function productFound(product) {
+function productFound(products) {
   return {
-    type: "ONE_PRODUCT",
-    product
+    type: "FIND_PRODUCTS",
+    products
   };
 }

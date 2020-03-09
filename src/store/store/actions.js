@@ -43,7 +43,7 @@ function storeAdded(newStore) {
   };
 }
 
-export const findStore = id => dispatch => {
+export const fetchStore = id => dispatch => {
   request(`${baseUrl}/store/${id}`)
     .then(res => {
       dispatch(storeFetched(res.body));
@@ -54,5 +54,21 @@ function storeFetched(store) {
   return {
     type: "ONE_STORE",
     store
+  };
+}
+
+export const findStore = keyword => dispatch => {
+  request(`${baseUrl}/store/find/${keyword}`)
+    .then(res => {
+      console.log("res body?", res.body);
+
+      dispatch(storeFound(res.body));
+    })
+    .catch(console.error);
+};
+function storeFound(stores) {
+  return {
+    type: "FIND_STORES",
+    stores
   };
 }

@@ -55,8 +55,7 @@ export class ProductPageContainer extends Component {
                 {this.props.token && (
                   <p>
                     Found one more store with plastic-free <b>{product.name}</b>
-                    ? Add it!
-                    <button onClick={this.toggleAddForm}>Add it</button>
+                    ?<button onClick={this.toggleAddForm}>Add it</button>
                   </p>
                 )}
                 {this.state.toggle && (
