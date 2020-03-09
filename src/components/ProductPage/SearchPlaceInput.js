@@ -11,6 +11,7 @@ export default class SearchPlaceInput extends React.Component {
   };
 
   handleSelect = address => {
+    // console.log(" inside handle select", address);
     this.props.addStore(address);
     this.setState({ address: "" });
   };
@@ -39,6 +40,7 @@ export default class SearchPlaceInput extends React.Component {
                 return (
                   <div {...getSuggestionItemProps(suggestion, { style })}>
                     <span>{suggestion.description}</span>
+                    <p>{suggestion.formattedSuggestion.mainText}</p>
                   </div>
                 );
               })}

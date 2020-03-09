@@ -16,16 +16,24 @@ function storesFetched(stores) {
   };
 }
 
-export const addStore = newStore => dispatch => {
-  console.log("newStore here?", newStore);
+export const addStore = (newStore, userId, productId) => dispatch => {
   request
     .post(`${baseUrl}/store`)
     // .set("Authorization", `Bearer ${token}`)
     .send(newStore)
     .then(res => {
-      // console.log("res", res);
       dispatch(storeAdded(res.body));
+
+      const storeId = res.body.id;
+      const connection = { userId, productId, storeId };
+
+      request
+        .post(`${baseUrl}/connect`)
+        .send(connection)
+        // .then(res => console.log("res body", res.body)) // send smth back
+        .catch(console.error);
     })
+
     .catch(console.error);
 };
 function storeAdded(newStore) {

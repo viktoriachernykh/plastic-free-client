@@ -8,9 +8,9 @@ class AddProductFormContainer extends React.Component {
     name: "",
     price: "",
     // store: ""
-    store1: "", // EXPECTED INTEGER = STORE ID
-    store2: "", // EXPECTED INTEGER = STORE ID
-    store3: "" // EXPECTED INTEGER = STORE ID
+    store1: "" // EXPECTED INTEGER = STORE ID
+    // store2: "", // EXPECTED INTEGER = STORE ID
+    // store3: "" // EXPECTED INTEGER = STORE ID
   };
 
   onSubmit = event => {
@@ -20,7 +20,7 @@ class AddProductFormContainer extends React.Component {
       name: this.state.name,
       price: this.state.price,
       // stores: [this.state.store]
-      stores: [this.state.store1, this.state.store2, this.state.store3],
+      // stores: this.state.store1,
       userId: this.props.user.id
     };
     console.log("newProduct", newProduct);
@@ -32,9 +32,9 @@ class AddProductFormContainer extends React.Component {
       name: "",
       price: "",
       // store: ""
-      store1: "",
-      store2: "",
-      store3: ""
+      store1: ""
+      // store2: "",
+      // store3: ""
     });
   };
 

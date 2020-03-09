@@ -8,9 +8,6 @@ class SearchProductInput extends Component {
   onSubmit = event => {
     event.preventDefault();
     this.props.findProduct(this.state.keyword);
-    this.setState({
-      keyword: ""
-    });
   };
 
   onChange = event => {
