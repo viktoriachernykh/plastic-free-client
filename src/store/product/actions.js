@@ -29,7 +29,6 @@ export const addProduct = newProduct => dispatch => {
 };
 function productAdded(newProduct) {
   console.log("product ?", newProduct);
-
   return {
     type: "ADD_PRODUCT",
     newProduct
