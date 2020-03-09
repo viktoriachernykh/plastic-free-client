@@ -34,15 +34,28 @@ function productAdded(newProduct) {
   };
 }
 
-export const findProduct = key => dispatch => {
-  request(`${baseUrl}/product/${key}`)
+export const fetchProduct = id => dispatch => {
+  request(`${baseUrl}/product/${id}`)
     .then(res => {
-      console.log(res.body);
       dispatch(productFetched(res.body));
     })
     .catch(console.error);
 };
 function productFetched(product) {
+  return {
+    type: "ONE_PRODUCT",
+    product
+  };
+}
+
+export const findProduct = keyword => dispatch => {
+  request(`${baseUrl}/product/${keyword}`)
+    .then(res => {
+      dispatch(productFound(res.body));
+    })
+    .catch(console.error);
+};
+function productFound(product) {
   return {
     type: "ONE_PRODUCT",
     product

@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 // import AddStoreFormContainer from "../Forms/AddStore/AddStoreFormContainer";
 
 import { findStore } from "../../store/store/actions";
 
-export class ProductPageContainer extends Component {
+export class StorePageContainer extends Component {
   state = { toggle: false };
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    console.log(id);
-    console.log("this store page", this);
     this.props.findStore(id);
   }
 
@@ -22,51 +21,31 @@ export class ProductPageContainer extends Component {
   };
 
   render() {
-    // const stores =
-    //   this.props.product[0].stores &&
-    //   this.props.product[0].stores.length > 0 &&
-    //   this.props.product[0].stores;
+    const products =
+      this.props.store.products &&
+      this.props.store.products.length > 0 &&
+      this.props.store.products;
 
-    // const product = this.props.product[0] && this.props.product[0];
+    const store = this.props.store.store && this.props.store.store;
 
     return (
       <div>
-        <p>name: {this.props.store.name}</p>
-        <p>address: {this.props.store.address}</p>
-        <p>opening hours: {this.props.store.opening_hours}</p>
-        {/* {stores ? (
+        {store && (
           <div>
-            We have <b>{stores.length}</b> stores with plastic-free{" "}
-            <b>{product.name}</b> product
-            {this.props.token && (
-              <p>
-                Found one more store with plastic-free <b>{product.name}</b>?
-                Add it!
-                <button onClick={this.toggleAddForm}>Add it</button>
-              </p>
+            <p>name: {store.name}</p>
+            <p>address: {store.address}</p>
+            {products && (
+              <div>
+                {this.props.store.products &&
+                  this.props.store.products.map((product, index) => (
+                    <Link to={`/product/${product.id}`} key={index}>
+                      <p>{product.name}</p>
+                    </Link>
+                  ))}
+              </div>
             )}
-            {this.state.toggle && <AddStoreFormContainer />}
-          </div>
-        ) : (
-          <div>
-            <p>
-              We don't have stores with plastic-free <b>{product.name}</b>{" "}
-              product
-            </p>
-            {this.props.token && (
-              <p>
-                If you found one, add it!
-                <button onClick={this.toggleAddForm}>Add it!</button>
-              </p>
-            )}
-            {this.state.toggle && <AddStoreFormContainer />}
           </div>
         )}
-      <p>name {product && product.name}</p> <p>price {product && product.price}</p>
-        <p>
-          {stores && stores.map((store, index) => <li key={index}>{store}</li>)}
-        </p>{" "}
-        */}
       </div>
     );
   }
@@ -80,4 +59,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { findStore })(ProductPageContainer);
+export default connect(mapStateToProps, { findStore })(StorePageContainer);

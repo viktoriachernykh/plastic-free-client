@@ -46,7 +46,7 @@ export default class AddProductForm extends React.Component {
           {/* <button onClick={this.handleClick}>+ store</button>
           <br /> */}
           {/* {this.state.addStore && ( */}
-          add store:
+          {/* add store:
           <input
             type="text"
             name="store2"
@@ -63,7 +63,7 @@ export default class AddProductForm extends React.Component {
             onChange={this.props.onChange}
             value={this.props.values.store3}
           />
-          <br />
+          <br /> */}
           <button type="submit">Add product</button>
         </form>
       </div>
