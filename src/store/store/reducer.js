@@ -11,6 +11,9 @@ export default function reducer(state = initialState, action) {
     case "ONE_STORE": {
       return action.store;
     }
+    case "FIND_STORES": {
+      return action.stores;
+    }
     default: {
       return state;
     }

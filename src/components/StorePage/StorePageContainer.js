@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 
 // import AddStoreFormContainer from "../Forms/AddStore/AddStoreFormContainer";
 
-import { findStore } from "../../store/store/actions";
+import { fetchStore } from "../../store/store/actions";
 
 export class StorePageContainer extends Component {
   state = { toggle: false };
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    this.props.findStore(id);
+    this.props.fetchStore(id);
   }
 
   toggleAddForm = () => {
@@ -59,4 +59,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { findStore })(StorePageContainer);
+export default connect(mapStateToProps, { fetchStore })(StorePageContainer);

@@ -11,6 +11,9 @@ export default function reducer(state = initialState, action) {
     case "ONE_PRODUCT": {
       return action.product;
     }
+    case "FIND_PRODUCTS": {
+      return action.products;
+    }
     default: {
       return state;
     }

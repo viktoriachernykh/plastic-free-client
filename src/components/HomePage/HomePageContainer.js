@@ -4,11 +4,10 @@ import { connect } from "react-redux";
 import { fetchStores } from "../../store/store/actions";
 import { fetchProducts } from "../../store/product/actions";
 
-import SearchProductInput from "./SearchProductInput";
 import HomePage from "./HomePage";
+import SearchProductInput from "./SearchProductInput";
+import SearchStoreInput from "./SearchStoreInput";
 // import Map from "../Map/Map";
-// import AddStoreFormContainer from "../Forms/AddStore/AddStoreFormContainer";
-import AddProductFormContainer from "../Forms/AddProduct/AddProductFormContainer";
 
 class HomePageContainer extends Component {
   componentDidMount() {
@@ -29,8 +28,7 @@ class HomePageContainer extends Component {
         {dataFetched && (
           <HomePage stores={this.props.stores} products={this.props.products} />
         )}
-        {/* <AddStoreFormContainer /> */}
-        <AddProductFormContainer />
+        <SearchStoreInput />
         {/* <Map /> */}
       </div>
     );
@@ -38,7 +36,6 @@ class HomePageContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  // console.log("homepage rendering", state);
   return {
     stores: state.stores,
     products: state.products,

@@ -5,36 +5,19 @@ import AddProductForm from "./AddProductForm";
 
 class AddProductFormContainer extends React.Component {
   state = {
-    name: "",
-    price: "",
-    // store: ""
-    store1: "" // EXPECTED INTEGER = STORE ID
-    // store2: "", // EXPECTED INTEGER = STORE ID
-    // store3: "" // EXPECTED INTEGER = STORE ID
+    name: ""
   };
 
   onSubmit = event => {
-    console.log(this.state);
     // const token = this.props.token;
     const newProduct = {
       name: this.state.name,
-      price: this.state.price,
-      // stores: [this.state.store]
-      // stores: this.state.store1,
       userId: this.props.user.id
     };
-    console.log("newProduct", newProduct);
-
     event.preventDefault();
     this.props.addProduct(newProduct);
-
     this.setState({
-      name: "",
-      price: "",
-      // store: ""
-      store1: ""
-      // store2: "",
-      // store3: ""
+      name: ""
     });
   };
 
