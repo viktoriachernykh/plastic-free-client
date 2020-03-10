@@ -2,8 +2,10 @@ import request from "superagent";
 
 const baseUrl = "http://localhost:4000";
 
-export const fetchProducts = () => dispatch => {
-  request(`${baseUrl}/product`)
+export const fetchProducts = pageNumber => dispatch => {
+  const limit = 5;
+  const offset = pageNumber === 1 ? 0 : (pageNumber - 1) * limit;
+  request(`${baseUrl}/product?limit=${limit}&offset=${offset}`)
     .then(res => {
       dispatch(productsFetched(res.body));
     })
@@ -50,11 +52,12 @@ function productFetched(product) {
 }
 
 export const findProduct = keyword => dispatch => {
-  request(`${baseUrl}/product/find/${keyword}`)
-    .then(res => {
-      dispatch(productFound(res.body));
-    })
-    .catch(console.error);
+  if (keyword)
+    request(`${baseUrl}/product/find/${keyword}`)
+      .then(res => {
+        dispatch(productFound(res.body));
+      })
+      .catch(console.error);
 };
 function productFound(products) {
   return {
