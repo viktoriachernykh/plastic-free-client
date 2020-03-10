@@ -26,15 +26,15 @@ export class ProductPageContainer extends Component {
     const userId = this.props.user.id;
     const results = await geocodeByAddress(address);
     const latLng = await getLatLng(results[0]);
-    const newLocation = {
+    const newStore = {
       name: address,
       address: results[0].formatted_address,
       google_place_id: results[0].place_id,
       coordinate_lat: latLng.lat,
       coordinate_lng: latLng.lng
     };
-    // console.log("newLocation", newLocation);
-    this.props.addStore(newLocation, userId, productId);
+    // console.log("newStore", newStore);
+    this.props.addStore(newStore, userId, productId);
   };
 
   render() {

@@ -2,8 +2,10 @@ import request from "superagent";
 
 const baseUrl = "http://localhost:4000";
 
-export const fetchStores = () => dispatch => {
-  request(`${baseUrl}/store`)
+export const fetchStores = pageNumber => dispatch => {
+  const limit = 5;
+  const offset = pageNumber === 1 ? 0 : (pageNumber - 1) * limit;
+  request(`${baseUrl}/store?limit=${limit}&offset=${offset}`)
     .then(res => {
       dispatch(storesFetched(res.body));
     })
@@ -36,6 +38,7 @@ export const addStore = (newStore, userId, productId) => dispatch => {
 
     .catch(console.error);
 };
+
 function storeAdded(newStore) {
   return {
     type: "ADD_STORE",
