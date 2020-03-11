@@ -32,13 +32,10 @@ export const addStore = (newStore, userId, productId) => dispatch => {
       request
         .post(`${baseUrl}/connect`)
         .send(connection)
-        // .then(res => console.log("res body", res.body)) // send smth back
         .catch(console.error);
     })
-
     .catch(console.error);
 };
-
 function storeAdded(newStore) {
   return {
     type: "ADD_STORE",
@@ -63,8 +60,6 @@ function storeFetched(store) {
 export const findStore = keyword => dispatch => {
   request(`${baseUrl}/store/find/${keyword}`)
     .then(res => {
-      console.log("res body?", res.body);
-
       dispatch(storeFound(res.body));
     })
     .catch(console.error);
