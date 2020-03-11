@@ -20,15 +20,17 @@ class HomePageContainer extends Component {
   }
 
   prevPage = () => {
-    if (this.state.pageNumber > 1)
+    if (this.state.pageNumber > 1) {
       this.props.fetchProducts(this.state.pageNumber - 1);
-    this.setState({ pageNumber: this.state.pageNumber - 1 });
+      this.setState({ pageNumber: this.state.pageNumber - 1 });
+    }
   };
 
   nextPage = () => {
-    if (this.state.pageNumber)
+    if (this.props.productsLength > this.state.pageNumber * 10) {
       this.props.fetchProducts(this.state.pageNumber + 1);
-    this.setState({ pageNumber: this.state.pageNumber + 1 });
+      this.setState({ pageNumber: this.state.pageNumber + 1 });
+    }
   };
 
   render() {
@@ -43,6 +45,7 @@ class HomePageContainer extends Component {
           nextPage={this.nextPage}
           pageNumber={this.state.pageNumber}
         />
+
         <StoresList
           stores={this.props.stores}
           // fetchStores={this.props.fetchStores}

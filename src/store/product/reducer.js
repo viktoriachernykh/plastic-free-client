@@ -6,6 +6,8 @@ export default function reducer(state = initialState, action) {
       return action.products;
     }
     case "ADD_PRODUCT": {
+      console.log("state here?", state);
+
       return [...state, action.newProduct];
     }
     case "ONE_PRODUCT": {
