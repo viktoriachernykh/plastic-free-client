@@ -28,17 +28,11 @@ export class ProductPageContainer extends Component {
   };
 
   render() {
-    const stores =
-      this.props.product.stores &&
-      this.props.product.stores.length > 0 &&
-      this.props.product.stores;
-
-    const product = this.props.product.product && this.props.product.product;
     return (
       <div>
         <ProductPage
-          stores={stores}
-          product={product}
+          stores={this.props.product.stores}
+          product={this.props.product.product}
           token={this.props.token}
           addStore={this.addStore}
         />

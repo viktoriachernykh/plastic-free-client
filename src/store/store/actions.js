@@ -22,15 +22,8 @@ export const addStore = (newStore, userId, productId) => dispatch => {
   request
     .post(`${baseUrl}/store`)
     // .set("Authorization", `Bearer ${token}`)
-    .send(newStore)
+    .send({ newStore, userId, productId })
     .then(res => {
-      const storeId = res.body.id;
-      const connection = { userId, productId, storeId };
-
-      request
-        .post(`${baseUrl}/connect`)
-        .send(connection)
-        .catch(console.error);
       dispatch(storeAdded(res.body));
     })
     .catch(console.error);

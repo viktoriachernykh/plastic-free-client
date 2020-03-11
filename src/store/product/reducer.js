@@ -6,9 +6,9 @@ export default function reducer(state = initialState, action) {
       return action.products;
     }
     case "ADD_PRODUCT": {
-      console.log("state here?", state);
-
-      return [...state, action.newProduct];
+      const rows = [...state.rows, action.newProduct];
+      const count = ++state.count;
+      return { rows, count };
     }
     case "ONE_PRODUCT": {
       return action.product;

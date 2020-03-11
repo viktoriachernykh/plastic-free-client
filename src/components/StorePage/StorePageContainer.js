@@ -34,16 +34,11 @@ export class StorePageContainer extends Component {
           <div>
             <p>name: {store.name}</p>
             <p>address: {store.address}</p>
-            {products && (
-              <div>
-                {this.props.store.products &&
-                  this.props.store.products.map((product, index) => (
-                    <Link to={`/product/${product.id}`} key={index}>
-                      <p>{product.name}</p>
-                    </Link>
-                  ))}
-              </div>
-            )}
+            {products.map((product, index) => (
+              <Link to={`/product/${product.id}`} key={index}>
+                <p>{product.name}</p>
+              </Link>
+            ))}
           </div>
         )}
       </div>
