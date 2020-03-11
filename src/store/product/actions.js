@@ -30,7 +30,6 @@ export const addProduct = newProduct => dispatch => {
     .catch(console.error);
 };
 function productAdded(newProduct) {
-  console.log("product ?", newProduct);
   return {
     type: "ADD_PRODUCT",
     newProduct

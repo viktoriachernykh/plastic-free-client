@@ -8,10 +8,8 @@ export default function ProductsList(props) {
   return (
     <div>
       <h2>all products</h2>
-      <p>
-        Found one more plastic-free product?
-        <button onClick={e => setToggle(!toggle)}>Add it!</button>
-      </p>
+      Found one more plastic-free product?
+      <button onClick={e => setToggle(!toggle)}>Add it!</button>
       {toggle && <AddProductFormContainer />}
       {props.products.length >= 1 ? (
         <div>
