@@ -45,7 +45,6 @@ class HomePageContainer extends Component {
           nextPage={this.nextPage}
           pageNumber={this.state.pageNumber}
         />
-
         <StoresList
           stores={this.props.stores}
           // fetchStores={this.props.fetchStores}

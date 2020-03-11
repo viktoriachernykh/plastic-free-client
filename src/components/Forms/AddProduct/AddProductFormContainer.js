@@ -42,7 +42,7 @@ class AddProductFormContainer extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    user: { ...state.session.user }
+    user: state.session.user
     // token: state.session.jwt
   };
 }

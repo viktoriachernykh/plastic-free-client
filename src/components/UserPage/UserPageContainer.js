@@ -18,13 +18,9 @@ export class UserPageContainer extends Component {
   }
 
   handleSelect = event => {
-    // this.setState({
-    //   selectedFile: event.target.files[0]
-    // });
     event.target.files[0] &&
       event.target.files[0].name &&
       this.props.uploadImage(event.target.files[0], event.target.files[0].name);
-    // console.log("target", event.target.files[0]);
   };
 
   // handleUpload = () => {
