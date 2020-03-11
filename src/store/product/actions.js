@@ -3,7 +3,7 @@ import request from "superagent";
 const baseUrl = "http://localhost:4000";
 
 export const fetchProducts = pageNumber => dispatch => {
-  const limit = 5;
+  const limit = 10;
   const offset = pageNumber === 1 ? 0 : (pageNumber - 1) * limit;
   request(`${baseUrl}/product?limit=${limit}&offset=${offset}`)
     .then(res => {
@@ -24,7 +24,6 @@ export const addProduct = newProduct => dispatch => {
     // .set("Authorization", `Bearer ${token}`)
     .send(newProduct)
     .then(res => {
-      // console.log("res", res);
       dispatch(productAdded(res.body));
     })
     .catch(console.error);

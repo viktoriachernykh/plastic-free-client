@@ -5,9 +5,8 @@ import { fetchStores } from "../../store/store/actions";
 import { fetchProducts } from "../../store/product/actions";
 
 import ProductsList from "./ProductsList";
-import SearchProductInput from "./SearchProductInput";
 import StoresList from "./StoresList";
-import SearchStoreInput from "./SearchStoreInput";
+
 // import Map from "../Map/Map";
 
 class HomePageContainer extends Component {
@@ -16,7 +15,7 @@ class HomePageContainer extends Component {
   };
 
   componentDidMount() {
-    // this.props.fetchStores(this.state.pageNumber);
+    this.props.fetchStores(this.state.pageNumber);
     this.props.fetchProducts(this.state.pageNumber);
   }
 
@@ -27,38 +26,30 @@ class HomePageContainer extends Component {
   };
 
   nextPage = () => {
-    this.props.fetchProducts(this.state.pageNumber + 1);
+    if (this.state.pageNumber)
+      this.props.fetchProducts(this.state.pageNumber + 1);
     this.setState({ pageNumber: this.state.pageNumber + 1 });
   };
 
   render() {
-    const productsFetched =
-      this.props.products.rows && this.props.products.rows.length > 0;
-
-    const storesFetched =
-      this.props.stores.rows && this.props.stores.rows.length > 0;
-
     console.log("homepage props", this.props);
 
     return (
       <div>
-        <SearchProductInput />
-        {productsFetched && (
-          <ProductsList
-            products={this.props.products.rows}
-            fetchProducts={this.props.fetchProducts}
-            prevPage={this.prevPage}
-            nextPage={this.nextPage}
-            pageNumber={this.state.pageNumber}
-          />
-        )}
-        <SearchStoreInput />
-        {storesFetched && (
-          <StoresList
-            stores={this.props.stores.rows}
-            fetchStores={this.props.fetchStores}
-          />
-        )}
+        <ProductsList
+          products={this.props.products}
+          fetchProducts={this.props.fetchProducts}
+          prevPage={this.prevPage}
+          nextPage={this.nextPage}
+          pageNumber={this.state.pageNumber}
+        />
+        <StoresList
+          stores={this.props.stores}
+          // fetchStores={this.props.fetchStores}
+          // prevPage={this.prevPage}
+          // nextPage={this.nextPage}
+          // pageNumber={this.state.pageNumber}
+        />
         {/* <Map /> */}
       </div>
     );
@@ -66,9 +57,13 @@ class HomePageContainer extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log("state home", state);
+
   return {
-    stores: state.stores,
-    products: state.products,
+    stores: state.stores.rows,
+    storesLength: state.stores.count,
+    products: state.products.rows,
+    productsLength: state.products.count,
     user: state.session.user,
     token: state.session.jwt
   };

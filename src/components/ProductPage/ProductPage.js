@@ -4,6 +4,7 @@ import SearchPlaceInput from "./SearchPlaceInput";
 
 export default function ProductPage(props) {
   const [toggle, setToggle] = useState(false);
+  console.log("productpage props", props);
 
   return (
     <div>
