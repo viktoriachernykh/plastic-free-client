@@ -33,14 +33,12 @@ export default class SearchPlaceInput extends React.Component {
             <div>
               {loading && <div>Loading...</div>}
               {suggestions.map(suggestion => {
-                // console.log("suggestion", suggestion.formattedSuggestion.mainText);
                 const style = {
                   backgroundColor: suggestion.active ? "#41b6e6" : "#fff"
                 };
                 return (
                   <div {...getSuggestionItemProps(suggestion, { style })}>
                     <span>{suggestion.description}</span>
-                    {/* <p>{suggestion.formattedSuggestion.mainText}</p> */}
                   </div>
                 );
               })}

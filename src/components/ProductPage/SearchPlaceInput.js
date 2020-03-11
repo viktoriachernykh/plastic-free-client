@@ -11,7 +11,6 @@ export default class SearchPlaceInput extends React.Component {
   };
 
   handleSelect = address => {
-    // console.log(" inside handle select", address);
     this.props.addStore(address);
     this.setState({ address: "" });
   };

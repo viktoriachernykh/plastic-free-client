@@ -4,14 +4,11 @@ import { connect } from "react-redux";
 import { fetchStores } from "../../store/store/actions";
 import { fetchProducts } from "../../store/product/actions";
 
-// import HomePage from "./HomePage";
+import ProductsList from "./ProductsList";
+// import StoresList from "./StoresList";
 import SearchProductInput from "./SearchProductInput";
 // import SearchStoreInput from "./SearchStoreInput";
 // import Map from "../Map/Map";
-// import Pages from "./Pages";
-
-// import StoresList from "./StoresList";
-import ProductsList from "./ProductsList";
 
 class HomePageContainer extends Component {
   state = {
@@ -39,7 +36,6 @@ class HomePageContainer extends Component {
       this.props.products.rows && this.props.products.rows.length > 0;
     // this.props.stores.rows &&
     // this.props.stores.rows.length > 0;
-    console.log("this home", this);
 
     return (
       <div>
@@ -60,7 +56,6 @@ class HomePageContainer extends Component {
           </div>
         )}
         {/* <SearchStoreInput /> */}
-        {/* <Pages setPage={this.setPage} /> */}
         {/* <button onClick={this.prevPage}>prev</button>
         <b>{this.state.pageNumber}</b>
         <button onClick={this.nextPage}>next</button> */}
