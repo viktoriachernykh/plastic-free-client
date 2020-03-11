@@ -3,7 +3,7 @@ import request from "superagent";
 const baseUrl = "http://localhost:4000";
 
 export const fetchStores = pageNumber => dispatch => {
-  const limit = 5;
+  const limit = 10;
   const offset = pageNumber === 1 ? 0 : (pageNumber - 1) * limit;
   request(`${baseUrl}/store?limit=${limit}&offset=${offset}`)
     .then(res => {
@@ -24,8 +24,6 @@ export const addStore = (newStore, userId, productId) => dispatch => {
     // .set("Authorization", `Bearer ${token}`)
     .send(newStore)
     .then(res => {
-      dispatch(storeAdded(res.body));
-
       const storeId = res.body.id;
       const connection = { userId, productId, storeId };
 
@@ -33,6 +31,7 @@ export const addStore = (newStore, userId, productId) => dispatch => {
         .post(`${baseUrl}/connect`)
         .send(connection)
         .catch(console.error);
+      dispatch(storeAdded(res.body));
     })
     .catch(console.error);
 };
