@@ -7,16 +7,18 @@ export default function StoresList(props) {
 
   return (
     <div>
-      {storesFetched && (
+      <h2>stores list</h2>
+      {storesFetched ? (
         <div>
           <SearchStoreInput />
-          <h2>all stores</h2>
           {props.stores.map((store, index) => (
             <Link to={`/store/${store.id}`} key={index}>
               <p>{store.name}</p>
             </Link>
           ))}
         </div>
+      ) : (
+        <div>No stores added. Go to product to add stores.</div>
       )}
       {/* <button onClick={props.prevPage}>prev</button>
       <b>{props.pageNumber}</b>
