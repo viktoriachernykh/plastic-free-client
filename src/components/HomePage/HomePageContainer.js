@@ -5,9 +5,9 @@ import { fetchStores } from "../../store/store/actions";
 import { fetchProducts } from "../../store/product/actions";
 
 import ProductsList from "./ProductsList";
-// import StoresList from "./StoresList";
 import SearchProductInput from "./SearchProductInput";
-// import SearchStoreInput from "./SearchStoreInput";
+import StoresList from "./StoresList";
+import SearchStoreInput from "./SearchStoreInput";
 // import Map from "../Map/Map";
 
 class HomePageContainer extends Component {
@@ -32,33 +32,33 @@ class HomePageContainer extends Component {
   };
 
   render() {
-    const dataFetched =
+    const productsFetched =
       this.props.products.rows && this.props.products.rows.length > 0;
-    // this.props.stores.rows &&
-    // this.props.stores.rows.length > 0;
+
+    const storesFetched =
+      this.props.stores.rows && this.props.stores.rows.length > 0;
+
+    console.log("homepage props", this.props);
 
     return (
       <div>
         <SearchProductInput />
-        {dataFetched && (
-          <div>
-            {/* <StoresList
-              stores={this.props.stores.rows}
-              fetchStores={this.props.fetchStores}
-            /> */}
-            <ProductsList
-              products={this.props.products.rows}
-              fetchProducts={this.props.fetchProducts}
-              prevPage={this.prevPage}
-              nextPage={this.nextPage}
-              pageNumber={this.state.pageNumber}
-            />
-          </div>
+        {productsFetched && (
+          <ProductsList
+            products={this.props.products.rows}
+            fetchProducts={this.props.fetchProducts}
+            prevPage={this.prevPage}
+            nextPage={this.nextPage}
+            pageNumber={this.state.pageNumber}
+          />
         )}
-        {/* <SearchStoreInput /> */}
-        {/* <button onClick={this.prevPage}>prev</button>
-        <b>{this.state.pageNumber}</b>
-        <button onClick={this.nextPage}>next</button> */}
+        <SearchStoreInput />
+        {storesFetched && (
+          <StoresList
+            stores={this.props.stores.rows}
+            fetchStores={this.props.fetchStores}
+          />
+        )}
         {/* <Map /> */}
       </div>
     );
