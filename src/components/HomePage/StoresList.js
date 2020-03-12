@@ -13,7 +13,9 @@ export default function StoresList(props) {
           <SearchStoreInput />
           {props.stores.map((store, index) => (
             <Link to={`/store/${store.id}`} key={index}>
-              <p>{store.name}</p>
+              <p>
+                {store.name}({store.Product.length} products)
+              </p>
             </Link>
           ))}
         </div>
