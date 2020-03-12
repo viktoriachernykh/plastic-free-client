@@ -5,19 +5,18 @@ import { Link } from "react-router-dom";
 class Header extends Component {
   render() {
     return (
-      <div>
+      <div className="nav">
+        <Link to={"/"}>Home</Link>
         {this.props.token ? (
-          <div className="nav">
-            <Link to={"/"}>Home</Link>
+          <>
             <Link to="/logout">Log out</Link>
             <Link to={`/user/${this.props.user.id}`}>My page</Link>
-          </div>
+          </>
         ) : (
-          <div className="nav">
-            <Link to={"/"}>Home</Link>
+          <>
             <Link to="/login">Log in</Link>
             <Link to="/signup">Sign up</Link>
-          </div>
+          </>
         )}
       </div>
     );

@@ -6,7 +6,6 @@ import { fetchProducts } from "../../store/product/actions";
 
 import ProductsList from "./ProductsList";
 import StoresList from "./StoresList";
-
 import Map from "../Map/Map";
 
 class HomePageContainer extends Component {

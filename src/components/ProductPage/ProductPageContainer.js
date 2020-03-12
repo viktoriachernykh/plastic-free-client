@@ -28,7 +28,7 @@ export class ProductPageContainer extends Component {
   };
 
   render() {
-    const { product } = this.props;
+    const { product, token } = this.props;
 
     return (
       <div>
@@ -36,7 +36,7 @@ export class ProductPageContainer extends Component {
           <ProductPage
             stores={product.Store}
             product={product}
-            token={this.props.token}
+            token={token}
             addStore={this.addStore}
           />
         )}

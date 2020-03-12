@@ -14,7 +14,8 @@ export default function StoresList(props) {
           {props.stores.map((store, index) => (
             <Link to={`/store/${store.id}`} key={index}>
               <p>
-                {store.name}({store.Product.length} products)
+                {store.name}
+                {/* ({store.Product.length} products) */}
               </p>
             </Link>
           ))}
