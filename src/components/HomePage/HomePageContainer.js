@@ -34,19 +34,19 @@ class HomePageContainer extends Component {
   };
 
   render() {
-    console.log("homepage props", this.props);
+    const { products, stores } = this.props;
 
     return (
       <div>
         <ProductsList
-          products={this.props.products}
+          products={products}
           fetchProducts={this.props.fetchProducts}
           prevPage={this.prevPage}
           nextPage={this.nextPage}
           pageNumber={this.state.pageNumber}
         />
         <StoresList
-          stores={this.props.stores}
+          stores={stores}
           // fetchStores={this.props.fetchStores}
           // prevPage={this.prevPage}
           // nextPage={this.nextPage}
@@ -59,13 +59,11 @@ class HomePageContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log("state home", state);
-
   return {
-    stores: state.stores.rows,
-    storesLength: state.stores.count,
-    products: state.products.rows,
-    productsLength: state.products.count,
+    stores: state.stores.list.rows,
+    storesLength: state.stores.list.count,
+    products: state.products.list.rows,
+    productsLength: state.products.list.count,
     user: state.session.user,
     token: state.session.jwt
   };

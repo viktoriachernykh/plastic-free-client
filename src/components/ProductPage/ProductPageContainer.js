@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
-import ProductPage from "./ProductPage";
+
 import { fetchProduct } from "../../store/product/actions";
 import { addStore } from "../../store/store/actions";
+import ProductPage from "./ProductPage";
 
 export class ProductPageContainer extends Component {
   componentDidMount() {
@@ -28,14 +28,18 @@ export class ProductPageContainer extends Component {
   };
 
   render() {
+    const { product } = this.props;
+
     return (
       <div>
-        <ProductPage
-          stores={this.props.product.stores}
-          product={this.props.product.product}
-          token={this.props.token}
-          addStore={this.addStore}
-        />
+        {product && (
+          <ProductPage
+            stores={product.Store}
+            product={product}
+            token={this.props.token}
+            addStore={this.addStore}
+          />
+        )}
       </div>
     );
   }
@@ -43,7 +47,7 @@ export class ProductPageContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    product: state.products,
+    product: state.products.single,
     user: state.session.user,
     token: state.session.jwt
   };
