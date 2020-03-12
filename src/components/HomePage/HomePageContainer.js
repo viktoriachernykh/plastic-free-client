@@ -7,7 +7,7 @@ import { fetchProducts } from "../../store/product/actions";
 import ProductsList from "./ProductsList";
 import StoresList from "./StoresList";
 
-// import Map from "../Map/Map";
+import Map from "../Map/Map";
 
 class HomePageContainer extends Component {
   state = {
@@ -52,7 +52,7 @@ class HomePageContainer extends Component {
           // nextPage={this.nextPage}
           // pageNumber={this.state.pageNumber}
         />
-        {/* <Map /> */}
+        {stores && <Map stores={stores} />}
       </div>
     );
   }

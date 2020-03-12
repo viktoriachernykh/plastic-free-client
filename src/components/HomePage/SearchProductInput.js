@@ -7,8 +7,6 @@ class SearchProductInput extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    console.log("submit?", this.props);
-    // props.fetchProducts();
     this.props.findProduct(this.state.keyword);
   };
 
