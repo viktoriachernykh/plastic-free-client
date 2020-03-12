@@ -38,8 +38,6 @@ function productAdded(newProduct) {
 export const fetchProduct = id => dispatch => {
   request(`${baseUrl}/product/${id}`)
     .then(res => {
-      console.log("ONE PRODUCT FETCHED", res.body);
-
       dispatch(productFetched(res.body));
     })
     .catch(console.error);

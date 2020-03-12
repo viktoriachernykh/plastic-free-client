@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-
-// import AddStoreFormContainer from "../Forms/AddStore/AddStoreFormContainer";
-
 import { fetchStore } from "../../store/store/actions";
 
 export class StorePageContainer extends Component {
@@ -21,12 +18,8 @@ export class StorePageContainer extends Component {
   };
 
   render() {
-    const products =
-      this.props.store.products &&
-      this.props.store.products.length > 0 &&
-      this.props.store.products;
-
-    const store = this.props.store.store && this.props.store.store;
+    const { store } = this.props;
+    const products = store && store.Product;
 
     return (
       <div>
@@ -34,11 +27,12 @@ export class StorePageContainer extends Component {
           <div>
             <p>name: {store.name}</p>
             <p>address: {store.address}</p>
-            {products.map((product, index) => (
-              <Link to={`/product/${product.id}`} key={index}>
-                <p>{product.name}</p>
-              </Link>
-            ))}
+            {products &&
+              products.map((product, index) => (
+                <Link to={`/product/${product.id}`} key={index}>
+                  <p>{product.name}</p>
+                </Link>
+              ))}
           </div>
         )}
       </div>
@@ -48,7 +42,7 @@ export class StorePageContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    store: state.stores,
+    store: state.stores.single,
     user: state.session.user,
     token: state.session.jwt
   };

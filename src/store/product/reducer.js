@@ -1,20 +1,37 @@
-const initialState = [];
+const initialState = { list: [], single: null };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "ALL_PRODUCTS": {
-      return action.products;
+      const newState = {
+        list: action.products,
+        single: null
+      };
+      return newState;
     }
     case "ADD_PRODUCT": {
-      const rows = [...state.rows, action.newProduct];
-      const count = ++state.count;
-      return { rows, count };
+      const newState = {
+        list: {
+          rows: [...state.list.rows, action.newProduct],
+          count: ++state.list.count
+        },
+        single: null
+      };
+      return newState;
     }
     case "ONE_PRODUCT": {
-      return action.product;
+      const newState = {
+        list: [],
+        single: action.product
+      };
+      return newState;
     }
     case "FIND_PRODUCTS": {
-      return action.products;
+      const newState = {
+        list: action.products,
+        single: null
+      };
+      return newState;
     }
     default: {
       return state;
