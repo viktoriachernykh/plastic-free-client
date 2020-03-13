@@ -28,9 +28,15 @@ export default function reducer(state = initialState, action) {
     }
     case "FIND_PRODUCTS": {
       const newState = {
-        list: action.products,
-        single: null
+        ...state,
+        list: {
+          rows: action.products
+        }
       };
+      // const newState = {
+      //   list: action.products,
+      //   single: null
+      // };
       return newState;
     }
     default: {

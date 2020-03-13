@@ -32,7 +32,8 @@ export default class Map extends React.Component {
   };
 
   onMarkerClustererClick = markerClusterer => {
-    const clickedMarkers = markerClusterer.getMarkers();
+    // const clickedMarkers =
+    markerClusterer.getMarkers();
     // this.setState({
     //   zoom: 15
     // });
@@ -40,6 +41,7 @@ export default class Map extends React.Component {
   };
 
   setSelectedMarker = store => {
+    // preventDefault();
     this.setState({
       zoom: 18,
       selectedMarker: store
@@ -92,8 +94,8 @@ export default class Map extends React.Component {
         </MarkerClusterer>
         {this.state.selectedMarker && (
           <InfoWindow
+            // disableAutoPan={false}
             onCloseClick={() => {
-              // e.preventDefault();
               this.setState({
                 selectedMarker: null
               });

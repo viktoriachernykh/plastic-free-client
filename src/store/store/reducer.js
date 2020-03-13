@@ -28,8 +28,10 @@ export default function reducer(state = initialState, action) {
     }
     case "FIND_STORES": {
       const newState = {
-        list: action.stores,
-        single: null
+        list: {
+          ...state,
+          rows: action.stores
+        }
       };
       return newState;
     }

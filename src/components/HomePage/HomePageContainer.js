@@ -58,6 +58,8 @@ class HomePageContainer extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log("state home", state);
+
   return {
     stores: state.stores.list.rows,
     storesLength: state.stores.list.count,
