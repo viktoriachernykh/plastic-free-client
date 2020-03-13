@@ -1,5 +1,10 @@
 import React from "react";
-import { GoogleMap, withGoogleMap, Marker } from "react-google-maps";
+import {
+  GoogleMap,
+  withGoogleMap,
+  Marker
+  // InfoWindow
+} from "react-google-maps";
 import {
   MarkerClusterer
   // MarkerWithLabel
@@ -7,7 +12,8 @@ import {
 
 export default class Map extends React.Component {
   state = {
-    userLocation: []
+    userLocation: [],
+    selectedMarker: null
   };
 
   componentDidMount() {
@@ -19,15 +25,9 @@ export default class Map extends React.Component {
       navigator.geolocation.getCurrentPosition(this.setCoordinates);
     }
   };
-  //  else {
-  //     console.log('Geolocation is not supported');
-  //   }
-  // };
 
   setCoordinates = position => {
-    console.log("position", position);
     const { latitude, longitude } = position.coords;
-    console.log(latitude, longitude);
     this.setState({
       latitude,
       longitude
@@ -36,33 +36,56 @@ export default class Map extends React.Component {
 
   onMarkerClustererClick = markerClusterer => {
     const clickedMarkers = markerClusterer.getMarkers();
-    console.log(`Current clicked markers length: ${clickedMarkers.length}`);
-    console.log(clickedMarkers);
+    // console.log(`Current clicked markers length: ${clickedMarkers.length}`);
+  };
+
+  setSelectedMarker = store => {
+    console.log("selectedMarker store", store);
+
+    this.setState({
+      selectedMarker: store
+    });
   };
 
   render() {
     const { stores } = this.props;
     const { latitude, longitude } = this.state;
+
     const Map = withGoogleMap(() => (
       <GoogleMap
         defaultZoom={12}
         defaultCenter={{
-          lat: Number(latitude),
-          lng: Number(longitude)
+          lat: latitude ? Number(latitude) : 52.370216,
+          lng: longitude ? Number(longitude) : 4.895168
         }}
-        // this.state.markers.length > 0
-        //   ? this.state.markers[this.state.markers.length - 1].lat
-        //   : 52.370216,
-        // this.state.markers.length > 0
-        //   ? this.state.markers[this.state.markers.length - 1].lng
-        //   : 4.895168
-        // }}
       >
         <MarkerClusterer
           onClick={this.onMarkerClustererClick}
           averageCenter
-          enableRetinaIcons
+          disableDefaultUI
+          // enableRetinaIcons
           gridSize={20}
+          // minimumClusterSize={50}
+          styles={[
+            {
+              url: "/3.png",
+              // size: "2 2",
+              // scaledSize: "2 2",
+              // imageSizes: 1,
+              height: 30,
+              width: 30,
+              fontFamily: "Lato",
+              textSize: 20,
+              textColor: "white",
+              // defaultImageSizes: "40 40",
+              // anchor: [0, 0]
+              // anchorIcon: "-10 -10",
+              // maxZoom: 8
+              // anchor: [6, 0],"center"
+              // anchorText: [2, 2]
+              backgroundPosition: "-40 -40"
+            }
+          ]}
         >
           {stores.map((store, index) => (
             <Marker
@@ -71,9 +94,30 @@ export default class Map extends React.Component {
                 lat: Number(store.coordinate_lat),
                 lng: Number(store.coordinate_lng)
               }}
+              onClick={() => this.setSelectedMarker(store)}
+              icon={{
+                url: `1.png`
+              }}
             ></Marker>
           ))}
         </MarkerClusterer>
+        {/* {this.state.selectedMarker && (
+          <InfoWindow
+            onCloseClick={() => {
+              this.state.selectedMarker(null);
+            }}
+            position={{
+              lat: Number(this.state.selectedMarker.coordinate_lat),
+              lng: Number(this.state.selectedMarker.coordinate_lng)
+            }}
+          >
+            <div>
+              hey */}
+        {/* <h2>{this.state.selectedMarker.properties.NAME}</h2>
+            <p>{this.state.selectedMarker.properties.DESCRIPTIO}</p> */}
+        {/* </div>
+          </InfoWindow>
+        )} */}
       </GoogleMap>
     ));
     return (
