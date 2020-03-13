@@ -9,7 +9,8 @@ import { MarkerClusterer } from "react-google-maps/lib/components/addons/MarkerC
 
 export default class Map extends React.Component {
   state = {
-    userLocation: [],
+    zoom: 10,
+    userLocation: { latitude: null, longitude: null },
     selectedMarker: null
   };
 
@@ -26,31 +27,32 @@ export default class Map extends React.Component {
   setCoordinates = position => {
     const { latitude, longitude } = position.coords;
     this.setState({
-      latitude,
-      longitude
+      userLocation: { latitude: latitude, longitude: longitude }
     });
   };
 
   onMarkerClustererClick = markerClusterer => {
     const clickedMarkers = markerClusterer.getMarkers();
+    // this.setState({
+    //   zoom: 15
+    // });
     // console.log(`Current clicked markers length: ${clickedMarkers.length}`);
   };
 
   setSelectedMarker = store => {
-    console.log("selectedMarker store", store);
-
     this.setState({
+      zoom: 18,
       selectedMarker: store
     });
   };
 
   render() {
     const { stores } = this.props;
-    const { latitude, longitude } = this.state;
+    const { latitude, longitude } = this.state.userLocation;
 
     const Map = withGoogleMap(() => (
       <GoogleMap
-        defaultZoom={12}
+        defaultZoom={this.state.zoom}
         defaultCenter={{
           lat: latitude ? Number(latitude) : 52.370216,
           lng: longitude ? Number(longitude) : 4.895168
@@ -79,7 +81,9 @@ export default class Map extends React.Component {
                 lat: Number(store.coordinate_lat),
                 lng: Number(store.coordinate_lng)
               }}
-              onClick={() => this.setSelectedMarker(store)}
+              onClick={() => {
+                this.setSelectedMarker(store);
+              }}
               // icon={{
               //   url: `3.png`
               // }}
@@ -89,7 +93,10 @@ export default class Map extends React.Component {
         {this.state.selectedMarker && (
           <InfoWindow
             onCloseClick={() => {
-              this.state.selectedMarker(null);
+              // e.preventDefault();
+              this.setState({
+                selectedMarker: null
+              });
             }}
             position={{
               lat: Number(this.state.selectedMarker.coordinate_lat),
@@ -99,8 +106,8 @@ export default class Map extends React.Component {
             <div>
               <b>{this.state.selectedMarker.name}</b>
               <br />
-              {this.state.selectedMarker.Product.map(product => (
-                <>product.name</>
+              {this.state.selectedMarker.Product.map((product, index) => (
+                <p key={index}>{product.name}</p>
               ))}
             </div>
           </InfoWindow>
