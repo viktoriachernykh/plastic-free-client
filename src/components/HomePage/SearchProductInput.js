@@ -18,6 +18,7 @@ class SearchProductInput extends Component {
     this.setState({
       keyword: event.target.value
     });
+    this.onSubmit(event);
   };
 
   render() {
