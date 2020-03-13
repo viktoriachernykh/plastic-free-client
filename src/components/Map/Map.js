@@ -2,13 +2,10 @@ import React from "react";
 import {
   GoogleMap,
   withGoogleMap,
-  Marker
-  // InfoWindow
+  Marker,
+  InfoWindow
 } from "react-google-maps";
-import {
-  MarkerClusterer
-  // MarkerWithLabel
-} from "react-google-maps/lib/components/addons/MarkerClusterer";
+import { MarkerClusterer } from "react-google-maps/lib/components/addons/MarkerClusterer";
 
 export default class Map extends React.Component {
   state = {
@@ -62,28 +59,16 @@ export default class Map extends React.Component {
         <MarkerClusterer
           onClick={this.onMarkerClustererClick}
           averageCenter
-          disableDefaultUI
-          // enableRetinaIcons
-          gridSize={20}
-          // minimumClusterSize={50}
+          gridSize={50}
           styles={[
             {
-              url: "/3.png",
-              // size: "2 2",
-              // scaledSize: "2 2",
-              // imageSizes: 1,
+              url: "/3.svg",
               height: 30,
               width: 30,
               fontFamily: "Lato",
               textSize: 20,
               textColor: "white",
-              // defaultImageSizes: "40 40",
-              // anchor: [0, 0]
-              // anchorIcon: "-10 -10",
-              // maxZoom: 8
-              // anchor: [6, 0],"center"
-              // anchorText: [2, 2]
-              backgroundPosition: "-40 -40"
+              backgroundPosition: "-120 -80"
             }
           ]}
         >
@@ -95,13 +80,13 @@ export default class Map extends React.Component {
                 lng: Number(store.coordinate_lng)
               }}
               onClick={() => this.setSelectedMarker(store)}
-              icon={{
-                url: `1.png`
-              }}
+              // icon={{
+              //   url: `3.png`
+              // }}
             ></Marker>
           ))}
         </MarkerClusterer>
-        {/* {this.state.selectedMarker && (
+        {this.state.selectedMarker && (
           <InfoWindow
             onCloseClick={() => {
               this.state.selectedMarker(null);
@@ -112,12 +97,14 @@ export default class Map extends React.Component {
             }}
           >
             <div>
-              hey */}
-        {/* <h2>{this.state.selectedMarker.properties.NAME}</h2>
-            <p>{this.state.selectedMarker.properties.DESCRIPTIO}</p> */}
-        {/* </div>
+              <b>{this.state.selectedMarker.name}</b>
+              <br />
+              {this.state.selectedMarker.Product.map(product => (
+                <>product.name</>
+              ))}
+            </div>
           </InfoWindow>
-        )} */}
+        )}
       </GoogleMap>
     ));
     return (
