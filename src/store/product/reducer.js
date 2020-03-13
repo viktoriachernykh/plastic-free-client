@@ -33,10 +33,6 @@ export default function reducer(state = initialState, action) {
           rows: action.products
         }
       };
-      // const newState = {
-      //   list: action.products,
-      //   single: null
-      // };
       return newState;
     }
     default: {

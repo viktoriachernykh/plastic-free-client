@@ -1,18 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { findStore } from "../../store/store/actions";
+import { findStore, fetchStores } from "../../store/store/actions";
 
 class SearchStoreInput extends Component {
   state = { keyword: "" };
 
   onSubmit = event => {
     event.preventDefault();
-    this.props.findStore(this.state.keyword);
+    if (this.state.keyword === "") {
+      this.props.fetchStores(1);
+    } else {
+      this.props.findStore(this.state.keyword);
+    }
   };
 
   onChange = event => {
     this.setState({
-      [event.target.name]: event.target.value
+      keyword: event.target.value
     });
   };
 
@@ -38,4 +42,4 @@ class SearchStoreInput extends Component {
   }
 }
 
-export default connect(null, { findStore })(SearchStoreInput);
+export default connect(null, { findStore, fetchStores })(SearchStoreInput);

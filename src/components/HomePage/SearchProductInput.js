@@ -1,18 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { findProduct } from "../../store/product/actions";
+import { findProduct, fetchProducts } from "../../store/product/actions";
 
 class SearchProductInput extends Component {
   state = { keyword: "" };
 
   onSubmit = event => {
     event.preventDefault();
-    this.props.findProduct(this.state.keyword);
+    if (this.state.keyword === "") {
+      this.props.fetchProducts(1);
+    } else {
+      this.props.findProduct(this.state.keyword);
+    }
   };
 
   onChange = event => {
     this.setState({
-      [event.target.name]: event.target.value
+      keyword: event.target.value
     });
   };
 
@@ -38,4 +42,6 @@ class SearchProductInput extends Component {
   }
 }
 
-export default connect(null, { findProduct })(SearchProductInput);
+export default connect(null, { findProduct, fetchProducts })(
+  SearchProductInput
+);

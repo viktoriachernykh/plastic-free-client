@@ -43,7 +43,7 @@ export default class Map extends React.Component {
   setSelectedMarker = store => {
     // preventDefault();
     this.setState({
-      zoom: 18,
+      zoom: 15,
       selectedMarker: store
     });
   };
