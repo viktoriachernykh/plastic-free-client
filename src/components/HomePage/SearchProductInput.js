@@ -18,7 +18,7 @@ class SearchProductInput extends Component {
     this.setState({
       keyword: event.target.value
     });
-    this.onSubmit(event);
+    // this.onSubmit(event);
   };
 
   render() {
@@ -26,17 +26,19 @@ class SearchProductInput extends Component {
       <div>
         <form onSubmit={this.onSubmit}>
           <label>
-            What product are you looking for?
+            <h1>What product are you looking for?</h1>
             <br />
             <input
+              className="search-product-input"
               type="text"
               name="keyword"
               onChange={this.onChange}
               value={this.state.keyword}
             />
           </label>
-          <br />
-          <button type="submit">Search</button>
+          {/* <button className="search-product-button" type="submit"> */}
+          {/* Search */}
+          {/* </button> */}
         </form>
       </div>
     );
