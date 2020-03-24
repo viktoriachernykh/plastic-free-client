@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 import { fetchStores } from "../../store/store/actions";
 import { fetchProducts } from "../../store/product/actions";
 
+import SearchProductInput from "./SearchProductInput";
 import ProductsList from "./ProductsList";
-import StoresList from "./StoresList";
+// import StoresList from "./StoresList";
 import Map from "../Map/Map";
 
 class HomePageContainer extends Component {
@@ -37,21 +38,24 @@ class HomePageContainer extends Component {
 
     return (
       <div>
-        <ProductsList
-          products={products}
-          fetchProducts={this.props.fetchProducts}
-          prevPage={this.prevPage}
-          nextPage={this.nextPage}
-          pageNumber={this.state.pageNumber}
-        />
-        <StoresList
+        <SearchProductInput />
+        <div className="container">
+          <ProductsList
+            products={products}
+            fetchProducts={this.props.fetchProducts}
+            prevPage={this.prevPage}
+            nextPage={this.nextPage}
+            pageNumber={this.state.pageNumber}
+          />
+          {stores ? <Map stores={stores} /> : "Loading map..."}
+          {/* <StoresList
           stores={stores}
           // fetchStores={this.props.fetchStores}
           // prevPage={this.prevPage}
           // nextPage={this.nextPage}
           // pageNumber={this.state.pageNumber}
-        />
-        {stores && <Map stores={stores} />}
+        /> */}
+        </div>
       </div>
     );
   }

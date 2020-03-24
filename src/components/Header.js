@@ -8,15 +8,15 @@ class Header extends Component {
       <div className="nav">
         <Link to={"/"}>Home</Link>
         {this.props.token ? (
-          <>
+          <div>
             <Link to="/logout">Log out</Link>
             <Link to={`/user/${this.props.user.id}`}>My page</Link>
-          </>
+          </div>
         ) : (
-          <>
+          <div>
             <Link to="/login">Log in</Link>
             <Link to="/signup">Sign up</Link>
-          </>
+          </div>
         )}
       </div>
     );

@@ -117,21 +117,18 @@ export default class Map extends React.Component {
       </GoogleMap>
     ));
     return (
-      <div style={{ width: "100vw", height: "100vh" }}>
-        {latitude && longitude ? (
+      // <div style={{ width: "100vw", height: "100vh" }}>
+      <div style={{ width: "100%", height: "100%" }}>
+        {latitude && longitude && (
           <Map
             googleMapURL={`
           https://maps.googleapis.com/maps/api/js?v=weekly&key=${process.env.REACT_APP_GOOGLE_API_KEY}&libraries=places`}
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={
-              <div
-                style={{ margin: `auto`, width: `800px`, height: `600px` }}
-              />
+              <div style={{ width: `500px`, height: `500px` }} />
             }
             mapElement={<div style={{ height: `100%` }} />}
           />
-        ) : (
-          "Loading map..."
         )}
       </div>
     );
