@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { findProduct, fetchProducts } from "../../store/product/actions";
 
-class SearchProductInput extends Component {
+class SearchCityInput extends Component {
   state = { keyword: "" };
 
   onSubmit = event => {
@@ -18,6 +18,7 @@ class SearchProductInput extends Component {
     this.setState({
       keyword: event.target.value
     });
+    // this.onSubmit(event);
   };
 
   render() {
@@ -26,6 +27,7 @@ class SearchProductInput extends Component {
         <form onSubmit={this.onSubmit}>
           <label>
             <h1>What product are you looking for?</h1>
+            <br />
             <input
               className="search-product-input"
               type="text"
@@ -34,12 +36,13 @@ class SearchProductInput extends Component {
               value={this.state.keyword}
             />
           </label>
+          {/* <button className="search-product-button" type="submit"> */}
+          {/* Search */}
+          {/* </button> */}
         </form>
       </div>
     );
   }
 }
 
-export default connect(null, { findProduct, fetchProducts })(
-  SearchProductInput
-);
+export default connect(null, {})(SearchCityInput);

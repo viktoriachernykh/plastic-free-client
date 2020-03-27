@@ -47,7 +47,7 @@ class HomePageContainer extends Component {
             nextPage={this.nextPage}
             pageNumber={this.state.pageNumber}
           />
-          {stores ? <Map stores={stores} /> : "Loading map..."}
+          {/* {stores ? <Map stores={stores} /> : "Loading map..."} */}
           {/* <StoresList
           stores={stores}
           // fetchStores={this.props.fetchStores}
