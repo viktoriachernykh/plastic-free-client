@@ -10,7 +10,7 @@ import SignupFormContainer from "./components/Forms/Signup/SignupFormContainer";
 import LoginFormContainer from "./components/Forms/Login/LoginFormContainer";
 import Logout from "./components/Forms/Logout/Logout";
 
-import "./App.css";
+import "./styles/style.css";
 
 class App extends Component {
   render() {
