@@ -25,7 +25,7 @@ Thus, only plastic-free products will be promoted with this app, making plastic-
 ## Setup
 
 In order to run this App please ensure you have the server running as well. 
-Instructions on how to do that may be found [here](https://github.com/hastinc/Jobs-Board-Server)
+Instructions on how to do that may be found [here](https://github.com/viktoriachernykh/plastic-free-server)
 - git clone
 - npm install
 - npm run start
