@@ -1,8 +1,11 @@
 ## What this project is about
 
 This app is designed for people who want to use less plastic.
+
 Enter any product name and see all the locations where you can find it plastic-free on the map.
+
 It is based on user-generated content: when user finds new plastic-free product in some store - he can add its location to the database. 
+
 Thus, only plastic-free products will be promoted with this app, making plastic-free lifestyle available for everyone.
 
 ## Table of contents
