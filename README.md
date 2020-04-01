@@ -24,13 +24,13 @@ Thus, only plastic-free products will be promoted with this app, making plastic-
 
 ## Setup
 
-In order to run this App please ensure you have the server running as well. 
-Instructions on how to do that may be found [here](https://github.com/viktoriachernykh/plastic-free-server)
-- git clone
+In order to run this App please ensure you have the [here](https://github.com/viktoriachernykh/plastic-free-server) running as well. 
+
+- git clone git@github.com:viktoriachernykh/plastic-free-client.git
 - npm install
 - npm run start
 
 ## Create React App
 
-This project was scaffolded using the create-react-app cli. 
+This project was built using the create-react-app cli. 
 
