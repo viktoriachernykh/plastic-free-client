@@ -22,7 +22,7 @@ This app is designed for people who want to use less plastic.
 
 ## Setup
 
-In order to run this App please ensure you have the [here](https://github.com/viktoriachernykh/plastic-free-server) running as well. 
+In order to run this App please ensure you have the [server](https://github.com/viktoriachernykh/plastic-free-server) running as well. 
 
 - git clone git@github.com:viktoriachernykh/plastic-free-client.git
 - npm install
