@@ -33,5 +33,4 @@ Instructions on how to do that may be found [here](https://github.com/viktoriach
 ## Create React App
 
 This project was scaffolded using the create-react-app cli. 
-**[The standard create-react-app docs can be found in here](https://github.com/facebook/create-react-app)**
 
