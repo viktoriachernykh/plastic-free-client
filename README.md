@@ -10,7 +10,6 @@ This app is designed for people who want to use less plastic.
 
 - [Technologies used](#Technologies-used)
 - [Setup](#Setup)
-- [Create React App](#Create-React-App)
 
 ## Technologies used
 
@@ -27,8 +26,4 @@ In order to run this App please ensure you have the [server](https://github.com/
 - git clone git@github.com:viktoriachernykh/plastic-free-client.git
 - npm install
 - npm run start
-
-## Create React App
-
-This project was built using the create-react-app cli. 
 
