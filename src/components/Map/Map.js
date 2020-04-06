@@ -3,19 +3,22 @@ import {
   GoogleMap,
   withGoogleMap,
   Marker,
-  InfoWindow
+  InfoWindow,
 } from "react-google-maps";
+
 import { MarkerClusterer } from "react-google-maps/lib/components/addons/MarkerClusterer";
 
 export default class Map extends React.Component {
   state = {
     zoom: 10,
     userLocation: { latitude: null, longitude: null },
-    selectedMarker: null
+    selectedMarker: null,
   };
 
   componentDidMount() {
+    this.props.fetchStores();
     this.getLocation();
+    console.log("this", this);
   }
 
   getLocation = () => {
@@ -24,14 +27,14 @@ export default class Map extends React.Component {
     }
   };
 
-  setCoordinates = position => {
+  setCoordinates = (position) => {
     const { latitude, longitude } = position.coords;
     this.setState({
-      userLocation: { latitude: latitude, longitude: longitude }
+      userLocation: { latitude: latitude, longitude: longitude },
     });
   };
 
-  onMarkerClustererClick = markerClusterer => {
+  onMarkerClustererClick = (markerClusterer) => {
     // const clickedMarkers =
     markerClusterer.getMarkers();
     // this.setState({
@@ -40,16 +43,15 @@ export default class Map extends React.Component {
     // console.log(`Current clicked markers length: ${clickedMarkers.length}`);
   };
 
-  setSelectedMarker = store => {
-    // preventDefault();
+  setSelectedMarker = (store) => {
     this.setState({
       // zoom: 20,
-      selectedMarker: store
+      selectedMarker: store,
     });
   };
 
   render() {
-    const { stores } = this.props;
+    const stores = this.props.stores;
     const { latitude, longitude } = this.state.userLocation;
 
     const Map = withGoogleMap(() => (
@@ -57,7 +59,7 @@ export default class Map extends React.Component {
         defaultZoom={this.state.zoom}
         defaultCenter={{
           lat: latitude ? Number(latitude) : 52.370216,
-          lng: longitude ? Number(longitude) : 4.895168
+          lng: longitude ? Number(longitude) : 4.895168,
         }}
       >
         <MarkerClusterer
@@ -72,8 +74,8 @@ export default class Map extends React.Component {
               fontFamily: "Lato",
               textSize: 20,
               textColor: "white",
-              backgroundPosition: "-120 -80"
-            }
+              backgroundPosition: "-120 -80",
+            },
           ]}
         >
           {stores.map((store, index) => (
@@ -81,7 +83,7 @@ export default class Map extends React.Component {
               key={index}
               position={{
                 lat: Number(store.coordinate_lat),
-                lng: Number(store.coordinate_lng)
+                lng: Number(store.coordinate_lng),
               }}
               onClick={() => {
                 this.setSelectedMarker(store);
@@ -97,12 +99,12 @@ export default class Map extends React.Component {
             // disableAutoPan={false}
             onCloseClick={() => {
               this.setState({
-                selectedMarker: null
+                selectedMarker: null,
               });
             }}
             position={{
               lat: Number(this.state.selectedMarker.coordinate_lat),
-              lng: Number(this.state.selectedMarker.coordinate_lng)
+              lng: Number(this.state.selectedMarker.coordinate_lng),
             }}
           >
             <div>

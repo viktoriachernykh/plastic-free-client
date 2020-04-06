@@ -1,45 +1,36 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { findProduct, fetchProducts } from "../../store/product/actions";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
-class SearchProductInput extends Component {
-  state = { keyword: "" };
+export default function SearchProductInput(props) {
+  const dispatch = useDispatch();
+  const [keyword, setKeyword] = useState("");
 
-  onSubmit = event => {
+  const onSubmit = (event) => {
     event.preventDefault();
-    if (this.state.keyword === "") {
-      this.props.fetchProducts(1);
+    if (keyword === "") {
+      dispatch(props.fetchProducts(1));
     } else {
-      this.props.findProduct(this.state.keyword);
+      dispatch(props.findProduct(keyword));
+      setKeyword("");
     }
   };
 
-  onChange = event => {
-    this.setState({
-      keyword: event.target.value
-    });
+  const onChange = (event) => {
+    setKeyword(event.target.value);
   };
 
-  render() {
-    return (
-      <div>
-        <form onSubmit={this.onSubmit}>
-          <label>
-            <h1>What product are you looking for?</h1>
-            <input
-              className="search-product-input"
-              type="text"
-              name="keyword"
-              onChange={this.onChange}
-              value={this.state.keyword}
-            />
-          </label>
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <h1>What product are you looking for?</h1>
+      <form onSubmit={onSubmit}>
+        <input
+          className="search-product-input"
+          type="text"
+          name="keyword"
+          onChange={onChange}
+          value={keyword}
+        />
+      </form>
+    </div>
+  );
 }
-
-export default connect(null, { findProduct, fetchProducts })(
-  SearchProductInput
-);

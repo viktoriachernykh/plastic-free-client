@@ -2,11 +2,16 @@ import request from "superagent";
 
 const baseUrl = "http://localhost:4000";
 
-export const fetchStores = pageNumber => dispatch => {
-  const limit = 10;
-  const offset = pageNumber === 1 ? 0 : (pageNumber - 1) * limit;
-  request(`${baseUrl}/store?limit=${limit}&offset=${offset}`)
-    .then(res => {
+export const fetchStores = () => (dispatch) => {
+  console.log("fetchiiiiiing");
+
+  // const limit = 10;
+  // const offset = pageNumber === 1 ? 0 : (pageNumber - 1) * limit;
+  // request(`${baseUrl}/store?limit=${limit}&offset=${offset}`)
+  request(`${baseUrl}/store`)
+    .then((res) => {
+      console.log("res stores", res.body);
+
       dispatch(storesFetched(res.body));
     })
     .catch(console.error);
@@ -14,16 +19,16 @@ export const fetchStores = pageNumber => dispatch => {
 function storesFetched(stores) {
   return {
     type: "ALL_STORES",
-    stores
+    stores,
   };
 }
 
-export const addStore = (newStore, userId, productId) => dispatch => {
+export const addStore = (newStore, userId, productId) => (dispatch) => {
   request
     .post(`${baseUrl}/store`)
     // .set("Authorization", `Bearer ${token}`)
     .send({ newStore, userId, productId })
-    .then(res => {
+    .then((res) => {
       dispatch(storeAdded(res.body));
     })
     .catch(console.error);
@@ -31,13 +36,13 @@ export const addStore = (newStore, userId, productId) => dispatch => {
 function storeAdded(newStore) {
   return {
     type: "ADD_STORE",
-    newStore
+    newStore,
   };
 }
 
-export const fetchStore = id => dispatch => {
+export const fetchStore = (id) => (dispatch) => {
   request(`${baseUrl}/store/${id}`)
-    .then(res => {
+    .then((res) => {
       dispatch(storeFetched(res.body));
     })
     .catch(console.error);
@@ -45,13 +50,13 @@ export const fetchStore = id => dispatch => {
 function storeFetched(store) {
   return {
     type: "ONE_STORE",
-    store
+    store,
   };
 }
 
-export const findStore = keyword => dispatch => {
+export const findStore = (keyword) => (dispatch) => {
   request(`${baseUrl}/store/find/${keyword}`)
-    .then(res => {
+    .then((res) => {
       dispatch(storeFound(res.body));
     })
     .catch(console.error);
@@ -59,6 +64,6 @@ export const findStore = keyword => dispatch => {
 function storeFound(stores) {
   return {
     type: "FIND_STORES",
-    stores
+    stores,
   };
 }

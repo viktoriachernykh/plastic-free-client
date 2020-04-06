@@ -3,9 +3,10 @@ const initialState = { list: [], single: null };
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "ALL_STORES": {
+      console.log("stores reducer", action.stores);
       const newState = {
         list: action.stores,
-        single: null
+        single: null,
       };
       return newState;
     }
@@ -13,16 +14,16 @@ export default function reducer(state = initialState, action) {
       const newState = {
         list: {
           rows: [...state.list.rows, action.newStore],
-          count: ++state.list.count
+          count: ++state.list.count,
         },
-        single: null
+        single: null,
       };
       return newState;
     }
     case "ONE_STORE": {
       const newState = {
         list: [],
-        single: action.store
+        single: action.store,
       };
       return newState;
     }
@@ -30,8 +31,8 @@ export default function reducer(state = initialState, action) {
       const newState = {
         list: {
           ...state,
-          rows: action.stores
-        }
+          rows: action.stores,
+        },
       };
       return newState;
     }

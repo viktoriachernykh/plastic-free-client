@@ -1,52 +1,28 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { addProduct } from "../../../store/product/actions";
 import AddProductForm from "./AddProductForm";
 
-class AddProductFormContainer extends React.Component {
-  state = {
-    name: ""
-  };
+export default function AddProductFormContainer() {
+  const dispatch = useDispatch();
+  const [name, setName] = useState("");
 
-  onSubmit = event => {
-    // const token = this.props.token;
-    const newProduct = {
-      name: this.state.name,
-      userId: this.props.user.id
-    };
+  const onSubmit = (event) => {
     event.preventDefault();
-    this.props.addProduct(newProduct);
-    this.setState({
-      name: ""
-    });
+    const newProduct = {
+      name: name,
+    };
+    dispatch(addProduct(newProduct));
+    setName("");
   };
 
-  onChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
+  const onChange = (event) => {
+    setName(event.target.value);
   };
 
-  render() {
-    return (
-      <div>
-        <AddProductForm
-          onSubmit={this.onSubmit}
-          onChange={this.onChange}
-          values={this.state}
-        />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <AddProductForm onSubmit={onSubmit} onChange={onChange} values={name} />
+    </div>
+  );
 }
-
-function mapStateToProps(state) {
-  return {
-    user: state.session.user
-    // token: state.session.jwt
-  };
-}
-
-export default connect(mapStateToProps, { addProduct })(
-  AddProductFormContainer
-);
