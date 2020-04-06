@@ -1,3 +1,25 @@
+.header {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(300px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin: 0;
+  width: 100%;
+  height: 50px;
+  padding: 40px 0;
+}
+
+.header a {
+  color: black;
+  margin: 0 50px;
+  -webkit-text-decoration: solid;
+          text-decoration: solid;
+}
+
+.header a:hover {
+  color: #6ece6e;
+}
+
 body {
   color: black;
   font-family: "Baloo Thambi 2", "Roboto Condensed", sans-serif;
@@ -14,28 +36,6 @@ body a {
   text-decoration: none;
 }
 
-.header {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (minmax(300px, 1fr)) [auto-fit];
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  margin: 0;
-  width: 100%;
-  height: 50px;
-  padding: 40px 0;
-}
-
-.header a {
-  color: black;
-  margin: 0 50px;
-  -webkit-text-decoration: solid;
-  text-decoration: solid;
-}
-
-.header a:hover {
-  color: #6ece6e;
-}
-
 .search-product-input {
   height: 60px;
   width: 50%;
@@ -50,9 +50,13 @@ body a {
 .container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(500px, 1fr)) [auto-fit];
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  -ms-grid-columns: (minmax(500px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   margin: 0;
   border-top: 1px solid #ebebeb;
+}
+
+.product-list {
+  height: 510px;
 }
 /*# sourceMappingURL=style.css.map */

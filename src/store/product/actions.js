@@ -2,11 +2,12 @@ import request from "superagent";
 
 const baseUrl = "http://localhost:4000";
 
-export const fetchProducts = pageNumber => dispatch => {
+export const fetchProducts = (pageNumber) => (dispatch) => {
   const limit = 10;
   const offset = pageNumber === 1 ? 0 : (pageNumber - 1) * limit;
   request(`${baseUrl}/product?limit=${limit}&offset=${offset}`)
-    .then(res => {
+    .then((res) => {
+      console.log("product actions res body", res.body);
       dispatch(productsFetched(res.body));
     })
     .catch(console.error);
@@ -14,16 +15,16 @@ export const fetchProducts = pageNumber => dispatch => {
 function productsFetched(products) {
   return {
     type: "ALL_PRODUCTS",
-    products
+    products,
   };
 }
 
-export const addProduct = newProduct => dispatch => {
+export const addProduct = (newProduct) => (dispatch) => {
   request
     .post(`${baseUrl}/product`)
     // .set("Authorization", `Bearer ${token}`)
     .send(newProduct)
-    .then(res => {
+    .then((res) => {
       dispatch(productAdded(res.body));
     })
     .catch(console.error);
@@ -31,13 +32,13 @@ export const addProduct = newProduct => dispatch => {
 function productAdded(newProduct) {
   return {
     type: "ADD_PRODUCT",
-    newProduct
+    newProduct,
   };
 }
 
-export const fetchProduct = id => dispatch => {
+export const fetchProduct = (id) => (dispatch) => {
   request(`${baseUrl}/product/${id}`)
-    .then(res => {
+    .then((res) => {
       dispatch(productFetched(res.body));
     })
     .catch(console.error);
@@ -45,14 +46,14 @@ export const fetchProduct = id => dispatch => {
 function productFetched(product) {
   return {
     type: "ONE_PRODUCT",
-    product
+    product,
   };
 }
 
-export const findProduct = keyword => dispatch => {
+export const findProduct = (keyword) => (dispatch) => {
   if (keyword)
     request(`${baseUrl}/product/find/${keyword}`)
-      .then(res => {
+      .then((res) => {
         dispatch(productFound(res.body));
       })
       .catch(console.error);
@@ -60,6 +61,6 @@ export const findProduct = keyword => dispatch => {
 function productFound(products) {
   return {
     type: "FIND_PRODUCTS",
-    products
+    products,
   };
 }

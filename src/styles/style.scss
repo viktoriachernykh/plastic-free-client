@@ -1,12 +1,6 @@
 @import "./variables";
 @import "./header";
 
-@mixin gridRepeat($minmax) {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax($minmax, 1fr));
-  margin: 0;
-}
-
 body {
   color: $textColor;
   font-family: "Baloo Thambi 2", "Roboto Condensed", sans-serif;
@@ -36,4 +30,8 @@ body {
 .container {
   @include gridRepeat(500px);
   border-top: 1px solid #ebebeb;
+}
+
+.product-list {
+  height: 510px;
 }
