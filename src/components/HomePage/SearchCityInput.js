@@ -5,7 +5,7 @@ import { findProduct, fetchProducts } from "../../store/product/actions";
 class SearchCityInput extends Component {
   state = { keyword: "" };
 
-  onSubmit = event => {
+  onSubmit = (event) => {
     event.preventDefault();
     if (this.state.keyword === "") {
       this.props.fetchProducts(1);
@@ -14,11 +14,10 @@ class SearchCityInput extends Component {
     }
   };
 
-  onChange = event => {
+  onChange = (event) => {
     this.setState({
-      keyword: event.target.value
+      keyword: event.target.value,
     });
-    // this.onSubmit(event);
   };
 
   render() {
@@ -36,9 +35,6 @@ class SearchCityInput extends Component {
               value={this.state.keyword}
             />
           </label>
-          {/* <button className="search-product-button" type="submit"> */}
-          {/* Search */}
-          {/* </button> */}
         </form>
       </div>
     );

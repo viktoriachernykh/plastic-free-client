@@ -11,7 +11,7 @@ import Map from "../Map/Map";
 
 class HomePageContainer extends Component {
   state = {
-    pageNumber: 1
+    pageNumber: 1,
   };
 
   componentDidMount() {
@@ -47,7 +47,7 @@ class HomePageContainer extends Component {
             nextPage={this.nextPage}
             pageNumber={this.state.pageNumber}
           />
-          {/* {stores ? <Map stores={stores} /> : "Loading map..."} */}
+          {stores ? <Map stores={stores} /> : "Loading map..."}
           {/* <StoresList
           stores={stores}
           // fetchStores={this.props.fetchStores}
@@ -68,11 +68,11 @@ function mapStateToProps(state) {
     products: state.products.list.rows,
     productsLength: state.products.list.count,
     user: state.session.user,
-    token: state.session.jwt
+    token: state.session.jwt,
   };
 }
 
 export default connect(mapStateToProps, {
   fetchStores,
-  fetchProducts
+  fetchProducts,
 })(HomePageContainer);
