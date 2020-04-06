@@ -1,3 +1,5 @@
+@import "./variables";
+
 .header {
   @include gridRepeat(300px);
   width: 100%;
