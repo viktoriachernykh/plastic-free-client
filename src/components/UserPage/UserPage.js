@@ -7,7 +7,7 @@ const selectUser = (reduxState) => {
 };
 
 export default function UserPageContainer() {
-  const [file, selectFile] = useState(null);
+  // const [file, selectFile] = useState(null);
 
   const user = useSelector(selectUser);
 
