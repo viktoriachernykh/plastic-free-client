@@ -4,14 +4,11 @@ const baseUrl = "http://localhost:4000";
 
 export const fetchStores = () => (dispatch) => {
   console.log("fetchiiiiiing");
-
   // const limit = 10;
   // const offset = pageNumber === 1 ? 0 : (pageNumber - 1) * limit;
   // request(`${baseUrl}/store?limit=${limit}&offset=${offset}`)
   request(`${baseUrl}/store`)
     .then((res) => {
-      console.log("res stores", res.body);
-
       dispatch(storesFetched(res.body));
     })
     .catch(console.error);

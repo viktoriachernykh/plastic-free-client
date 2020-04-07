@@ -3,7 +3,6 @@ const initialState = { list: [], single: null };
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "ALL_STORES": {
-      console.log("stores reducer", action.stores);
       const newState = {
         list: action.stores,
         single: null,

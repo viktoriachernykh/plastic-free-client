@@ -6,7 +6,7 @@ import SearchProductInput from "./SearchProductInput";
 import ProductsList from "./ProductsList";
 import Pagination from "./Pagination";
 import AddProductFormContainer from "../Forms/AddProduct/AddProductFormContainer";
-import Map from "../Map/Map";
+import Map from "../Map/MapContainer";
 
 const selectProducts = (reduxState) => {
   return reduxState.products.list;
