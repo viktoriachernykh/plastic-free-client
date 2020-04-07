@@ -10,14 +10,14 @@ export default function reducer(state = initialState, action) {
       return newState;
     }
     case "ADD_STORE": {
-      const newState = {
-        list: {
-          rows: [...state.list.rows, action.newStore],
-          count: ++state.list.count,
-        },
-        single: null,
-      };
-      return newState;
+      // const newState = {
+      //   list: {
+      //     rows: [...state.list.rows, action.newStore],
+      //     count: ++state.list.count,
+      //   },
+      //   single: null,
+      // };
+      return state;
     }
     case "ONE_STORE": {
       const newState = {
