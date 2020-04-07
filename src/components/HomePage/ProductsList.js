@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import AddProductFormContainer from "../Forms/AddProduct/AddProductFormContainer";
+// import AddProductFormContainer from "../Forms/AddProductForm";
 
 export default function ProductsList(props) {
   // const [toggle, setToggle] = useState(false);
@@ -23,7 +23,7 @@ export default function ProductsList(props) {
         </div>
       ) : (
         <div>
-          No products here. Found one? Add it! <AddProductFormContainer />
+          {/* No products here. Found one? Add it! <AddProductFormContainer /> */}
         </div>
       )}
     </div>

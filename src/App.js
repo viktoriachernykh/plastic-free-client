@@ -6,9 +6,9 @@ import HomePageContainer from "./components/HomePage/HomePageContainer";
 import ProductPageContainer from "./components/ProductPage/ProductPageContainer";
 import StorePageContainer from "./components/StorePage/StorePageContainer";
 import UserPageContainer from "./components/UserPage/UserPageContainer";
-import SignupFormContainer from "./components/Forms/Signup/SignupFormContainer";
+import SignupForm from "./components/Forms/SignupForm";
 import LoginForm from "./components/Forms/LoginForm";
-import Logout from "./components/Forms/Logout/Logout";
+import Logout from "./components/Forms/Logout";
 
 import "./styles/style.css";
 
@@ -22,7 +22,7 @@ class App extends Component {
           <Route exact path="/product/:id" component={ProductPageContainer} />
           <Route exact path="/store/:id" component={StorePageContainer} />
           <Route exact path="/user/:id" component={UserPageContainer} />
-          <Route exact path="/signup" component={SignupFormContainer} />
+          <Route exact path="/signup" component={SignupForm} />
           <Route exact path="/login" component={LoginForm} />
           <Route exact path="/logout" component={Logout} />
         </Switch>

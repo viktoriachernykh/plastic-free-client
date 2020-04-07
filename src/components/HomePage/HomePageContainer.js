@@ -5,7 +5,7 @@ import { fetchProducts, findProduct } from "../../store/product/actions";
 import SearchProductInput from "./SearchProductInput";
 import ProductsList from "./ProductsList";
 import Pagination from "./Pagination";
-import AddProductFormContainer from "../Forms/AddProduct/AddProductFormContainer";
+import AddProductForm from "../Forms/AddProductForm";
 import Map from "../Map/MapContainer";
 
 const selectProducts = (reduxState) => {
@@ -35,7 +35,7 @@ export default function HomePageContainer() {
       <div className="container">
         <ProductsList products={products} />
         <Pagination products={products} fetchProducts={fetchProducts} />
-        <AddProductFormContainer user={user} />
+        <AddProductForm />
         <Map stores={stores} fetchStores={fetchStores} />
       </div>
     </div>
