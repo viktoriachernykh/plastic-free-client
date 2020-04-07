@@ -7,7 +7,6 @@ export default function AddProductFormContainer() {
   const [name, setName] = useState("");
 
   const onSubmit = (e) => {
-    console.log("name?", name);
     e.preventDefault();
     const newProduct = {
       name: name,

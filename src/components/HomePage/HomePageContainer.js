@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { fetchStores } from "../../store/store/actions";
 import { fetchProducts, findProduct } from "../../store/product/actions";
@@ -16,13 +16,8 @@ const selectStores = (reduxState) => {
   return reduxState.stores.list;
 };
 
-const selectUser = (reduxState) => {
-  return reduxState.session.user;
-};
-
 export default function HomePageContainer() {
   const products = useSelector(selectProducts);
-  const user = useSelector(selectUser);
   const stores = useSelector(selectStores);
 
   return (

@@ -5,18 +5,14 @@ export default function SearchProductInput(props) {
   const dispatch = useDispatch();
   const [keyword, setKeyword] = useState("");
 
-  const onSubmit = (event) => {
-    event.preventDefault();
+  const onSubmit = (e) => {
+    e.preventDefault();
     if (keyword === "") {
       dispatch(props.fetchProducts(1));
     } else {
       dispatch(props.findProduct(keyword));
       setKeyword("");
     }
-  };
-
-  const onChange = (event) => {
-    setKeyword(event.target.value);
   };
 
   return (
@@ -27,7 +23,7 @@ export default function SearchProductInput(props) {
           className="search-product-input"
           type="text"
           name="keyword"
-          onChange={onChange}
+          onChange={(e) => setKeyword(e.target.value)}
           value={keyword}
         />
       </form>

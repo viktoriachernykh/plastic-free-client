@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signup } from "../../store/user/actions";
-// import LoginForm from "./LoginForm";
 
 export default function SignupForm() {
   const dispatch = useDispatch();
