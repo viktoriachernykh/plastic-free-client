@@ -5,7 +5,7 @@ export default function reducer(state = initialState, action) {
     case "ALL_PRODUCTS": {
       const newState = {
         list: action.products,
-        single: null
+        single: null,
       };
       return newState;
     }
@@ -13,25 +13,26 @@ export default function reducer(state = initialState, action) {
       const newState = {
         list: {
           rows: [...state.list.rows, action.newProduct],
-          count: ++state.list.count
+          count: ++state.list.count,
         },
-        single: null
+        single: null,
       };
       return newState;
     }
     case "ONE_PRODUCT": {
       const newState = {
         list: [],
-        single: action.product
+        single: action.product,
       };
       return newState;
     }
     case "FIND_PRODUCTS": {
       const newState = {
-        ...state,
         list: {
-          rows: action.products
-        }
+          rows: action.products,
+          count: action.products.length,
+        },
+        single: null,
       };
       return newState;
     }

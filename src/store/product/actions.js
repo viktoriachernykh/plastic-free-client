@@ -7,7 +7,6 @@ export const fetchProducts = (pageNumber) => (dispatch) => {
   const offset = pageNumber === 1 ? 0 : (pageNumber - 1) * limit;
   request(`${baseUrl}/product?limit=${limit}&offset=${offset}`)
     .then((res) => {
-      console.log("product actions res body", res.body);
       dispatch(productsFetched(res.body));
     })
     .catch(console.error);
