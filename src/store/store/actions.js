@@ -3,7 +3,6 @@ import request from "superagent";
 const baseUrl = "http://localhost:4000";
 
 export const fetchStores = () => (dispatch) => {
-  console.log("fetchiiiiiing");
   // const limit = 10;
   // const offset = pageNumber === 1 ? 0 : (pageNumber - 1) * limit;
   // request(`${baseUrl}/store?limit=${limit}&offset=${offset}`)
@@ -20,11 +19,11 @@ function storesFetched(stores) {
   };
 }
 
-export const addStore = (newStore, userId, productId) => (dispatch) => {
+export const addStore = (newStore, productId) => (dispatch) => {
   request
     .post(`${baseUrl}/store`)
     // .set("Authorization", `Bearer ${token}`)
-    .send({ newStore, userId, productId })
+    .send({ newStore, productId })
     .then((res) => {
       dispatch(storeAdded(res.body));
     })
