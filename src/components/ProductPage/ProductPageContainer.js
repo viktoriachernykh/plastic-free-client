@@ -11,9 +11,6 @@ const selectProduct = (reduxState) => {
   return reduxState.products.single;
 };
 
-const selectUser = (reduxState) => {
-  return reduxState.session.user;
-};
 const selectToken = (reduxState) => {
   return reduxState.session.jwt;
 };
@@ -21,7 +18,6 @@ const selectToken = (reduxState) => {
 export default function ProductPageContainer() {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const user = useSelector(selectUser);
   const token = useSelector(selectToken);
   const product = useSelector(selectProduct);
   const stores = product && product.Store;
@@ -33,7 +29,6 @@ export default function ProductPageContainer() {
 
   const addNewStore = async (address) => {
     const productId = id;
-    const userId = user.id;
     const results = await geocodeByAddress(address);
     const latLng = await getLatLng(results[0]);
     const newStore = {
@@ -43,7 +38,7 @@ export default function ProductPageContainer() {
       coordinate_lat: latLng.lat,
       coordinate_lng: latLng.lng,
     };
-    dispatch(addStore(newStore, userId, productId));
+    dispatch(addStore(newStore, productId));
   };
 
   return (

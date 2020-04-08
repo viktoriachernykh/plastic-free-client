@@ -9,6 +9,7 @@ import UserPage from "./components/UserPage/UserPage";
 import SignupForm from "./components/Forms/SignupForm";
 import LoginForm from "./components/Forms/LoginForm";
 import Logout from "./components/Forms/Logout";
+import Map from "./components/Map/MapContainer";
 
 import "./styles/style.css";
 
@@ -26,6 +27,7 @@ class App extends Component {
           <Route exact path="/login" component={LoginForm} />
           <Route exact path="/logout" component={Logout} />
         </Switch>
+        <Map />
       </div>
     );
   }
