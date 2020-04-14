@@ -10,13 +10,13 @@ const selectProducts = (reduxState) => {
   return reduxState.products.list;
 };
 
-export default function HomePageContainer() {
+export default function HomePage() {
   const products = useSelector(selectProducts);
 
   return (
     <div>
       <SearchProductInput
-        fetchProducts={fetchProducts}
+        // fetchProducts={fetchProducts}
         findProduct={findProduct}
         products={products}
       />
