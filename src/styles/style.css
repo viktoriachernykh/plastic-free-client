@@ -35,29 +35,4 @@ body a {
   color: gray;
   text-decoration: none;
 }
-
-.search-product-input {
-  height: 60px;
-  width: 50%;
-  border-style: none;
-  border-bottom: solid 10px #6ece6e;
-  font-size: 24px;
-  text-align: center;
-  font-family: "Baloo Thambi 2", "Roboto Condensed", sans-serif;
-  margin-bottom: 80px;
-}
-
-.container {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (minmax(500px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  margin: 0;
-  border-top: 1px solid #ebebeb;
-  float: right;
-}
-
-.product-list {
-  height: 510px;
-}
 /*# sourceMappingURL=style.css.map */

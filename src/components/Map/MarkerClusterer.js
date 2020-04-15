@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
-// import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Marker, InfoWindow } from "react-google-maps";
 import { MarkerClusterer } from "react-google-maps/lib/components/addons/MarkerClusterer";
-import { fetchStores } from "../../store/store/actions";
 
 const selectStores = (reduxState) => {
-  return reduxState.stores.list;
+  console.log("MarkerClusterer reduxState", reduxState);
+  return reduxState.products.single.Store;
 };
 
 export default function MarkerClusterers() {
-  // const dispatch = useDispatch();
   const stores = useSelector(selectStores);
   console.log("stores?", stores);
 
@@ -20,11 +18,6 @@ export default function MarkerClusterers() {
     longitude: 4.895168,
   });
   const [selectedMarker, setMarker] = useState(null);
-
-  useEffect(() => {
-    fetchStores();
-    // dispatch(fetchStores());
-  }, []);
 
   const onMarkerClustererClick = (markerClusterer) => {
     markerClusterer.getMarkers();

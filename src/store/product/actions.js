@@ -49,17 +49,18 @@ function productFetched(product) {
   };
 }
 
-export const findProduct = (keyword) => (dispatch) => {
-  if (keyword)
-    request(`${baseUrl}/product/find/${keyword}`)
-      .then((res) => {
-        dispatch(productFound(res.body));
-      })
-      .catch(console.error);
+export const findProduct = (keyword, city) => (dispatch) => {
+  request(`${baseUrl}/product/find/${keyword}/${city}`)
+    .then((res) => {
+      console.log("res", res.body);
+
+      dispatch(productFound(res.body[0]));
+    })
+    .catch(console.error);
 };
-function productFound(products) {
+function productFound(product) {
   return {
-    type: "FIND_PRODUCTS",
-    products,
+    type: "FIND_PRODUCT",
+    product,
   };
 }

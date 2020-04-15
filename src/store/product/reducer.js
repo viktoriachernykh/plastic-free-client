@@ -26,13 +26,10 @@ export default function reducer(state = initialState, action) {
       };
       return newState;
     }
-    case "FIND_PRODUCTS": {
+    case "FIND_PRODUCT": {
       const newState = {
-        list: {
-          rows: action.products,
-          count: action.products.length,
-        },
-        single: null,
+        list: [],
+        single: action.product,
       };
       return newState;
     }

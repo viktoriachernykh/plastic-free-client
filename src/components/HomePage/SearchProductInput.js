@@ -8,8 +8,6 @@ export default function SearchProductInput(props) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("keyword", keyword);
-    console.log("city", city);
     if (keyword === "" || city === "") {
       window.alert("fill both fields!");
       // dispatch(props.fetchProducts(1));
