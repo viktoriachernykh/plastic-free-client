@@ -26,12 +26,15 @@ export default function reducer(state = initialState, action) {
       };
       return newState;
     }
-    case "FIND_PRODUCT": {
+    case "FOUND_PRODUCT": {
       const newState = {
         list: [],
         single: action.product,
       };
       return newState;
+    }
+    case "NOT_FOUND_PRODUCT": {
+      return action;
     }
     default: {
       return state;
