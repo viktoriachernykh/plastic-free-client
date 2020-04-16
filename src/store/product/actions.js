@@ -52,15 +52,21 @@ function productFetched(product) {
 export const findProduct = (keyword, city) => (dispatch) => {
   request(`${baseUrl}/product/find/${keyword}/${city}`)
     .then((res) => {
-      console.log("res", res.body);
-
-      dispatch(productFound(res.body[0]));
+      res.body.keyword && res.body.city
+        ? dispatch(productNotFound(res.body))
+        : dispatch(productFound(res.body[0]));
     })
     .catch(console.error);
 };
 function productFound(product) {
   return {
-    type: "FIND_PRODUCT",
+    type: "FOUND_PRODUCT",
     product,
+  };
+}
+function productNotFound(dataNotFound) {
+  return {
+    type: "NOT_FOUND_PRODUCT",
+    dataNotFound,
   };
 }

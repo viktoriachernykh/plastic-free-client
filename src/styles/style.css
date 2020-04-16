@@ -35,4 +35,8 @@ body a {
   color: gray;
   text-decoration: none;
 }
+
+.suggestion:hover {
+  background-color: olive;
+}
 /*# sourceMappingURL=style.css.map */
