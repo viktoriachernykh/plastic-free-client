@@ -11,8 +11,8 @@ export default function UserPageContainer() {
   return (
     <div>
       user page
-      <p>{user.name}</p>
-      <p>{user.email}</p>
+      <p>name: {user.name}</p>
+      <p>email: {user.email}</p>
     </div>
   );
 }
