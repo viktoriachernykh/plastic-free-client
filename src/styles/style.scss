@@ -14,16 +14,29 @@ body {
     color: gray;
     text-decoration: none;
   }
-  // .container {
-  //   @include gridRepeat(500px);
-  //   border-top: 1px solid #ebebeb;
-  //   float: right;
-  // }
-  // .product-list {
-  //   height: 510px;
-  // }
+  h1 {
+    margin: 12px;
+    font-size: 32px;
+  }
+  input,
+  button {
+    width: 220px;
+    font: inherit;
+    height: 60px;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 5px 15px;
+    margin: 0 0 0 -5px;
+    box-sizing: border-box;
+    border: 5px solid black;
+  }
+}
+.search {
+  width: 120px;
+  background-color: black;
+  color: white;
 }
 
 .suggestion:hover {
-  background-color: olive;
+  background-color: $mainColor;
 }

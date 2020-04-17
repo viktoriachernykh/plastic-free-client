@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import { Marker, InfoWindow } from "react-google-maps";
+import { Link } from "react-router-dom";
 
-const selectStores = (reduxState) => {
-  return reduxState.products.single.Store;
-};
-
-export default function Markers() {
-  const stores = useSelector(selectStores);
+export default function Markers({ stores }) {
   const [selectedMarker, setMarker] = useState(null);
 
   const setSelectedMarker = (store) => {
@@ -38,7 +33,9 @@ export default function Markers() {
           onCloseClick={(e) => setMarker(null)}
         >
           <div>
-            <b>{selectedMarker.name}</b>
+            <Link to={`/store/${selectedMarker.id}`}>
+              <b>{selectedMarker.name}</b>
+            </Link>
           </div>
         </InfoWindow>
       )}

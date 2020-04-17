@@ -1,6 +1,6 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { findProduct } from "../../store/product/actions";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { findProduct, renewPage } from "../../store/product/actions";
 import SearchProductInput from "./SearchProductInput";
 import AddProductForm from "./AddProductForm";
 import HomePage from "./HomePage";
@@ -11,6 +11,11 @@ const selectProducts = (reduxState) => {
 
 export default function HomePageContainer() {
   const product = useSelector(selectProducts);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(renewPage());
+  }, []);
 
   return (
     <div>

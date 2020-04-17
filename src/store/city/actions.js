@@ -15,3 +15,9 @@ function cityFound(cities) {
     cities,
   };
 }
+
+export function renewPage() {
+  return {
+    type: "RENEW",
+  };
+}

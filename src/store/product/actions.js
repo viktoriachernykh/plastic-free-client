@@ -49,6 +49,12 @@ function productFetched(product) {
   };
 }
 
+export function renewPage() {
+  return {
+    type: "RENEW_PAGE",
+  };
+}
+
 export const findProduct = (keyword, city) => (dispatch) => {
   request(`${baseUrl}/product/find/${keyword}/${city}`)
     .then((res) => {

@@ -36,6 +36,9 @@ export default function reducer(state = initialState, action) {
     case "NOT_FOUND_PRODUCT": {
       return action;
     }
+    case "RENEW_PAGE": {
+      return initialState;
+    }
     default: {
       return state;
     }
