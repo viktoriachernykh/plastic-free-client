@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { findCity } from "../../store/city/actions";
+import { renewPage } from "../../store/city/actions";
 
 const selectCities = (reduxState) => {
   return reduxState.cities;
@@ -15,6 +15,10 @@ export default function SearchProductInput(props) {
   const [keyword, setKeyword] = useState("");
   const [city, setCity] = useState("");
   const [suggestions, showSuggestions] = useState(true);
+
+  useEffect(() => {
+    dispatch(renewPage());
+  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -37,7 +41,7 @@ export default function SearchProductInput(props) {
 
   return (
     <div>
-      <h1>What product are you looking for?</h1>
+      <h1>All plastic-free products in your city</h1>
       <form onSubmit={onSubmit}>
         <input
           type="text"
@@ -51,6 +55,9 @@ export default function SearchProductInput(props) {
           onChange={(e) => onCityChange(e.target.value)}
           value={city}
         />
+        <button className="search" type="submit">
+          Search
+        </button>
         <ul>
           {suggestions &&
             cities.map((city, i) => {
@@ -65,7 +72,6 @@ export default function SearchProductInput(props) {
               );
             })}
         </ul>
-        <button type="submit">Search</button>
       </form>
     </div>
   );
