@@ -1,21 +1,30 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { login } from "../../store/user/actions";
+import { signup } from "../store/user/actions";
 
-export default function LoginFormContainer() {
+export default function SignupForm() {
   const dispatch = useDispatch();
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(email, password));
+    dispatch(signup(name, email, password));
   };
 
   return (
     <div>
-      <h1>Login</h1>
       <form onSubmit={(e) => onSubmit(e)}>
+        name:
+        <input
+          type="text"
+          name="name"
+          placeholder="name"
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+        />
+        <br />
         email:
         <input
           type="text"
@@ -34,7 +43,7 @@ export default function LoginFormContainer() {
           value={password}
         />
         <br />
-        <button type="submit">Log in</button>
+        <button type="submit">Sign up</button>
       </form>
     </div>
   );
