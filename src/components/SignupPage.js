@@ -14,9 +14,9 @@ export default function SignupForm() {
   };
 
   return (
-    <div>
+    <div className="signup">
+      <h1>Sign up</h1>
       <form onSubmit={(e) => onSubmit(e)}>
-        name:
         <input
           type="text"
           name="name"
@@ -25,7 +25,6 @@ export default function SignupForm() {
           value={name}
         />
         <br />
-        email:
         <input
           type="text"
           name="email"
@@ -34,7 +33,6 @@ export default function SignupForm() {
           value={email}
         />
         <br />
-        password:
         <input
           type="text"
           name="password"

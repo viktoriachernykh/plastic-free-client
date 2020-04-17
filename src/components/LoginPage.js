@@ -13,10 +13,9 @@ export default function LoginFormContainer() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="login">
+      <h1>Log in</h1>
       <form onSubmit={(e) => onSubmit(e)}>
-        email:
         <input
           type="text"
           name="email"
@@ -25,7 +24,6 @@ export default function LoginFormContainer() {
           value={email}
         />
         <br />
-        password:
         <input
           type="text"
           name="password"
