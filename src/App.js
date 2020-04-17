@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 
-import Header from "./components/Header/Header";
-import SignupPage from "./components/Header/SignupPage";
-import LoginPage from "./components/Header/LoginPage";
-import LogoutPage from "./components/Header/LogoutPage";
+import Header from "./components/Header";
+import SignupPage from "./components/SignupPage";
+import LoginPage from "./components/LoginPage";
+import LogoutPage from "./components/LogoutPage";
 import HomePageContainer from "./components/HomePage/HomePageContainer";
 import ProductPageContainer from "./components/ProductPage/ProductPageContainer";
-import StorePage from "./components/StorePage/StorePage";
-import UserPage from "./components/UserPage/UserPage";
+import StorePage from "./components/StorePage";
+import UserPage from "./components/UserPage";
 
 import "./styles/style.css";
 

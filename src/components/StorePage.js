@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { fetchStore } from "../../store/store/actions";
+import { fetchStore } from "../store/store/actions";
 
 const selectStore = (reduxState) => {
   return reduxState.stores.single;
