@@ -1,7 +1,7 @@
 import React from "react";
 // import StoresList from "./StoresList";
-import Map from "../../Map/Map";
-import AddProductForm from "./AddProductForm";
+import Map from "./Map/Map";
+import AddLocationForm from "./AddLocationForm/AddLocationForm";
 
 export default function Locations({ product, dataNotFound }) {
   console.log("render");
@@ -11,10 +11,10 @@ export default function Locations({ product, dataNotFound }) {
       {product && (
         <div className="container">
           <Map />
-          {/* <StoresList stores={product.Store} /> */}
+          {/* <LocationsList stores={product.Store} /> */}
         </div>
       )}
-      <AddProductForm dataNotFound={dataNotFound} />
+      {/* <AddLocationForm product={product} dataNotFound={dataNotFound} /> */}
     </div>
   );
 }

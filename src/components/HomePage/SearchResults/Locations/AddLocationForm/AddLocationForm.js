@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addProduct } from "../../../store/product/actions";
+import { addProduct } from "../../../../../store/product/actions";
 
 const selectToken = (reduxState) => {
   console.log("data?", reduxState);
-
   return reduxState.session.jwt;
 };
 
@@ -28,6 +26,9 @@ export default function AddProductFormContainer({ dataNotFound }) {
     dispatch(addProduct(newProduct));
     setName("");
   };
+
+  // dispatch(addStore(newStore, productId));
+  // <SearchPlaceInput addStore={addNewStore} />
 
   return (
     <div>
