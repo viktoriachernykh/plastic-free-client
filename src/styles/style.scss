@@ -64,3 +64,28 @@ body {
     }
   }
 }
+
+.container {
+  @include gridRepeat(500px);
+  border-top: 1px normal gray;
+  text-align: left;
+  margin-left: 40px;
+}
+
+.storelist {
+  font: inherit;
+  color: black;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.view-options {
+  b {
+    &:hover {
+      color: $mainColor;
+    }
+  }
+}
+.active {
+  color: $mainColor;
+}

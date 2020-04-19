@@ -94,4 +94,30 @@ body button {
   background-color: #6ece6e;
   border: 5px solid #6ece6e;
 }
+
+.container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(500px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  margin: 0;
+  border-top: 1px normal gray;
+  text-align: left;
+  margin-left: 40px;
+}
+
+.storelist {
+  font: inherit;
+  color: black;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.view-options b:hover {
+  color: #6ece6e;
+}
+
+.active {
+  color: #6ece6e;
+}
 /*# sourceMappingURL=style.css.map */
