@@ -39,6 +39,13 @@ export default function reducer(state = initialState, action) {
     case "RENEW_PAGE": {
       return initialState;
     }
+    case "PRODUCT_SUGGESTIONS": {
+      const newState = {
+        list: action.products,
+        single: null,
+      };
+      return newState;
+    }
     default: {
       return state;
     }

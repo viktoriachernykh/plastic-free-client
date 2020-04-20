@@ -55,7 +55,22 @@ export function renewPage() {
   };
 }
 
-export const findProduct = (keyword, city) => (dispatch) => {
+export const findProducts = (keyword) => (dispatch) => {
+  request(`${baseUrl}/product/find/${keyword}`)
+    .then((res) => {
+      console.log("res findProduct", res.body);
+      dispatch(productsFound(res.body));
+    })
+    .catch(console.error);
+};
+function productsFound(products) {
+  return {
+    type: "PRODUCT_SUGGESTIONS",
+    products,
+  };
+}
+
+export const findProductByCity = (keyword, city) => (dispatch) => {
   request(`${baseUrl}/product/find/${keyword}/${city}`)
     .then((res) => {
       res.body.keyword && res.body.city

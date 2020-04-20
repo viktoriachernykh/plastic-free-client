@@ -1,20 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { findCity } from "../../store/city/actions";
+import { findProducts } from "../../store/product/actions";
 import { renewPage } from "../../store/city/actions";
 
 const selectCities = (reduxState) => {
   return reduxState.cities;
 };
 
-export default function SearchProductInput(props) {
+const selectProducts = (reduxState) => {
+  console.log("reduxState", reduxState);
+
+  return reduxState.products.list;
+};
+
+export default function SearchProductInput({ findProductByCity }) {
   const dispatch = useDispatch();
 
   const cities = useSelector(selectCities);
+  const products = useSelector(selectProducts);
 
-  const [keyword, setKeyword] = useState("");
+  const [product, setProduct] = useState("");
   const [city, setCity] = useState("");
-  const [suggestions, showSuggestions] = useState(true);
+  const [citySuggestions, showCitySuggestions] = useState(true);
+  const [productSuggestions, showProductSuggestions] = useState(true);
 
   useEffect(() => {
     dispatch(renewPage());
@@ -22,21 +31,31 @@ export default function SearchProductInput(props) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (keyword === "" || city === "") {
+    if (product === "" || city === "") {
       window.alert("fill both fields");
     } else {
-      dispatch(props.findProduct(keyword, city));
+      dispatch(findProductByCity(product, city));
     }
   };
-  const chooseCity = (city) => {
-    setCity(city);
-    showSuggestions(false);
+
+  const onProductChange = (key) => {
+    setProduct(key);
+    key.length > 1 && dispatch(findProducts(key));
   };
 
   const onCityChange = (key) => {
-    showSuggestions(true);
     setCity(key);
     key.length > 2 && dispatch(findCity(key));
+  };
+
+  const chooseProduct = (product) => {
+    showProductSuggestions(false);
+    setProduct(product);
+  };
+
+  const chooseCity = (city) => {
+    showCitySuggestions(false);
+    setCity(city);
   };
 
   return (
@@ -45,9 +64,9 @@ export default function SearchProductInput(props) {
       <form onSubmit={onSubmit}>
         <input
           type="text"
-          name="keyword"
-          onChange={(e) => setKeyword(e.target.value)}
-          value={keyword}
+          name="product"
+          onChange={(e) => onProductChange(e.target.value)}
+          value={product}
         />
         <input
           type="text"
@@ -59,7 +78,23 @@ export default function SearchProductInput(props) {
           Search
         </button>
         <ul>
-          {suggestions &&
+          {productSuggestions &&
+            products &&
+            products.map((product, i) => {
+              return (
+                <li
+                  className="suggestion"
+                  key={i}
+                  onClick={(e) => chooseProduct(product.name)}
+                >
+                  {product.name}
+                </li>
+              );
+            })}
+        </ul>
+        <ul>
+          {citySuggestions &&
+            cities &&
             cities.map((city, i) => {
               return (
                 <li
