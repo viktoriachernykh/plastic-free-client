@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { findProduct, renewPage } from "../../store/product/actions";
+import { findProductByCity, renewPage } from "../../store/product/actions";
 import SearchInput from "./SearchInput";
 import SearchResults from "./SearchResults/SearchResults";
 
@@ -22,8 +22,12 @@ export default function HomePageContainer() {
 
   return (
     <div>
-      <SearchInput findProduct={findProduct} />
-      {(product || dataNotFound) && (
+      <SearchInput
+        findProductByCity={findProductByCity}
+        singleProduct={product}
+        dataNotFound={dataNotFound}
+      />
+      {(product || (dataNotFound && dataNotFound.product)) && (
         <SearchResults product={product} dataNotFound={dataNotFound} />
       )}
     </div>

@@ -1,20 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { findCity } from "../../store/city/actions";
+import { findProducts } from "../../store/product/actions";
 import { renewPage } from "../../store/city/actions";
 
 const selectCities = (reduxState) => {
   return reduxState.cities;
 };
+const selectProducts = (reduxState) => {
+  return reduxState.products.list;
+};
 
-export default function SearchProductInput(props) {
+export default function SearchProductInput({
+  singleProduct,
+  findProductByCity,
+  dataNotFound,
+}) {
   const dispatch = useDispatch();
 
   const cities = useSelector(selectCities);
+  const products = useSelector(selectProducts);
 
-  const [keyword, setKeyword] = useState("");
+  const [product, setProduct] = useState("");
   const [city, setCity] = useState("");
-  const [suggestions, showSuggestions] = useState(true);
+
+  const [citySuggestions, showCitySuggestions] = useState(false);
+  const [productSuggestions, showProductSuggestions] = useState(false);
 
   useEffect(() => {
     dispatch(renewPage());
@@ -22,21 +33,46 @@ export default function SearchProductInput(props) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (keyword === "" || city === "") {
+    showCitySuggestions(false);
+    showProductSuggestions(false);
+    if (product === "" || city === "") {
       window.alert("fill both fields");
     } else {
-      dispatch(props.findProduct(keyword, city));
+      const selectedProduct =
+        products && products.length > 0
+          ? products.find((p) => p.name === product)
+          : singleProduct
+          ? singleProduct
+          : dataNotFound.product;
+      console.log("selectedProduct and city", selectedProduct, city);
+      selectedProduct && dispatch(findProductByCity(selectedProduct, city));
     }
   };
-  const chooseCity = (city) => {
-    setCity(city);
-    showSuggestions(false);
+
+  const onProductChange = (key) => {
+    setProduct(key);
+    showCitySuggestions(false);
+    key.length > 0
+      ? showProductSuggestions(true)
+      : showProductSuggestions(false);
+    key.length > 1 && dispatch(findProducts(key));
   };
 
   const onCityChange = (key) => {
-    showSuggestions(true);
     setCity(key);
-    key.length > 2 && dispatch(findCity(key));
+    showProductSuggestions(false);
+    key.length > 0 ? showCitySuggestions(true) : showCitySuggestions(false);
+    key.length > 1 && dispatch(findCity(key));
+  };
+
+  const chooseProduct = (product) => {
+    showProductSuggestions(false);
+    setProduct(product.name);
+  };
+
+  const chooseCity = (city) => {
+    showCitySuggestions(false);
+    setCity(city.name);
   };
 
   return (
@@ -45,9 +81,9 @@ export default function SearchProductInput(props) {
       <form onSubmit={onSubmit}>
         <input
           type="text"
-          name="keyword"
-          onChange={(e) => setKeyword(e.target.value)}
-          value={keyword}
+          name="product"
+          onChange={(e) => onProductChange(e.target.value)}
+          value={product}
         />
         <input
           type="text"
@@ -59,13 +95,30 @@ export default function SearchProductInput(props) {
           Search
         </button>
         <ul>
-          {suggestions &&
+          {productSuggestions &&
+            products &&
+            products.map((product, i) => {
+              return (
+                <li
+                  className="suggestion"
+                  key={i}
+                  onClick={(e) => chooseProduct(product)}
+                >
+                  {product.name}
+                </li>
+              );
+            })}
+          {dataNotFound && dataNotFound.keyword && <li>no such product</li>}
+        </ul>
+        <ul>
+          {citySuggestions &&
+            cities &&
             cities.map((city, i) => {
               return (
                 <li
                   className="suggestion"
                   key={i}
-                  onClick={(e) => chooseCity(city.name)}
+                  onClick={(e) => chooseCity(city)}
                 >
                   {city.name}
                 </li>

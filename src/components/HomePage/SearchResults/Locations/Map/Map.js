@@ -1,16 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { GoogleMap, withGoogleMap } from "react-google-maps";
 // import { usePosition } from "./UserLocation";
 import Markers from "./Markers";
 
-const selectStores = (reduxState) => {
-  return reduxState.products.single.Store;
-};
-
-export default function Map() {
+export default function Map({ product }) {
   // const { latitude, longitude } = usePosition();
-  const stores = useSelector(selectStores);
+  const stores = product.Store;
 
   const centerLAT = stores
     .map((store) => Number(store.coordinate_lat).toFixed(4))

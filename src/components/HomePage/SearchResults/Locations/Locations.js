@@ -1,5 +1,4 @@
 import React from "react";
-// import StoresList from "./StoresList";
 import Map from "./Map/Map";
 import AddLocation from "./AddLocationForm/AddLocation";
 
@@ -8,11 +7,11 @@ export default function Locations({ product, dataNotFound }) {
     <div>
       {product && (
         <div className="container">
-          <Map />
+          <Map product={product} />
           {/* <LocationsList stores={product.Store} /> */}
         </div>
       )}
-      {(product || dataNotFound) && (
+      {(product || dataNotFound.product) && (
         <AddLocation product={product} dataNotFound={dataNotFound} />
       )}
     </div>
