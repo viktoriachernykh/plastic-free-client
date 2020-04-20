@@ -6,7 +6,7 @@ import SignupPage from "./components/SignupPage";
 import LoginPage from "./components/LoginPage";
 import LogoutPage from "./components/LogoutPage";
 import HomePage from "./components/HomePage/HomePage";
-import ProductPageContainer from "./components/ProductPage/ProductPageContainer";
+// import ProductPageContainer from "./components/ProductPage/ProductPageContainer";
 import StorePage from "./components/StorePage";
 import UserPage from "./components/UserPage";
 
@@ -19,7 +19,7 @@ class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/product/:id" component={ProductPageContainer} />
+          {/* <Route exact path="/product/:id" component={ProductPageContainer} /> */}
           <Route exact path="/store/:id" component={StorePage} />
           <Route exact path="/user/:id" component={UserPage} />
           <Route exact path="/signup" component={SignupPage} />

@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function SearchResultsHeader({ product, window, setWindow }) {
-  // const [window, setWindow] = useState("locations");
   return (
     <div className="view-options">
       {window === "locations" && (
