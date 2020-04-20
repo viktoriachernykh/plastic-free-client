@@ -1,18 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import PlacesAutocomplete from "react-places-autocomplete";
 
-export default function SearchPlaceInput(props) {
-  const [address, setAddress] = useState("");
-
-  const handleChange = (address) => {
-    setAddress(address);
-  };
-
-  const handleSelect = (address) => {
-    props.addStore(address);
-    setAddress("");
-  };
-
+export default function SearchPlacesInput({
+  address,
+  handleChange,
+  handleSelect,
+}) {
   return (
     <PlacesAutocomplete
       value={address}
