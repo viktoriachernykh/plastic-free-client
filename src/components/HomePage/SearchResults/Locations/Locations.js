@@ -7,7 +7,7 @@ export default function Locations({ product, dataNotFound }) {
     <div>
       {product && (
         <div className="container">
-          <Map />
+          <Map product={product} />
           {/* <LocationsList stores={product.Store} /> */}
         </div>
       )}

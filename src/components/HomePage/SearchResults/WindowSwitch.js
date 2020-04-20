@@ -5,7 +5,7 @@ export default function SearchResultsHeader({ product, window, setWindow }) {
     <div className="view-options">
       {window === "locations" && (
         <div>
-          {product && product.Store.length > 0 ? (
+          {product && product.Store && product.Store.length > 0 ? (
             <b onClick={() => setWindow("locations")} className="active">
               {product.Store.length} locations
             </b>
@@ -20,7 +20,7 @@ export default function SearchResultsHeader({ product, window, setWindow }) {
       )}
       {window === "online" && (
         <div>
-          {product && product.Store.length > 0 ? (
+          {product && product.Store && product.Store.length > 0 ? (
             <b onClick={() => setWindow("locations")}>
               {product.Store.length} locations
             </b>

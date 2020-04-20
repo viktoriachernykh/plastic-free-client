@@ -50,8 +50,7 @@ export default function SearchPlaceInput({ product, dataNotFound }) {
     if (product) {
       dispatch(addStore(newStore, product.id));
     } else {
-      console.log(newStore, dataNotFound.keyword);
-      // dispatch(addStoreAndProduct(newStore, dataNotFound.keyword));
+      dispatch(addStore(newStore, dataNotFound.product.id));
     }
   };
 

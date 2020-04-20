@@ -5,7 +5,6 @@ import { findProducts } from "../../store/product/actions";
 import { renewPage } from "../../store/city/actions";
 
 const selectCities = (reduxState) => {
-  console.log("reduxState", reduxState);
   return reduxState.cities;
 };
 const selectProducts = (reduxState) => {
@@ -13,6 +12,7 @@ const selectProducts = (reduxState) => {
 };
 
 export default function SearchProductInput({
+  singleProduct,
   findProductByCity,
   dataNotFound,
 }) {
@@ -39,17 +39,17 @@ export default function SearchProductInput({
       window.alert("fill both fields");
     } else {
       const selectedProduct =
-        products && products.find((p) => p.name === product);
-
+        products && products.length > 0
+          ? products.find((p) => p.name === product)
+          : singleProduct
+          ? singleProduct
+          : dataNotFound.product;
       console.log("selectedProduct and city", selectedProduct, city);
       selectedProduct && dispatch(findProductByCity(selectedProduct, city));
     }
   };
 
   const onProductChange = (key) => {
-    console.log("key product", key);
-    console.log("product", product);
-
     setProduct(key);
     showCitySuggestions(false);
     key.length > 0
@@ -59,9 +59,6 @@ export default function SearchProductInput({
   };
 
   const onCityChange = (key) => {
-    console.log("key city", key);
-    console.log("city", city);
-
     setCity(key);
     showProductSuggestions(false);
     key.length > 0 ? showCitySuggestions(true) : showCitySuggestions(false);

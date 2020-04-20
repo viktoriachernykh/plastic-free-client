@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import AddLocationForm from "./AddLocationForm.js";
 
 const selectToken = (reduxState) => {
-  console.log("reduxState", reduxState);
   return reduxState.session.jwt;
 };
 

@@ -46,6 +46,17 @@ export default function reducer(state = initialState, action) {
     case "RENEW_PAGE": {
       return initialState;
     }
+    case "ADD_STORE": {
+      console.log(action);
+      const newState = {
+        ...state,
+        single: {
+          ...state.single,
+          Store: [...state.single.Store, action.newStore],
+        },
+      };
+      return newState;
+    }
     default: {
       return state;
     }

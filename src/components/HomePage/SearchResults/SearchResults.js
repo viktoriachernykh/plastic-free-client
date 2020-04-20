@@ -7,7 +7,9 @@ export default function SearchResults({ product, dataNotFound }) {
   const [window, setWindow] = useState("locations");
   return (
     <div>
-      <WindowSwitch window={window} setWindow={setWindow} product={product} />
+      {(product || dataNotFound) && (
+        <WindowSwitch window={window} setWindow={setWindow} product={product} />
+      )}
       {window === "locations" && (
         <Locations product={product} dataNotFound={dataNotFound} />
       )}
