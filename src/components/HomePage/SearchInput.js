@@ -5,6 +5,7 @@ import { findProducts } from "../../store/product/actions";
 import { renewPage } from "../../store/city/actions";
 
 const selectCities = (reduxState) => {
+  console.log("reduxState", reduxState);
   return reduxState.cities;
 };
 const selectProducts = (reduxState) => {
@@ -32,15 +33,25 @@ export default function SearchProductInput({
 
   const onSubmit = (e) => {
     e.preventDefault();
+    showCitySuggestions(false);
+    showProductSuggestions(false);
     if (product === "" || city === "") {
       window.alert("fill both fields");
     } else {
-      dispatch(findProductByCity(product, city));
+      const selectedProduct =
+        products && products.find((p) => p.name === product);
+
+      console.log("selectedProduct and city", selectedProduct, city);
+      selectedProduct && dispatch(findProductByCity(selectedProduct, city));
     }
   };
 
   const onProductChange = (key) => {
+    console.log("key product", key);
+    console.log("product", product);
+
     setProduct(key);
+    showCitySuggestions(false);
     key.length > 0
       ? showProductSuggestions(true)
       : showProductSuggestions(false);
@@ -48,19 +59,23 @@ export default function SearchProductInput({
   };
 
   const onCityChange = (key) => {
+    console.log("key city", key);
+    console.log("city", city);
+
     setCity(key);
+    showProductSuggestions(false);
     key.length > 0 ? showCitySuggestions(true) : showCitySuggestions(false);
     key.length > 1 && dispatch(findCity(key));
   };
 
   const chooseProduct = (product) => {
     showProductSuggestions(false);
-    setProduct(product);
+    setProduct(product.name);
   };
 
   const chooseCity = (city) => {
     showCitySuggestions(false);
-    setCity(city);
+    setCity(city.name);
   };
 
   return (
@@ -84,21 +99,19 @@ export default function SearchProductInput({
         </button>
         <ul>
           {productSuggestions &&
-            (products ? (
-              products.map((product, i) => {
-                return (
-                  <li
-                    className="suggestion"
-                    key={i}
-                    onClick={(e) => chooseProduct(product.name)}
-                  >
-                    {product.name}
-                  </li>
-                );
-              })
-            ) : (
-              <li>no such product</li>
-            ))}
+            products &&
+            products.map((product, i) => {
+              return (
+                <li
+                  className="suggestion"
+                  key={i}
+                  onClick={(e) => chooseProduct(product)}
+                >
+                  {product.name}
+                </li>
+              );
+            })}
+          {dataNotFound && dataNotFound.keyword && <li>no such product</li>}
         </ul>
         <ul>
           {citySuggestions &&
@@ -108,7 +121,7 @@ export default function SearchProductInput({
                 <li
                   className="suggestion"
                   key={i}
-                  onClick={(e) => chooseCity(city.name)}
+                  onClick={(e) => chooseCity(city)}
                 >
                   {city.name}
                 </li>

@@ -5,7 +5,6 @@ import AddLocationForm from "./AddLocationForm.js";
 
 const selectToken = (reduxState) => {
   console.log("reduxState", reduxState);
-
   return reduxState.session.jwt;
 };
 
@@ -17,8 +16,8 @@ export default function AddLocation({ product, dataNotFound }) {
     <div>
       {dataNotFound ? (
         <p>
-          no plastic-free {dataNotFound.keyword} in {dataNotFound.city}. found
-          one?
+          no plastic-free {dataNotFound.product.name} in {dataNotFound.city}.
+          found one?
         </p>
       ) : (
         <p>found one more location with plastic-free {product.name}?</p>
