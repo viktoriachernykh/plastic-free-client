@@ -20,21 +20,12 @@ export default function SearchPlaceInput({ product, dataNotFound }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    product && console.log("onSubmit product.id", location, product.id); // product.id 1
-    dataNotFound &&
-      console.log("onSubmit dataNotFound", location, dataNotFound); // {keyword: "111", city: "111"}
     addLocation(location);
     setAddress("");
     setLocation("");
   };
 
-  // const addStore = (location) => {
-  //   console.log("addStore log", location);
-
-  // product ? addStore(location, product.id) : addProductAndStore(location, dataNotFound)
-
   const addLocation = async (address) => {
-    // const productId = id;
     const results = await geocodeByAddress(address);
     const city = results[0].address_components.filter(
       (addr) =>
@@ -56,19 +47,16 @@ export default function SearchPlaceInput({ product, dataNotFound }) {
       coordinate_lat: latLng.lat,
       coordinate_lng: latLng.lng,
     };
-    console.log("newStore", newStore);
     if (product) {
       dispatch(addStore(newStore, product.id));
     } else {
-      console.log(dataNotFound.keyword);
-
+      console.log(newStore, dataNotFound.keyword);
       // dispatch(addStoreAndProduct(newStore, dataNotFound.keyword));
     }
   };
 
   return (
     <div>
-      add it:
       <form onSubmit={(e) => onSubmit(e)}>
         <SearchPlacesInput
           address={address}

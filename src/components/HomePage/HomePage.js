@@ -22,7 +22,10 @@ export default function HomePageContainer() {
 
   return (
     <div>
-      <SearchInput findProductByCity={findProductByCity} />
+      <SearchInput
+        findProductByCity={findProductByCity}
+        dataNotFound={dataNotFound}
+      />
       {(product || dataNotFound) && (
         <SearchResults product={product} dataNotFound={dataNotFound} />
       )}

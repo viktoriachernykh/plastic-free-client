@@ -59,7 +59,9 @@ export const findProducts = (keyword) => (dispatch) => {
   request(`${baseUrl}/product/find/${keyword}`)
     .then((res) => {
       console.log("res findProduct", res.body);
-      dispatch(productsFound(res.body));
+      res.body.keyword
+        ? dispatch(productNotFound(res.body))
+        : dispatch(productsFound(res.body));
     })
     .catch(console.error);
 };
