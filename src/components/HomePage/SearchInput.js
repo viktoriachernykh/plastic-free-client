@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { findCity } from "../../store/city/actions";
+import { findCities } from "../../store/city/actions";
 import { findProducts } from "../../store/product/actions";
 import { renewPage } from "../../store/city/actions";
 
@@ -62,7 +62,7 @@ export default function SearchProductInput({
     setCity(key);
     showProductSuggestions(false);
     key.length > 0 ? showCitySuggestions(true) : showCitySuggestions(false);
-    key.length > 1 && dispatch(findCity(key));
+    key.length > 1 && dispatch(findCities(key));
   };
 
   const chooseProduct = (product) => {
@@ -82,12 +82,14 @@ export default function SearchProductInput({
         <input
           type="text"
           name="product"
+          placeholder="product"
           onChange={(e) => onProductChange(e.target.value)}
           value={product}
         />
         <input
           type="text"
           name="city"
+          placeholder="city"
           onChange={(e) => onCityChange(e.target.value)}
           value={city}
         />
