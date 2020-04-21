@@ -4,7 +4,7 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "ALL_STORES": {
       const newState = {
-        list: action.stores,
+        list: action.locations,
         single: null,
       };
       return newState;
@@ -22,7 +22,7 @@ export default function reducer(state = initialState, action) {
     case "ONE_STORE": {
       const newState = {
         list: [],
-        single: action.store,
+        single: action.location,
       };
       return newState;
     }
@@ -30,7 +30,7 @@ export default function reducer(state = initialState, action) {
       const newState = {
         list: {
           ...state,
-          rows: action.stores,
+          rows: action.locations,
         },
       };
       return newState;

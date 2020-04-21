@@ -5,9 +5,9 @@ export default function SearchResultsHeader({ product, window, setWindow }) {
     <div className="view-options">
       {window === "locations" && (
         <div>
-          {product && product.Store && product.Store.length > 0 ? (
+          {product && product.Location && product.Location.length > 0 ? (
             <b onClick={() => setWindow("locations")} className="active">
-              {product.Store.length} locations
+              {product.Location.length} locations
             </b>
           ) : (
             <b onClick={() => setWindow("locations")} className="active">
@@ -20,9 +20,9 @@ export default function SearchResultsHeader({ product, window, setWindow }) {
       )}
       {window === "online" && (
         <div>
-          {product && product.Store && product.Store.length > 0 ? (
+          {product && product.Location && product.Location.length > 0 ? (
             <b onClick={() => setWindow("locations")}>
-              {product.Store.length} locations
+              {product.Location.length} locations
             </b>
           ) : (
             <b onClick={() => setWindow("locations")}>no locations</b>

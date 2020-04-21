@@ -5,15 +5,15 @@ import Markers from "./Markers";
 
 export default function Map({ product }) {
   // const { latitude, longitude } = usePosition();
-  const stores = product.Store;
+  const locations = product.Location;
 
-  const centerLAT = stores
+  const centerLAT = locations
     .map((store) => Number(store.coordinate_lat).toFixed(4))
-    .reduce((sum, lat) => sum + Number(lat) / stores.length, 0);
+    .reduce((sum, lat) => sum + Number(lat) / locations.length, 0);
 
-  const centerLNG = stores
+  const centerLNG = locations
     .map((store) => Number(store.coordinate_lng).toFixed(4))
-    .reduce((sum, lng) => sum + Number(lng) / stores.length, 0);
+    .reduce((sum, lng) => sum + Number(lng) / locations.length, 0);
 
   const Map = withGoogleMap(() => (
     <GoogleMap
@@ -23,7 +23,7 @@ export default function Map({ product }) {
         lng: centerLNG ? Number(centerLNG) : 4.895168,
       }}
     >
-      <Markers stores={stores} />
+      <Markers locations={locations} />
     </GoogleMap>
   ));
 

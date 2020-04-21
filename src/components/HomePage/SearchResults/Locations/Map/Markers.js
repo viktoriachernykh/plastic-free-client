@@ -2,23 +2,23 @@ import React, { useState } from "react";
 import { Marker, InfoWindow } from "react-google-maps";
 import { Link } from "react-router-dom";
 
-export default function Markers({ stores }) {
+export default function Markers({ locations }) {
   const [selectedMarker, setMarker] = useState(null);
 
-  const setSelectedMarker = (store) => {
-    setMarker(store);
+  const setSelectedMarker = (location) => {
+    setMarker(location);
   };
 
   return (
     <div>
-      {stores.map((store, index) => (
+      {locations.map((location, index) => (
         <Marker
           key={index}
           position={{
-            lat: Number(store.coordinate_lat),
-            lng: Number(store.coordinate_lng),
+            lat: Number(location.coordinate_lat),
+            lng: Number(location.coordinate_lng),
           }}
-          onClick={(e) => setSelectedMarker(store)}
+          onClick={(e) => setSelectedMarker(location)}
           // icon={{
           //   url: `3.png`,
           // }}
@@ -33,7 +33,7 @@ export default function Markers({ stores }) {
           onCloseClick={(e) => setMarker(null)}
         >
           <div>
-            <Link to={`/store/${selectedMarker.id}`}>
+            <Link to={`/location/${selectedMarker.id}`}>
               <b>{selectedMarker.name}</b>
             </Link>
           </div>

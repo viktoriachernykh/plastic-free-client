@@ -47,14 +47,20 @@ export default function reducer(state = initialState, action) {
       return initialState;
     }
     case "ADD_STORE": {
-      console.log(action);
-      const newState = {
-        ...state,
-        single: {
-          ...state.single,
-          Store: [...state.single.Store, action.newStore],
-        },
-      };
+      const newState = state.single
+        ? {
+            ...state,
+            single: {
+              ...state.single,
+              Location: [...state.single.Location, action.newLocation],
+            },
+          }
+        : {
+            single: {
+              ...state.dataNotFound.product,
+              Location: [action.newLocation],
+            },
+          };
       return newState;
     }
     default: {
