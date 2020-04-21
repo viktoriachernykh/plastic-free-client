@@ -8,9 +8,9 @@ import countries from "./country/reducer";
 
 export default combineReducers({
   session: user,
+  products,
   locations,
   onlineStores,
-  products,
   cities,
   countries,
 });

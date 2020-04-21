@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { findCities } from "../../store/city/actions";
 import { findProducts } from "../../store/product/actions";
-import { renewPage } from "../../store/city/actions";
 
 const selectCities = (reduxState) => {
   return reduxState.cities;
@@ -26,10 +25,6 @@ export default function SearchProductInput({
 
   const [citySuggestions, showCitySuggestions] = useState(false);
   const [productSuggestions, showProductSuggestions] = useState(false);
-
-  useEffect(() => {
-    dispatch(renewPage());
-  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();

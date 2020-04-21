@@ -5,9 +5,6 @@ export default function reducer(state = initialState, action) {
     case "FOUND_CITIES": {
       return action.cities;
     }
-    case "RENEW": {
-      return initialState;
-    }
     default: {
       return state;
     }

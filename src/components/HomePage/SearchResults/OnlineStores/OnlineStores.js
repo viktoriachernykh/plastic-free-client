@@ -1,6 +1,6 @@
 import React from "react";
-import AddOnlineStore from "./AddOnlineStore";
 import OnlineStoresList from "./OnlineStoresList";
+import AddOnlineStore from "./AddOnlineStore";
 
 export default function OnlineStores({ product, dataNotFound }) {
   return (

@@ -47,10 +47,17 @@ export default function SearchPlaceInput({ product, dataNotFound }) {
       coordinate_lat: latLng.lat,
       coordinate_lng: latLng.lng,
     };
-    if (product) {
-      dispatch(addLocation(newLocation, product.id));
+    const oldLocation = product.Location.find(
+      (loc) => loc.address === newLocation.address
+    );
+    if (oldLocation) {
+      window.alert("this location is already on the map");
     } else {
-      dispatch(addLocation(newLocation, dataNotFound.product.id));
+      if (product) {
+        dispatch(addLocation(newLocation, product.id));
+      } else {
+        dispatch(addLocation(newLocation, dataNotFound.product.id));
+      }
     }
   };
 
