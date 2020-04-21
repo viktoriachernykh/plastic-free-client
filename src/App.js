@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import Header from "./components/Header";
+import HomePage from "./components/HomePage/HomePage";
+import LocationPage from "./components/LocationPage";
 import SignupPage from "./components/SignupPage";
 import LoginPage from "./components/LoginPage";
 import LogoutPage from "./components/LogoutPage";
-import HomePage from "./components/HomePage/HomePage";
-// import ProductPageContainer from "./components/ProductPage/ProductPageContainer";
-import StorePage from "./components/StorePage";
 import UserPage from "./components/UserPage";
 
 import "./styles/style.css";
@@ -19,12 +18,11 @@ class App extends Component {
         <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          {/* <Route exact path="/product/:id" component={ProductPageContainer} /> */}
-          <Route exact path="/store/:id" component={StorePage} />
-          <Route exact path="/user/:id" component={UserPage} />
+          <Route exact path="/location/:id" component={LocationPage} />
           <Route exact path="/signup" component={SignupPage} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/logout" component={LogoutPage} />
+          <Route exact path="/user/:id" component={UserPage} />
         </Switch>
       </div>
     );

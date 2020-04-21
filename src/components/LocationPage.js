@@ -1,28 +1,29 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { fetchStore } from "../store/store/actions";
+import { fetchLocation } from "../store/location/actions";
 
-const selectStore = (reduxState) => {
-  return reduxState.stores.single;
+const selectLocation = (reduxState) => {
+  return reduxState.locations.single;
 };
 
-export default function StorePageContainer() {
+export default function LocationPage() {
   const dispatch = useDispatch();
+
   const { id } = useParams();
   useEffect(() => {
-    dispatch(fetchStore(id));
+    dispatch(fetchLocation(id));
   }, []);
 
-  const store = useSelector(selectStore);
-  const products = store && store.Product;
+  const location = useSelector(selectLocation);
+  const products = location && location.Product;
 
   return (
     <div>
-      {store && (
+      {location && (
         <div>
-          <p>name: {store.name}</p>
-          <p>address: {store.address}</p>
+          <p>name: {location.name}</p>
+          <p>address: {location.address}</p>
           <div>
             products:
             {products &&
