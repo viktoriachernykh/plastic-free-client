@@ -14,7 +14,7 @@ export const addLocation = (newLocation, productId) => (dispatch) => {
 };
 function locationAdded(newLocation) {
   return {
-    type: "ADD_STORE",
+    type: "ADD_LOCATION",
     newLocation,
   };
 }
@@ -28,7 +28,7 @@ export const fetchLocation = (id) => (dispatch) => {
 };
 function locationFetched(location) {
   return {
-    type: "ONE_STORE",
+    type: "ONE_LOCATION",
     location,
   };
 }
@@ -42,7 +42,7 @@ export const findLocation = (keyword) => (dispatch) => {
 };
 function locationFound(locations) {
   return {
-    type: "FIND_STORES",
+    type: "FIND_LOCATIONS",
     locations,
   };
 }
