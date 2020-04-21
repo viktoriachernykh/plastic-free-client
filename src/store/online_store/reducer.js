@@ -2,13 +2,6 @@ const initialState = { list: [], single: null };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    // case "ALL_STORES": {
-    //   const newState = {
-    //     list: action.stores,
-    //     single: null,
-    //   };
-    //   return newState;
-    // }
     // case "ADD_STORE": {
     // const newState = {
     //   list: {
@@ -23,15 +16,6 @@ export default function reducer(state = initialState, action) {
     //   const newState = {
     //     list: [],
     //     single: action.store,
-    //   };
-    //   return newState;
-    // }
-    // case "FIND_STORES": {
-    //   const newState = {
-    //     list: {
-    //       ...state,
-    //       rows: action.stores,
-    //     },
     //   };
     //   return newState;
     // }

@@ -2,22 +2,16 @@ import request from "superagent";
 
 const baseUrl = "http://localhost:4000";
 
-export const findCity = (key) => (dispatch) => {
+export const findCities = (key) => (dispatch) => {
   request(`${baseUrl}/city/${key}`)
     .then((res) => {
-      dispatch(cityFound(res.body));
+      dispatch(citiesFound(res.body));
     })
     .catch(console.error);
 };
-function cityFound(cities) {
+function citiesFound(cities) {
   return {
-    type: "FIND_CITIES",
+    type: "FOUND_CITIES",
     cities,
-  };
-}
-
-export function renewPage() {
-  return {
-    type: "RENEW",
   };
 }

@@ -15,7 +15,13 @@ export default function SearchResultsHeader({ product, window, setWindow }) {
             </b>
           )}
           <b> | </b>
-          <b onClick={() => setWindow("online")}>online stores</b>
+          {product && product.OnlineStore && product.OnlineStore.length > 0 ? (
+            <b onClick={() => setWindow("online")}>
+              {product.OnlineStore.length} online stores
+            </b>
+          ) : (
+            <b onClick={() => setWindow("online")}>no online stores</b>
+          )}
         </div>
       )}
       {window === "online" && (
@@ -28,9 +34,15 @@ export default function SearchResultsHeader({ product, window, setWindow }) {
             <b onClick={() => setWindow("locations")}>no locations</b>
           )}
           <b> | </b>
-          <b onClick={(e) => setWindow("online")} className="active">
-            online stores
-          </b>
+          {product && product.OnlineStore && product.OnlineStore.length > 0 ? (
+            <b onClick={() => setWindow("online")} className="active">
+              {product.OnlineStore.length} online stores
+            </b>
+          ) : (
+            <b onClick={() => setWindow("online")} className="active">
+              no online stores
+            </b>
+          )}
         </div>
       )}
     </div>
