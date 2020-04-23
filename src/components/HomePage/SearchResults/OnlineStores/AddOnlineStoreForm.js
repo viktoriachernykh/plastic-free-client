@@ -46,7 +46,7 @@ export default function AddOnlineStore({ product, dataNotFound }) {
 
   return (
     <div>
-      <form onSubmit={(e) => onSubmit(e)}>
+      <form className="add-form" onSubmit={(e) => onSubmit(e)}>
         <input
           type="text"
           name="link"

@@ -16,8 +16,9 @@ export default function SearchPlacesInput({
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
         <div>
           <input
+            className="search-place"
             {...getInputProps({
-              placeholder: "Search Places ...",
+              placeholder: "Search location ...",
             })}
           />
           <div>

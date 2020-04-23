@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { findCities } from "../../store/city/actions";
 import { findProducts } from "../../store/product/actions";
+import { fetchUser } from "../../store/user/actions";
 
 const selectCities = (reduxState) => {
   return reduxState.cities;
 };
 const selectProducts = (reduxState) => {
   return reduxState.products.list;
+};
+const selectUser = (reduxState) => {
+  return reduxState.session.user;
 };
 
 export default function SearchProductInput({
@@ -19,6 +23,7 @@ export default function SearchProductInput({
 
   const cities = useSelector(selectCities);
   const products = useSelector(selectProducts);
+  const user = useSelector(selectUser);
 
   const [product, setProduct] = useState("");
   const [city, setCity] = useState("");
@@ -39,8 +44,8 @@ export default function SearchProductInput({
           : singleProduct
           ? singleProduct
           : dataNotFound.product;
-      console.log("selectedProduct and city", selectedProduct, city);
-      selectedProduct && dispatch(findProductByCity(selectedProduct, city));
+      selectedProduct && dispatch(findProductByCity(selectedProduct.id, city));
+      user && dispatch(fetchUser(user.id));
     }
   };
 

@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { login } from "../store/user/actions";
 
 export default function LoginFormContainer() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [toggle, setToggle] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
+    setToggle(true);
     dispatch(login(email, password));
   };
 
@@ -34,6 +37,11 @@ export default function LoginFormContainer() {
         <br />
         <button type="submit">Log in</button>
       </form>
+      {toggle && (
+        <h2>
+          You logged in! <Link to="/">Go to Search</Link>
+        </h2>
+      )}
     </div>
   );
 }

@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signup } from "../store/user/actions";
+import LoginPage from "./LoginPage";
 
 export default function SignupForm() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [toggle, setToggle] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(signup(name, email, password));
+    setToggle(true);
   };
 
   return (
@@ -43,6 +46,12 @@ export default function SignupForm() {
         <br />
         <button type="submit">Sign up</button>
       </form>
+      {toggle && (
+        <div>
+          <h2>You signed up!</h2>
+          <LoginPage />
+        </div>
+      )}
     </div>
   );
 }

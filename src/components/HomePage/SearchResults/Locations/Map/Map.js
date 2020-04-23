@@ -17,7 +17,7 @@ export default function Map({ product }) {
 
   const Map = withGoogleMap(() => (
     <GoogleMap
-      defaultZoom={11}
+      defaultZoom={13}
       defaultCenter={{
         lat: centerLAT ? Number(centerLAT) : 52.370216,
         lng: centerLNG ? Number(centerLNG) : 4.895168,
@@ -32,8 +32,8 @@ export default function Map({ product }) {
       googleMapURL={`
           https://maps.googleapis.com/maps/api/js?v=weekly&key=${process.env.REACT_APP_GOOGLE_API_KEY}&libraries=places`}
       loadingElement={<div style={{ height: `100%` }} />}
-      containerElement={<div style={{ width: `500px`, height: `500px` }} />}
-      mapElement={<div style={{ width: `500px`, height: `500px` }} />}
+      containerElement={<div style={{ width: `1200px`, height: `500px` }} />}
+      mapElement={<div style={{ width: `1200px`, height: `500px` }} />}
     />
   );
 }

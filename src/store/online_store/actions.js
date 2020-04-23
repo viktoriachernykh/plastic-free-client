@@ -18,3 +18,25 @@ function storeAdded(newOnlineStore) {
     newOnlineStore,
   };
 }
+
+export const likeOnlineStore = (userId, onlineStoreId) => (dispatch) => {
+  request
+    .post(`${baseUrl}/user_online_store`)
+    // .set("Authorization", `Bearer ${token}`)
+    .send({ userId, onlineStoreId })
+    .then((res) => {
+      console.log("created", res.body);
+    })
+    .catch(console.error);
+};
+
+export const dislikeOnlineStore = (userId, onlineStoreId) => (dispatch) => {
+  request
+    .delete(`${baseUrl}/user_online_store`)
+    // .set("Authorization", `Bearer ${token}`)
+    .send({ userId, onlineStoreId })
+    .then((res) => {
+      console.log("deleted", res.body);
+    })
+    .catch(console.error);
+};

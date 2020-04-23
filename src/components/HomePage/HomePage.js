@@ -3,10 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { findProductByCity, renewPage } from "../../store/product/actions";
 import SearchInput from "./SearchInput";
 import SearchResults from "./SearchResults/SearchResults";
+import PopularSearches from "./PopularSearches";
 
 const selectProducts = (reduxState) => {
-  console.log("reduxState", reduxState);
-
   return reduxState.products.single;
 };
 const selectDataNotFound = (reduxState) => {
@@ -31,6 +30,9 @@ export default function HomePageContainer() {
       />
       {(product || (dataNotFound && dataNotFound.product)) && (
         <SearchResults product={product} dataNotFound={dataNotFound} />
+      )}
+      {!product && !dataNotFound && (
+        <PopularSearches findProductByCity={findProductByCity} />
       )}
     </div>
   );

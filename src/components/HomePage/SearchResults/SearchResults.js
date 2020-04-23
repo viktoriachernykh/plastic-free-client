@@ -5,6 +5,7 @@ import OnlineStores from "./OnlineStores/OnlineStores";
 
 export default function SearchResults({ product, dataNotFound }) {
   const [window, setWindow] = useState("locations");
+
   return (
     <div>
       {(product || dataNotFound) && (

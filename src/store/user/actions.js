@@ -4,21 +4,21 @@ const baseUrl = "http://localhost:4000";
 
 export function logout() {
   return {
-    type: "LOGOUT_USER"
+    type: "LOGOUT_USER",
   };
 }
 
 export const signup = (name, email, password) => {
-  return dispatch => {
+  return (dispatch) => {
     const data = {
       name: name,
       email: email,
-      password: password
+      password: password,
     };
     request
       .post(`${baseUrl}/user`)
       .send(data)
-      .then(res => {
+      .then((res) => {
         dispatch(signupSuccess(res.body));
       })
       .catch(console.error);
@@ -27,19 +27,19 @@ export const signup = (name, email, password) => {
 function signupSuccess(payload) {
   return {
     type: "NEW_USER",
-    payload
+    payload,
   };
 }
 
-export const login = (email, password) => dispatch => {
+export const login = (email, password) => (dispatch) => {
   const data = {
     email: email,
-    password: password
+    password: password,
   };
   request
     .post(`${baseUrl}/login`)
     .send(data)
-    .then(response => {
+    .then((response) => {
       const jwt = response.body.jwt;
       const user = response.body.userData;
       dispatch(loginSuccess(jwt, user));
@@ -51,7 +51,22 @@ function loginSuccess(jwt, user) {
     type: "LOGIN_SESSION",
     payload: {
       jwt,
-      user
-    }
+      user,
+    },
+  };
+}
+
+export const fetchUser = (id) => (dispatch) => {
+  request(`${baseUrl}/user/${id}`)
+    .then((res) => {
+      console.log("userFetched res.body", res.body);
+      dispatch(userFetched(res.body));
+    })
+    .catch(console.error);
+};
+function userFetched(user) {
+  return {
+    type: "FETCH_USER",
+    user,
   };
 }

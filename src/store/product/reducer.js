@@ -23,39 +23,58 @@ export default function reducer(state = initialState, action) {
       return initialState;
     }
     case "ADD_LOCATION": {
-      const newState = state.single
-        ? {
-            ...state,
-            single: {
-              ...state.single,
-              Location: [...state.single.Location, action.newLocation],
-            },
-          }
-        : {
-            single: {
-              ...state.dataNotFound.product,
-              Location: [action.newLocation],
-            },
-          };
+      const newState =
+        state.single && state.single.Location
+          ? {
+              ...state,
+              single: {
+                ...state.single,
+                Location: [...state.single.Location, action.newLocation],
+              },
+            }
+          : state.single
+          ? {
+              ...state,
+              single: {
+                ...state.single,
+                Location: [action.newLocation],
+              },
+            }
+          : {
+              single: {
+                ...state.dataNotFound.product,
+                Location: [action.newLocation],
+              },
+            };
       return newState;
     }
     case "ADD_ONLINE_STORE": {
-      console.log(action.newOnlineStore);
-
-      const newState = state.single
-        ? {
-            ...state,
-            single: {
-              ...state.single,
-              OnlineStore: [...state.single.OnlineStore, action.newOnlineStore],
-            },
-          }
-        : {
-            single: {
-              ...state.dataNotFound.product,
-              OnlineStore: [action.newOnlineStore],
-            },
-          };
+      const newState =
+        state.single && state.single.OnlineStore
+          ? {
+              ...state,
+              single: {
+                ...state.single,
+                OnlineStore: [
+                  ...state.single.OnlineStore,
+                  action.newOnlineStore,
+                ],
+              },
+            }
+          : state.single
+          ? {
+              ...state,
+              single: {
+                ...state.single,
+                OnlineStore: [action.newOnlineStore],
+              },
+            }
+          : {
+              single: {
+                ...state.dataNotFound.product,
+                OnlineStore: [action.newOnlineStore],
+              },
+            };
       return newState;
     }
     default: {

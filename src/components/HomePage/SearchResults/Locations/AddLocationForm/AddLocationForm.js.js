@@ -47,23 +47,21 @@ export default function SearchPlaceInput({ product, dataNotFound }) {
       coordinate_lat: latLng.lat,
       coordinate_lng: latLng.lng,
     };
-    const oldLocation = product.Location.find(
-      (loc) => loc.address === newLocation.address
-    );
-    if (oldLocation) {
-      window.alert("this location is already on the map");
+    if (product) {
+      const oldLocation =
+        product.Location &&
+        product.Location.find((loc) => loc.address === newLocation.address);
+      oldLocation
+        ? window.alert("this location is already on the map")
+        : dispatch(addLocation(newLocation, product.id));
     } else {
-      if (product) {
-        dispatch(addLocation(newLocation, product.id));
-      } else {
-        dispatch(addLocation(newLocation, dataNotFound.product.id));
-      }
+      dispatch(addLocation(newLocation, dataNotFound.product.id));
     }
   };
 
   return (
     <div>
-      <form onSubmit={(e) => onSubmit(e)}>
+      <form className="add-form" onSubmit={(e) => onSubmit(e)}>
         <SearchPlacesInput
           address={address}
           handleChange={handleChange}

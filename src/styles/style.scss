@@ -12,8 +12,11 @@ body {
   border-style: none;
   text-align: center;
   border: 10px solid $mainColor;
+  ul {
+    list-style: none;
+  }
   a {
-    color: gray;
+    color: $mainColor;
     text-decoration: none;
   }
   h1 {
@@ -42,6 +45,27 @@ body {
 .suggestion:hover {
   background-color: $mainColor;
 }
+.add-form {
+  margin: 40px;
+  form {
+    // margin: 20px;
+    button {
+      color: white;
+      background-color: $mainColor;
+      border: 5px solid $mainColor;
+    }
+  }
+  // button: {
+  //   margin: 40px;
+  // }
+  // input: {
+  //   margin: 40px;
+  // }
+}
+.search-place {
+  width: 500px;
+  margin: 40px;
+}
 
 .login,
 .logout,
@@ -65,11 +89,35 @@ body {
   }
 }
 
+.popular-searches {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  border-style: none;
+  text-align: center;
+  margin: 40px auto;
+  display: block;
+  li {
+    width: 510px;
+    font: inherit;
+    height: 40px;
+    font-size: 22px;
+    padding: 10px;
+    margin: -5px 300px;
+    border: 5px solid black;
+  }
+}
+
 .container {
-  @include gridRepeat(500px);
+  // @include gridRepeat(500px);
   border-top: 1px normal gray;
-  text-align: left;
-  margin-left: 40px;
+  // text-align: center;
+  // position: absolute;
+  // top: 0;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
+  margin: auto;
 }
 
 .storelist {
