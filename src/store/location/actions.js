@@ -46,3 +46,39 @@ function locationFound(locations) {
     locations,
   };
 }
+
+export const likeLocation = (userId, locationId) => (dispatch) => {
+  request
+    .post(`${baseUrl}/user_location`)
+    // .set("Authorization", `Bearer ${token}`)
+    .send({ userId, locationId })
+    .then((res) => {
+      console.log("like created", res.body);
+      dispatch(locationLiked(res.body));
+    })
+    .catch(console.error);
+};
+
+export const dislikeLocation = (userId, locationId) => (dispatch) => {
+  request
+    .delete(`${baseUrl}/user_location`)
+    // .set("Authorization", `Bearer ${token}`)
+    .send({ userId, locationId })
+    .then((res) => {
+      console.log("like deleted", res.body);
+      dispatch(locationDisliked(res.body));
+    })
+    .catch(console.error);
+};
+function locationLiked(data) {
+  return {
+    type: "LIKED_LOCATION",
+    data,
+  };
+}
+function locationDisliked(data) {
+  return {
+    type: "DISLIKED_LOCATION",
+    data,
+  };
+}

@@ -24,8 +24,10 @@ function productsFound(products) {
   };
 }
 
-export const findProductByCity = (product, city) => (dispatch) => {
-  request(`${baseUrl}/product/find/${product.id}/${city}`)
+export const findProductByCity = (productId, city) => (dispatch) => {
+  console.log(productId, city);
+
+  request(`${baseUrl}/product/find/${productId}/${city}`)
     .then((res) => {
       res.body.city
         ? dispatch(productNotFound(res.body))

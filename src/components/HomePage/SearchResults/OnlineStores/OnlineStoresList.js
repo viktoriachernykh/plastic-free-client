@@ -1,12 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function OnlineStoresList({ product }) {
   const onlineStores = product.OnlineStore;
+
   return (
-    <div>
+    <ul>
       {onlineStores.map((store, i) => (
-        <p key={i}>{store.link}</p>
+        <li key={i}>
+          <a href={`${store.link}`}>{store.link}</a>
+          {/* <Link to={store.link}> {store.link}</Link> */}
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }

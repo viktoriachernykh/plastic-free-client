@@ -22,10 +22,10 @@ export default function LocationPage() {
     <div>
       {location && (
         <div>
-          <p>name: {location.name}</p>
-          <p>address: {location.address}</p>
+          <h1>{location.name}</h1>
+          <h3>{location.address}</h3>
           <div>
-            products:
+            plastic-free products in this location:
             {products &&
               products.map((product, i) => <p key={i}>{product.name},</p>)}
           </div>
