@@ -6,10 +6,7 @@ export default function Locations({ product, dataNotFound }) {
   return (
     <div>
       {product && product.Location && product.Location.length > 0 && (
-        <div className="container">
-          <Map product={product} />
-          {/* <LocationsList stores={product.Store} /> */}
-        </div>
+        <Map product={product} />
       )}
       {(product || dataNotFound.product) && (
         <AddLocation product={product} dataNotFound={dataNotFound} />

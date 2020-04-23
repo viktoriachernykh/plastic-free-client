@@ -29,7 +29,6 @@ export default function (state = initialState, action = {}) {
       };
     }
     case "LIKED_LOCATION": {
-      console.log("old state", state);
       const newLocations = state.user.Location
         ? [...state.user.Location, { id: action.data.locationId }]
         : [{ id: action.data.locationId }];
@@ -40,12 +39,10 @@ export default function (state = initialState, action = {}) {
           Location: newLocations,
         },
       };
-      console.log("newState", newState);
-
       return newState;
     }
     case "DISLIKED_LOCATION": {
-      console.log(action.data); //{userId: 2, locationId: 12}
+      console.log(action.data);
       console.log("old state", state);
       const oldLocations = [...state.user.Location];
       const newLocations = oldLocations.filter(

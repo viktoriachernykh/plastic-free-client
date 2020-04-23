@@ -6,6 +6,8 @@ import SearchResults from "./SearchResults/SearchResults";
 import PopularSearches from "./PopularSearches";
 
 const selectProducts = (reduxState) => {
+  console.log("reduxState", reduxState);
+
   return reduxState.products.single;
 };
 const selectDataNotFound = (reduxState) => {

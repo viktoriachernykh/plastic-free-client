@@ -8,6 +8,8 @@ export const addLocation = (newLocation, productId) => (dispatch) => {
     // .set("Authorization", `Bearer ${token}`)
     .send({ newLocation, productId })
     .then((res) => {
+      console.log("newLocation res.body", res.body);
+
       dispatch(locationAdded(res.body));
     })
     .catch(console.error);
