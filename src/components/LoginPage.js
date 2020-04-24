@@ -39,7 +39,10 @@ export default function LoginFormContainer() {
       </form>
       {toggle && (
         <h2>
-          You logged in! <Link to="/">Go to Search</Link>
+          You logged in!{" "}
+          <Link to="/" className="active">
+            Go to Search
+          </Link>
         </h2>
       )}
     </div>

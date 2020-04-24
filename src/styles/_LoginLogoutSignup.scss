@@ -1,0 +1,18 @@
+@import "./variables";
+
+.login,
+.logout,
+.signup {
+  form {
+    margin: 20px;
+    button {
+      color: white;
+      background-color: $mainColor;
+      border: 5px solid $mainColor;
+    }
+  }
+}
+
+.active {
+  color: $mainColor;
+}

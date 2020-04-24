@@ -32,8 +32,8 @@ export default function Map({ product }) {
       googleMapURL={`
           https://maps.googleapis.com/maps/api/js?v=weekly&key=${process.env.REACT_APP_GOOGLE_API_KEY}&libraries=places`}
       loadingElement={<div style={{ height: `100%` }} />}
-      containerElement={<div style={{ width: `1200px`, height: `500px` }} />}
-      mapElement={<div style={{ width: `1200px`, height: `500px` }} />}
+      containerElement={<div style={{ width: `100%`, height: `500px` }} />}
+      mapElement={<div style={{ width: `100%`, height: `500px` }} />}
     />
   );
 }

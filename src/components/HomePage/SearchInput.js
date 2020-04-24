@@ -78,7 +78,7 @@ export default function SearchProductInput({
   return (
     <div>
       <h1>All plastic-free products in your city</h1>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="SearchInput">
         <input
           type="text"
           name="product"
@@ -93,7 +93,7 @@ export default function SearchProductInput({
           onChange={(e) => onCityChange(e.target.value)}
           value={city}
         />
-        <button className="search" type="submit">
+        <button className="SearchButton" type="submit">
           Search
         </button>
         <ul>

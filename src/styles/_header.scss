@@ -1,15 +1,11 @@
 @import "./variables";
 
-.header {
+.Header {
   @include gridRepeat(300px);
   width: 100%;
   height: 50px;
   padding: 40px 0;
   a {
-    color: black;
-    &:hover {
-      color: $mainColor;
-    }
     margin: 0 50px;
     text-decoration: solid;
   }

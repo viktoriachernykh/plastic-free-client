@@ -1,0 +1,14 @@
+@import "./variables";
+
+.SearchInput {
+  input,
+  button {
+    width: 25%;
+    margin: 0 0 0 -5px;
+  }
+  .SearchButton {
+    width: 120px;
+    background-color: black;
+    color: white;
+  }
+}

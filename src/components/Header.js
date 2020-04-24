@@ -14,7 +14,7 @@ export default function Header() {
   const token = useSelector(selectToken);
 
   return (
-    <div className="header">
+    <div className="Header">
       <Link to={"/"}>Home</Link>
       {token ? (
         <div>

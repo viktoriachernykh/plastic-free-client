@@ -1,0 +1,33 @@
+@import "./variables";
+
+.border {
+  background: $mainColor;
+  position: fixed;
+  background-position-x: right;
+  // z-index: 99;
+  .border-top {
+    left: 0;
+    right: 0;
+    height: 10px;
+  }
+  // .border-bottom {
+  //   left: 0;
+  //   right: 0;
+  //   height: 10px;
+  // }
+  // .border-left {
+  //   left: 0;
+  //   right: 0;
+  //   height: 10px;
+  // }
+  // .border-right {
+  //   left: 0;
+  //   right: 0;
+  //   height: 10px;
+  // }
+}
+
+// <div className="border-top"></div>
+// <div className="border-bottom"></div>
+// <div className="border-left"></div>
+// <div className="border-right"></div>

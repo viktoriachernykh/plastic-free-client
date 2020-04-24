@@ -16,11 +16,11 @@ export default function PopularSearches({ findProductByCity }) {
   };
   const find2 = (e) => {
     const productId = 4;
-    const city = "Rome";
+    const city = "Roma";
     dispatch(findProductByCity(productId, city));
   };
   return (
-    <div className="popular-searches">
+    <div className="PopularSearches">
       <h1>Popular searches</h1>
       <ul>
         <li onClick={(e) => find()}>Croissant in Paris</li>

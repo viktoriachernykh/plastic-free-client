@@ -1,4 +1,4 @@
-.header {
+.Header {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (minmax(300px, 1fr))[auto-fit];
@@ -9,95 +9,10 @@
   padding: 40px 0;
 }
 
-.header a {
-  color: black;
+.Header a {
   margin: 0 50px;
   -webkit-text-decoration: solid;
           text-decoration: solid;
-}
-
-.header a:hover {
-  color: #6ece6e;
-}
-
-body {
-  width: 100%;
-  height: 100%;
-  color: black;
-  font-family: "Baloo Thambi 2", "Roboto Condensed", sans-serif;
-  font-size: 20px;
-  margin: 0;
-  padding: 0;
-  border-style: none;
-  text-align: center;
-  border: 10px solid #6ece6e;
-}
-
-body ul {
-  list-style: none;
-}
-
-body a {
-  color: #6ece6e;
-  text-decoration: none;
-}
-
-body h1 {
-  margin: 12px;
-  font-size: 32px;
-}
-
-body input,
-body button {
-  width: 220px;
-  font: inherit;
-  height: 60px;
-  font-size: 22px;
-  font-weight: bold;
-  padding: 5px 15px;
-  margin: 0 0 0 -5px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border: 5px solid black;
-}
-
-.search {
-  width: 120px;
-  background-color: black;
-  color: white;
-}
-
-.suggestion:hover {
-  background-color: #6ece6e;
-}
-
-.add-form {
-  margin: 40px;
-}
-
-.add-form form button {
-  color: white;
-  background-color: #6ece6e;
-  border: 5px solid #6ece6e;
-}
-
-.search-place {
-  width: 500px;
-  margin: 40px;
-}
-
-.login input,
-.login button,
-.logout input,
-.logout button,
-.signup input,
-.signup button {
-  width: 280px;
-  font: inherit;
-  height: 60px;
-  font-size: 22px;
-  padding: 5px 15px;
-  margin: 5px;
 }
 
 .login form,
@@ -114,43 +29,108 @@ body button {
   border: 5px solid #6ece6e;
 }
 
-.popular-searches {
-  font-size: 20px;
-  margin: 0;
-  padding: 0;
-  border-style: none;
-  text-align: center;
-  margin: 40px auto;
-  display: block;
+.active {
+  color: #6ece6e;
 }
 
-.popular-searches li {
-  width: 510px;
-  font: inherit;
+.SearchInput input,
+.SearchInput button {
+  width: 25%;
+  margin: 0 0 0 -5px;
+}
+
+.SearchInput .SearchButton {
+  width: 120px;
+  background-color: black;
+  color: white;
+}
+
+.PopularSearches li {
+  width: 50%;
   height: 40px;
   font-size: 22px;
   padding: 10px;
-  margin: -5px 300px;
+  margin: -5px auto;
   border: 5px solid black;
 }
 
-.container {
-  border-top: 1px normal gray;
-  margin: auto;
+.PopularSearches li:hover {
+  color: #6ece6e;
 }
 
-.storelist {
-  font: inherit;
+.WindowSwitch b:hover {
+  color: #6ece6e;
+}
+
+.WindowSwitch .active {
+  color: #6ece6e;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Baloo Thambi 2", "Roboto Condensed", sans-serif;
+  font-size: 22px;
   color: black;
-  font-size: 12px;
-  font-weight: normal;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 10px solid #6ece6e;
 }
 
-.view-options b:hover {
+body ul {
+  margin: 0;
+  padding: 0;
+  margin: 40px auto;
+  list-style-type: none;
+}
+
+body a {
+  color: black;
+  text-decoration: none;
+}
+
+body a:hover {
   color: #6ece6e;
 }
 
-.active {
-  color: #6ece6e;
+body h1 {
+  margin: 12px;
+  font-size: 32px;
+}
+
+body input,
+body button {
+  width: 280px;
+  height: 60px;
+  margin: 5px;
+  padding: 5px 15px;
+  font: inherit;
+  font-size: 22px;
+  font-weight: bold;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 5px solid black;
+}
+
+.suggestion:hover {
+  background-color: #6ece6e;
+}
+
+.add-form {
+  margin: 40px;
+}
+
+.add-form form button {
+  color: white;
+  background-color: #6ece6e;
+  border: 5px solid #6ece6e;
+}
+
+.add-form .search-place {
+  width: 80%;
+  margin: 40px;
 }
 /*# sourceMappingURL=style.css.map */

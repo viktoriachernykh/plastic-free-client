@@ -1,0 +1,12 @@
+@import "./variables";
+
+.WindowSwitch {
+  b {
+    &:hover {
+      color: $mainColor;
+    }
+  }
+  .active {
+    color: $mainColor;
+  }
+}

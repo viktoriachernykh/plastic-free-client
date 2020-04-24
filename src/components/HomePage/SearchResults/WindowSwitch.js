@@ -2,7 +2,7 @@ import React from "react";
 
 export default function SearchResultsHeader({ product, window, setWindow }) {
   return (
-    <div className="view-options">
+    <div className="WindowSwitch">
       {window === "locations" && (
         <div>
           {product && product.Location && product.Location.length > 0 ? (

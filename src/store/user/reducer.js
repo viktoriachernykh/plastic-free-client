@@ -42,8 +42,6 @@ export default function (state = initialState, action = {}) {
       return newState;
     }
     case "DISLIKED_LOCATION": {
-      console.log(action.data);
-      console.log("old state", state);
       const oldLocations = [...state.user.Location];
       const newLocations = oldLocations.filter(
         (l) => l.id !== action.data.locationId
