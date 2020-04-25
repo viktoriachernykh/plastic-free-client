@@ -7,7 +7,7 @@
 ## :movie_camera:[short video presentation on youtube](https://www.youtube.com/watch?v=QugqpAFJFuE) 
 
 ## Wireframes
-<img width="1027" alt="p-free" src="https://user-images.githubusercontent.com/56471143/80267773-1480d480-86a3-11ea-9d24-ab55ff2a3820.png">
+<img width="971" alt="plastic-free" src="https://user-images.githubusercontent.com/56471143/80268324-80187100-86a6-11ea-864e-07ad9387cb46.png">
 
 ## Technologies used
 
