@@ -1,29 +1,22 @@
-## What this project is about
+## App for people who want to use less plastic.
+## Watch short video presentation on [youtube](https://www.youtube.com/watch?v=QugqpAFJFuE) 
 
-This app is designed for people who want to use less plastic.
-
-- Only plastic-free products will be promoted with this app, making plastic-free lifestyle available for everyone.
-- User can search for any product and see all the locations where you can find it plastic-free on the map.
-- It is based on user-generated content: when user finds new plastic-free product in some store - he can add its location to the database. 
-
-## Table of contents
-
-- [Technologies used](#Technologies-used)
-- [Setup](#Setup)
+- Only plastic-free products will be promoted with this app, making plastic-free lifestyle available for everyone
+- All users can search for product and see map with locations + list of online stores
+- Only logged in users can add new locations and online stores
 
 ## Technologies used
 
-- React
-- Redux
-- Redux-Thunk
-- Google Maps JavaScript API
-- Google Places API
+- React, React Router DOM
+- Redux, Redux-Thunk, Redux Persist
+- Google Maps JavaScript API, Google Places API
 
 ## Setup
 
-In order to run this App please ensure you have the [server](https://github.com/viktoriachernykh/plastic-free-server) running as well. 
-
+In order to run this App:
 - git clone git@github.com:viktoriachernykh/plastic-free-client.git
 - npm install
 - npm run start
+- ensure you have Google API key
+- ensure you have [server](https://github.com/viktoriachernykh/plastic-free-server) running as well
 
