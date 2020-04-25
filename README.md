@@ -4,7 +4,7 @@
 - All users can search for product and see map with locations + list of online stores
 - Only logged in users can add new locations and online stores
 
-## :movie_camera:[short video presentation on youtube](https://www.youtube.com/watch?v=QugqpAFJFuE) 
+## :movie_camera: [short video presentation on youtube](https://www.youtube.com/watch?v=QugqpAFJFuE) 
 
 ## Wireframes
 <img width="971" alt="plastic-free" src="https://user-images.githubusercontent.com/56471143/80268324-80187100-86a6-11ea-864e-07ad9387cb46.png">
