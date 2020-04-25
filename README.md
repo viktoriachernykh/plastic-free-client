@@ -1,10 +1,12 @@
-## App for people who want to use less plastic.
+## App for people who want to use less plastic
 
 - Only plastic-free products will be promoted with this app, making plastic-free lifestyle available for everyone
 - All users can search for product and see map with locations + list of online stores
 - Only logged in users can add new locations and online stores
 
-## Watch short video presentation on [youtube](https://www.youtube.com/watch?v=QugqpAFJFuE) 
+## [Watch short video presentation on youtube](https://www.youtube.com/watch?v=QugqpAFJFuE) 
+
+## Wireframes
 
 ## Technologies used
 
