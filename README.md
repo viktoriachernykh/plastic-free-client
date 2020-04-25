@@ -13,7 +13,12 @@
 
 - React, React Router DOM
 - Redux, Redux-Thunk, Redux Persist
+- CSS3, Sass
 - Google Maps JavaScript API, Google Places API
+- Node, Express
+- REST API
+- JSON Web Tokens (JWT), BCrypt
+- PostgreSQL, Sequelize ORM, Docker
 
 ## Setup
 
