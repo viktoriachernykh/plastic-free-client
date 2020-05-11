@@ -1,0 +1,22 @@
+@import './variables';
+
+input,
+button {
+  width: 280px;
+  height: 60px;
+  margin: 5px;
+  padding: 5px 15px;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+input {
+  @include border(white);
+}
+
+button {
+  font-weight: bold;
+  color: white;
+  background-color: $mainColor;
+  @include border($mainColor);
+}

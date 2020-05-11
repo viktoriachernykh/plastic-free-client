@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { findCities } from "../../store/city/actions";
-import { findProducts } from "../../store/product/actions";
-import { fetchUser } from "../../store/user/actions";
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { findCities } from '../../store/city/actions';
+import { findProducts } from '../../store/product/actions';
+import { fetchUser } from '../../store/user/actions';
 
 const selectCities = (reduxState) => {
   return reduxState.cities;
@@ -25,8 +25,8 @@ export default function SearchProductInput({
   const products = useSelector(selectProducts);
   const user = useSelector(selectUser);
 
-  const [product, setProduct] = useState("");
-  const [city, setCity] = useState("");
+  const [product, setProduct] = useState('');
+  const [city, setCity] = useState('');
 
   const [citySuggestions, showCitySuggestions] = useState(false);
   const [productSuggestions, showProductSuggestions] = useState(false);
@@ -35,8 +35,8 @@ export default function SearchProductInput({
     e.preventDefault();
     showCitySuggestions(false);
     showProductSuggestions(false);
-    if (product === "" || city === "") {
-      window.alert("fill both fields");
+    if (product === '' || city === '') {
+      window.alert('fill both fields');
     } else {
       const selectedProduct =
         products && products.length > 0
@@ -78,22 +78,22 @@ export default function SearchProductInput({
   return (
     <div>
       <h1>All plastic-free products in your city</h1>
-      <form onSubmit={onSubmit} className="SearchInput">
+      <form onSubmit={onSubmit} className='SearchInput'>
         <input
-          type="text"
-          name="product"
-          placeholder="product"
+          type='text'
+          name='product'
+          placeholder='product'
           onChange={(e) => onProductChange(e.target.value)}
           value={product}
         />
         <input
-          type="text"
-          name="city"
-          placeholder="city"
+          type='text'
+          name='city'
+          placeholder='city'
           onChange={(e) => onCityChange(e.target.value)}
           value={city}
         />
-        <button className="SearchButton" type="submit">
+        <button className='SearchButton' type='submit'>
           Search
         </button>
         <ul>
@@ -102,7 +102,7 @@ export default function SearchProductInput({
             products.map((product, i) => {
               return (
                 <li
-                  className="suggestion"
+                  className='suggestion'
                   key={i}
                   onClick={(e) => chooseProduct(product)}
                 >
@@ -118,7 +118,7 @@ export default function SearchProductInput({
             cities.map((city, i) => {
               return (
                 <li
-                  className="suggestion"
+                  className='suggestion'
                   key={i}
                   onClick={(e) => chooseCity(city)}
                 >

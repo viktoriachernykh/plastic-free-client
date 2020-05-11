@@ -1,6 +1,7 @@
-@import "./variables";
+@import './variables';
 
 .WindowSwitch {
+  margin: 15px auto;
   b {
     &:hover {
       color: $mainColor;

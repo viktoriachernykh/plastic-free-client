@@ -1,12 +1,11 @@
-@import "./variables";
+@import './variables';
 
 .Header {
-  @include gridRepeat(300px);
-  width: 100%;
+  width: 300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.67em;
   height: 50px;
-  padding: 40px 0;
-  a {
-    margin: 0 50px;
-    text-decoration: solid;
-  }
+  padding: 0;
 }

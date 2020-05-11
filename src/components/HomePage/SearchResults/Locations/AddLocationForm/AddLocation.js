@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import AddLocationForm from "./AddLocationForm.js";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import AddLocationForm from './AddLocationForm.js';
 
 const selectToken = (reduxState) => {
   return reduxState.session.jwt;
@@ -16,21 +16,21 @@ export default function AddLocation({ product, dataNotFound }) {
       {dataNotFound ? (
         <p>
           no plastic-free {dataNotFound.product.name} in {dataNotFound.city}.
-          found one?
+          found location?
         </p>
       ) : (
-        <p>found one more location with plastic-free {product.name}?</p>
+        <p>found plastic-free {product.name} somewhere else?</p>
       )}
       {token ? (
         <div>
-          <button onClick={(e) => setToggle(!toggle)}>add it</button>
+          <button onClick={(e) => setToggle(!toggle)}>add location</button>
           {toggle && (
             <AddLocationForm product={product} dataNotFound={dataNotFound} />
           )}
         </div>
       ) : (
         <div>
-          <Link to="/login">Log in</Link> to add it
+          <Link to='/login'>Log in</Link> to add location
         </div>
       )}
     </div>

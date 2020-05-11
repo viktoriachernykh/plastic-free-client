@@ -1,61 +1,59 @@
 .Header {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (minmax(300px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  margin: 0;
-  width: 100%;
+  width: 300px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 0.67em;
   height: 50px;
-  padding: 40px 0;
+  padding: 0;
 }
 
-.Header a {
-  margin: 0 50px;
-  -webkit-text-decoration: solid;
-          text-decoration: solid;
+input,
+button {
+  width: 280px;
+  height: 60px;
+  margin: 5px;
+  padding: 5px 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font: inherit;
 }
 
-.login form,
-.logout form,
-.signup form {
-  margin: 20px;
+input {
+  border: 1px solid white;
+  -webkit-box-shadow: 0 0 8px 2px #e7e7e7;
+          box-shadow: 0 0 8px 2px #e7e7e7;
 }
 
-.login form button,
-.logout form button,
-.signup form button {
+button {
+  font-weight: bold;
   color: white;
   background-color: #6ece6e;
-  border: 5px solid #6ece6e;
-}
-
-.active {
-  color: #6ece6e;
-}
-
-.SearchInput input,
-.SearchInput button {
-  width: 25%;
-  margin: 0 0 0 -5px;
-}
-
-.SearchInput .SearchButton {
-  width: 120px;
-  background-color: black;
-  color: white;
+  border: 1px solid #6ece6e;
+  -webkit-box-shadow: 0 0 8px 2px #e7e7e7;
+          box-shadow: 0 0 8px 2px #e7e7e7;
 }
 
 .PopularSearches li {
-  width: 50%;
-  height: 40px;
-  font-size: 22px;
-  padding: 10px;
-  margin: -5px auto;
-  border: 5px solid black;
+  width: 50vw;
+  min-width: 280px;
+  padding: 15px 0;
+  margin: 10px auto;
+  border: 1px solid white;
+  -webkit-box-shadow: 0 0 8px 2px #e7e7e7;
+          box-shadow: 0 0 8px 2px #e7e7e7;
 }
 
 .PopularSearches li:hover {
   color: #6ece6e;
+}
+
+.WindowSwitch {
+  margin: 15px auto;
 }
 
 .WindowSwitch b:hover {
@@ -67,70 +65,52 @@
 }
 
 body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100vw;
+  max-width: 940px;
+  margin: 0 auto;
   padding: 0;
-  font-family: "Baloo Thambi 2", "Roboto Condensed", sans-serif;
-  font-size: 22px;
-  color: black;
   text-align: center;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border: 10px solid #6ece6e;
+  font-family: 'Lato', 'Roboto Condensed', sans-serif;
+  color: #161616;
 }
 
-body ul {
-  margin: 0;
-  padding: 0;
-  margin: 40px auto;
-  list-style-type: none;
+@media screen and (min-width: 601px) {
+  body {
+    font-size: 22px;
+  }
+  body h1 {
+    font-size: 44px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+  body h1 {
+    font-size: 20px;
+  }
 }
 
 body a {
-  color: black;
-  text-decoration: none;
+  color: #161616;
+  -webkit-text-decoration: solid;
+          text-decoration: solid;
 }
 
 body a:hover {
   color: #6ece6e;
 }
 
-body h1 {
-  margin: 12px;
-  font-size: 32px;
+body ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-body input,
-body button {
-  width: 280px;
-  height: 60px;
-  margin: 5px;
-  padding: 5px 15px;
-  font: inherit;
-  font-size: 22px;
-  font-weight: bold;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border: 5px solid black;
-}
-
-.suggestion:hover {
+body .suggestion:hover {
   background-color: #6ece6e;
-}
-
-.add-form {
-  margin: 40px;
-}
-
-.add-form form button {
-  color: white;
-  background-color: #6ece6e;
-  border: 5px solid #6ece6e;
-}
-
-.add-form .search-place {
-  width: 80%;
-  margin: 40px;
 }
 /*# sourceMappingURL=style.css.map */

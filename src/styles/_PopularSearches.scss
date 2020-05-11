@@ -1,13 +1,12 @@
-@import "./variables";
+@import './variables';
 
 .PopularSearches {
   li {
-    width: 50%;
-    height: 40px;
-    font-size: 22px;
-    padding: 10px;
-    margin: -5px auto;
-    border: 5px solid $textColor;
+    width: 50vw;
+    min-width: 280px;
+    padding: 15px 0;
+    margin: 10px auto;
+    @include border(white);
     &:hover {
       color: $mainColor;
     }

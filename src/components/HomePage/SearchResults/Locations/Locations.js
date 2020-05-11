@@ -1,6 +1,6 @@
-import React from "react";
-import Map from "./Map/Map";
-import AddLocation from "./AddLocationForm/AddLocation";
+import React from 'react';
+import Map from './Map/Map';
+import AddLocation from './AddLocationForm/AddLocation';
 
 export default function Locations({ product, dataNotFound }) {
   return (

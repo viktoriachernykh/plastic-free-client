@@ -1,13 +1,11 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { findProductByCity, renewPage } from "../../store/product/actions";
-import SearchInput from "./SearchInput";
-import SearchResults from "./SearchResults/SearchResults";
-import PopularSearches from "./PopularSearches";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { findProductByCity, renewPage } from '../../store/product/actions';
+import SearchInput from './SearchInput';
+import SearchResults from './SearchResults/SearchResults';
+import PopularSearches from './PopularSearches';
 
 const selectProducts = (reduxState) => {
-  console.log("reduxState", reduxState);
-
   return reduxState.products.single;
 };
 const selectDataNotFound = (reduxState) => {
@@ -17,6 +15,8 @@ const selectDataNotFound = (reduxState) => {
 export default function HomePageContainer() {
   const product = useSelector(selectProducts);
   const dataNotFound = useSelector(selectDataNotFound);
+  // console.log('window', window.outerWidth);
+  console.log('window', window.innerWidth);
 
   const dispatch = useDispatch();
   useEffect(() => {

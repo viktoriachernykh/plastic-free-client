@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import AddOnlineStoreForm from "./AddOnlineStoreForm";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import AddOnlineStoreForm from './AddOnlineStoreForm';
 
 const selectToken = (reduxState) => {
   return reduxState.session.jwt;
@@ -19,18 +19,18 @@ export default function AddOnlineStore({ product, dataNotFound }) {
           one?
         </p>
       ) : (
-        <p>found one more online store with plastic-free {product.name}?</p>
+        <p>found another online store with plastic-free {product.name}?</p>
       )}
       {token ? (
         <div>
-          <button onClick={(e) => setToggle(!toggle)}>add it</button>
+          <button onClick={(e) => setToggle(!toggle)}>add online store</button>
           {toggle && (
             <AddOnlineStoreForm product={product} dataNotFound={dataNotFound} />
           )}
         </div>
       ) : (
         <div>
-          <Link to="/login">Log in</Link> to add it
+          <Link to='/login'>Log in</Link> to add online store
         </div>
       )}
     </div>
