@@ -15,8 +15,6 @@ const selectDataNotFound = (reduxState) => {
 export default function HomePageContainer() {
   const product = useSelector(selectProducts);
   const dataNotFound = useSelector(selectDataNotFound);
-  // console.log('window', window.outerWidth);
-  console.log('window', window.innerWidth);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -30,10 +28,11 @@ export default function HomePageContainer() {
         singleProduct={product}
         dataNotFound={dataNotFound}
       />
-      {(product || (dataNotFound && dataNotFound.product)) && (
+      {((product && product.Location && product.OnlineStore) ||
+        (dataNotFound && dataNotFound.product)) && (
         <SearchResults product={product} dataNotFound={dataNotFound} />
       )}
-      {!product && !dataNotFound && (
+      {(!product || !dataNotFound) && (
         <PopularSearches findProductByCity={findProductByCity} />
       )}
     </div>

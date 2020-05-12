@@ -10,29 +10,28 @@ const selectToken = (reduxState) => {
 export default function AddLocation({ product, dataNotFound }) {
   const token = useSelector(selectToken);
   const [toggle, setToggle] = useState(false);
+  const theproduct = product ? product : dataNotFound.product;
 
   return (
     <div>
-      {dataNotFound ? (
-        <p>
-          no plastic-free {dataNotFound.product.name} in {dataNotFound.city}.
-          found location?
-        </p>
-      ) : (
-        <p>found plastic-free {product.name} somewhere else?</p>
-      )}
-      {token ? (
-        <div>
-          <button onClick={(e) => setToggle(!toggle)}>add location</button>
-          {toggle && (
-            <AddLocationForm product={product} dataNotFound={dataNotFound} />
-          )}
-        </div>
-      ) : (
-        <div>
-          <Link to='/login'>Log in</Link> to add location
-        </div>
-      )}
+      <div>
+        <p>found plastic-free {theproduct.name} somewhere else?</p>
+        {token ? (
+          <div>
+            <button onClick={(e) => setToggle(!toggle)}>add location</button>
+            {toggle && (
+              <AddLocationForm
+                product={theproduct}
+                dataNotFound={dataNotFound}
+              />
+            )}
+          </div>
+        ) : (
+          <div>
+            <Link to='/login'>Log in</Link> to add location
+          </div>
+        )}
+      </div>
     </div>
   );
 }

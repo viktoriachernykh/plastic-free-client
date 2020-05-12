@@ -1,10 +1,17 @@
-import request from "superagent";
+import request from 'superagent';
 
-const baseUrl = "http://localhost:4000";
+const baseUrl = 'http://localhost:4000';
 
 export function renewPage() {
   return {
-    type: "RENEW_PAGE",
+    type: 'RENEW_PAGE',
+  };
+}
+
+export function setProduct(product) {
+  return {
+    type: 'SET_PRODUCT',
+    product,
   };
 }
 
@@ -12,21 +19,25 @@ export const findProducts = (keyword) => (dispatch) => {
   request(`${baseUrl}/product/find/${keyword}`)
     .then((res) => {
       res.body.keyword
-        ? dispatch(productNotFound(res.body))
+        ? dispatch(noProduct(res.body))
         : dispatch(productsFound(res.body));
     })
     .catch(console.error);
 };
 function productsFound(products) {
   return {
-    type: "PRODUCT_SUGGESTIONS",
+    type: 'PRODUCT_SUGGESTIONS',
     products,
+  };
+}
+function noProduct(noSuchProduct) {
+  return {
+    type: 'NOT_SUCH_PRODUCT',
+    noSuchProduct,
   };
 }
 
 export const findProductByCity = (productId, city) => (dispatch) => {
-  console.log(productId, city);
-
   request(`${baseUrl}/product/find/${productId}/${city}`)
     .then((res) => {
       res.body.city
@@ -37,14 +48,14 @@ export const findProductByCity = (productId, city) => (dispatch) => {
 };
 function productFound(product) {
   return {
-    type: "FOUND_PRODUCT",
+    type: 'FOUND_PRODUCT',
     product,
   };
 }
 
 function productNotFound(dataNotFound) {
   return {
-    type: "NOT_FOUND_PRODUCT",
+    type: 'NOT_FOUND_PRODUCT',
     dataNotFound,
   };
 }

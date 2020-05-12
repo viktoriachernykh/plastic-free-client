@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Marker, InfoWindow } from "react-google-maps";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Marker, InfoWindow } from 'react-google-maps';
 import {
   likeLocation,
   dislikeLocation,
-} from "../../../../../store/location/actions";
-import LocationInfo from "./LocationInfo";
+} from '../../../../../store/location/actions';
+import LocationInfo from './LocationInfo';
 
 const selectUser = (reduxState) => {
   return reduxState.session.user;
@@ -26,10 +26,6 @@ export default function Markers({ locations }) {
   const likedLocId = allLikedLocations && allLikedLocations.map((l) => l.id);
   let likedLocationsId =
     likedLocId && likedLocId.filter((liked) => allLocId.includes(liked));
-  // const liked = allLikedLocations.filter((loc) =>
-  //   likedLocationsId.includes(loc.id)
-  // );
-  // console.log("liked", liked);
 
   const setLike = (id) => {
     console.log(user.id, id);

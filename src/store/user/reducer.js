@@ -1,34 +1,34 @@
 const initialState = {
-  jwt: "",
+  jwt: '',
   user: {},
 };
 
 export default function (state = initialState, action = {}) {
   switch (action.type) {
-    case "LOGOUT_USER": {
+    case 'LOGOUT_USER': {
       return {
-        jwt: "",
+        jwt: '',
         user: {},
       };
     }
-    case "LOGIN_SESSION": {
+    case 'LOGIN_SESSION': {
       return {
         ...state,
         jwt: action.payload.jwt,
         user: action.payload.user,
       };
     }
-    case "NEW_USER": {
+    case 'NEW_USER': {
       return { ...state, user: action.payload };
     }
-    case "FETCH_USER": {
-      console.log(action.user);
+    case 'FETCH_USER': {
+      // console.log(action.user);
       return {
         ...state,
         user: action.user,
       };
     }
-    case "LIKED_LOCATION": {
+    case 'LIKED_LOCATION': {
       const newLocations = state.user.Location
         ? [...state.user.Location, { id: action.data.locationId }]
         : [{ id: action.data.locationId }];
@@ -41,7 +41,7 @@ export default function (state = initialState, action = {}) {
       };
       return newState;
     }
-    case "DISLIKED_LOCATION": {
+    case 'DISLIKED_LOCATION': {
       const oldLocations = [...state.user.Location];
       const newLocations = oldLocations.filter(
         (l) => l.id !== action.data.locationId

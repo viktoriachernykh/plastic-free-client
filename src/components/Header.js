@@ -28,7 +28,7 @@ export default function Header() {
       {token ? (
         <>
           <Link to='/logout'>Log out</Link>|
-          <Link to={`/user/${user.id}`}>My page</Link>
+          <Link to={`/user/${user.id}`}>Saved</Link>
         </>
       ) : (
         <>

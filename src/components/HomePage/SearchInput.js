@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { findCities } from '../../store/city/actions';
 import { findProducts } from '../../store/product/actions';
-import { fetchUser } from '../../store/user/actions';
+// import { renewPage } from '../../store/product/actions';
+import Categories from './Categories';
 
 const selectCities = (reduxState) => {
   return reduxState.cities;
 };
 const selectProducts = (reduxState) => {
+  console.log('reduxState', reduxState);
   return reduxState.products.list;
 };
-const selectUser = (reduxState) => {
-  return reduxState.session.user;
-};
 
+const selectNoProduct = (reduxState) => {
+  return reduxState.products.noSuchProduct;
+};
 export default function SearchProductInput({
   singleProduct,
   findProductByCity,
@@ -23,13 +25,19 @@ export default function SearchProductInput({
 
   const cities = useSelector(selectCities);
   const products = useSelector(selectProducts);
-  const user = useSelector(selectUser);
+  const noProduct = useSelector(selectNoProduct);
 
   const [product, setProduct] = useState('');
   const [city, setCity] = useState('');
 
   const [citySuggestions, showCitySuggestions] = useState(false);
   const [productSuggestions, showProductSuggestions] = useState(false);
+
+  useEffect(() => {
+    // dispatch(renewPage());
+    setProduct('');
+    setCity('');
+  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -44,8 +52,9 @@ export default function SearchProductInput({
           : singleProduct
           ? singleProduct
           : dataNotFound.product;
-      selectedProduct && dispatch(findProductByCity(selectedProduct.id, city));
-      user && dispatch(fetchUser(user.id));
+      selectedProduct
+        ? dispatch(findProductByCity(selectedProduct.id, city))
+        : dispatch(findProductByCity(product.id, city));
     }
   };
 
@@ -110,7 +119,7 @@ export default function SearchProductInput({
                 </li>
               );
             })}
-          {dataNotFound && dataNotFound.keyword && <li>no such product</li>}
+          {noProduct && noProduct.keyword && <li>no such product</li>}
         </ul>
         <ul>
           {citySuggestions &&
@@ -128,6 +137,7 @@ export default function SearchProductInput({
             })}
         </ul>
       </form>
+      {!product && <Categories chooseProduct={chooseProduct} />}
     </div>
   );
 }

@@ -8,7 +8,8 @@ export default function Locations({ product, dataNotFound }) {
       {product && product.Location && product.Location.length > 0 && (
         <Map product={product} />
       )}
-      {(product || dataNotFound.product) && (
+      {((product && product.Location && product.OnlineStore) ||
+        dataNotFound.product) && (
         <AddLocation product={product} dataNotFound={dataNotFound} />
       )}
     </div>
