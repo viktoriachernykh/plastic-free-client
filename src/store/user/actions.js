@@ -1,10 +1,10 @@
-import request from "superagent";
+import request from 'superagent';
 
-const baseUrl = "http://localhost:4000";
+const baseUrl = 'http://localhost:4000';
 
 export function logout() {
   return {
-    type: "LOGOUT_USER",
+    type: 'LOGOUT_USER',
   };
 }
 
@@ -26,7 +26,7 @@ export const signup = (name, email, password) => {
 };
 function signupSuccess(payload) {
   return {
-    type: "NEW_USER",
+    type: 'NEW_USER',
     payload,
   };
 }
@@ -48,7 +48,7 @@ export const login = (email, password) => (dispatch) => {
 };
 function loginSuccess(jwt, user) {
   return {
-    type: "LOGIN_SESSION",
+    type: 'LOGIN_SESSION',
     payload: {
       jwt,
       user,
@@ -59,14 +59,14 @@ function loginSuccess(jwt, user) {
 export const fetchUser = (id) => (dispatch) => {
   request(`${baseUrl}/user/${id}`)
     .then((res) => {
-      console.log("userFetched res.body", res.body);
+      // console.log("userFetched res.body", res.body);
       dispatch(userFetched(res.body));
     })
     .catch(console.error);
 };
 function userFetched(user) {
   return {
-    type: "FETCH_USER",
+    type: 'FETCH_USER',
     user,
   };
 }

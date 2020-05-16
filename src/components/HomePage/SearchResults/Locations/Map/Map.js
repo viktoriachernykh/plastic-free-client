@@ -1,12 +1,10 @@
-import React from "react";
-import { GoogleMap, withGoogleMap } from "react-google-maps";
+import React from 'react';
+import { GoogleMap, withGoogleMap } from 'react-google-maps';
 // import { usePosition } from "./UserLocation";
-import Markers from "./Markers";
+import Markers from './Markers';
 
-export default function Map({ product }) {
+export default function Map({ locations }) {
   // const { latitude, longitude } = usePosition();
-  const locations = product.Location;
-
   const centerLAT = locations
     .map((store) => Number(store.coordinate_lat).toFixed(4))
     .reduce((sum, lat) => sum + Number(lat) / locations.length, 0);
@@ -32,8 +30,8 @@ export default function Map({ product }) {
       googleMapURL={`
           https://maps.googleapis.com/maps/api/js?v=weekly&key=${process.env.REACT_APP_GOOGLE_API_KEY}&libraries=places`}
       loadingElement={<div style={{ height: `100%` }} />}
-      containerElement={<div style={{ width: `1200px`, height: `500px` }} />}
-      mapElement={<div style={{ width: `1200px`, height: `500px` }} />}
+      containerElement={<div style={{ width: `100%`, height: `500px` }} />}
+      mapElement={<div style={{ width: `100%`, height: `500px` }} />}
     />
   );
 }

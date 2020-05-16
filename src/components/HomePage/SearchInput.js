@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { findCities } from "../../store/city/actions";
-import { findProducts } from "../../store/product/actions";
-import { fetchUser } from "../../store/user/actions";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { findCities } from '../../store/city/actions';
+import { findProducts } from '../../store/product/actions';
+import Categories from './Categories';
+import { setSearchProduct, setSearchCity } from '../../store/search/actions';
 
 const selectCities = (reduxState) => {
   return reduxState.cities;
@@ -10,42 +11,59 @@ const selectCities = (reduxState) => {
 const selectProducts = (reduxState) => {
   return reduxState.products.list;
 };
-const selectUser = (reduxState) => {
-  return reduxState.session.user;
+const selectNoProduct = (reduxState) => {
+  return reduxState.products.noSuchProduct;
 };
+// const selectSearchProduct = (reduxState) => {
+//   return reduxState.search.product;
+// };
+// const selectSearchCity = (reduxState) => {
+//   return reduxState.search.city;
+// };
 
 export default function SearchProductInput({
-  singleProduct,
   findProductByCity,
-  dataNotFound,
+  theproduct,
+  productSearchValue,
+  citySearchValue,
 }) {
-  const dispatch = useDispatch();
+  const [product, setProduct] = useState('');
+  const [city, setCity] = useState('');
 
   const cities = useSelector(selectCities);
   const products = useSelector(selectProducts);
-  const user = useSelector(selectUser);
-
-  const [product, setProduct] = useState("");
-  const [city, setCity] = useState("");
+  const noProduct = useSelector(selectNoProduct);
+  // const productSearchValue = useSelector(selectSearchProduct);
+  // const citySearchValue = useSelector(selectSearchCity);
 
   const [citySuggestions, showCitySuggestions] = useState(false);
   const [productSuggestions, showProductSuggestions] = useState(false);
+
+  const dispatch = useDispatch();
 
   const onSubmit = (e) => {
     e.preventDefault();
     showCitySuggestions(false);
     showProductSuggestions(false);
-    if (product === "" || city === "") {
-      window.alert("fill both fields");
+
+    if ((!product && !productSearchValue) || (!city && !citySearchValue)) {
+      window.alert('fill both fields');
     } else {
-      const selectedProduct =
-        products && products.length > 0
-          ? products.find((p) => p.name === product)
-          : singleProduct
-          ? singleProduct
-          : dataNotFound.product;
-      selectedProduct && dispatch(findProductByCity(selectedProduct.id, city));
-      user && dispatch(fetchUser(user.id));
+      const selectedProduct = theproduct
+        ? theproduct
+        : products.find((p) => p.name === product);
+
+      dispatch(setSearchCity(city ? city : citySearchValue));
+      dispatch(setSearchProduct(selectedProduct));
+
+      const theProductId = selectedProduct
+        ? selectedProduct.id
+        : productSearchValue.id;
+      const theCity = city ? city : citySearchValue;
+      dispatch(findProductByCity(theProductId, theCity));
+
+      setCity('');
+      setProduct('');
     }
   };
 
@@ -78,22 +96,26 @@ export default function SearchProductInput({
   return (
     <div>
       <h1>All plastic-free products in your city</h1>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className='SearchInput'>
         <input
-          type="text"
-          name="product"
-          placeholder="product"
+          type='text'
+          name='product'
+          placeholder={
+            productSearchValue && productSearchValue.name
+              ? productSearchValue.name
+              : 'choose product'
+          }
           onChange={(e) => onProductChange(e.target.value)}
           value={product}
         />
         <input
-          type="text"
-          name="city"
-          placeholder="city"
+          type='text'
+          name='city'
+          placeholder={citySearchValue ? citySearchValue : 'choose city'}
           onChange={(e) => onCityChange(e.target.value)}
           value={city}
         />
-        <button className="search" type="submit">
+        <button className='SearchButton' type='submit'>
           Search
         </button>
         <ul>
@@ -102,7 +124,7 @@ export default function SearchProductInput({
             products.map((product, i) => {
               return (
                 <li
-                  className="suggestion"
+                  className='suggestion'
                   key={i}
                   onClick={(e) => chooseProduct(product)}
                 >
@@ -110,7 +132,7 @@ export default function SearchProductInput({
                 </li>
               );
             })}
-          {dataNotFound && dataNotFound.keyword && <li>no such product</li>}
+          {noProduct && noProduct.keyword && <li>no such product</li>}
         </ul>
         <ul>
           {citySuggestions &&
@@ -118,7 +140,7 @@ export default function SearchProductInput({
             cities.map((city, i) => {
               return (
                 <li
-                  className="suggestion"
+                  className='suggestion'
                   key={i}
                   onClick={(e) => chooseCity(city)}
                 >
@@ -128,6 +150,9 @@ export default function SearchProductInput({
             })}
         </ul>
       </form>
+      {!productSearchValue.length && !citySearchValue && (
+        <Categories chooseProduct={chooseProduct} />
+      )}
     </div>
   );
 }

@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { findProductByCity, renewPage } from "../../store/product/actions";
-import SearchInput from "./SearchInput";
-import SearchResults from "./SearchResults/SearchResults";
-import PopularSearches from "./PopularSearches";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { findProductByCity } from '../../store/product/actions';
+import SearchInput from './SearchInput';
+import SearchResults from './SearchResults/SearchResults';
+// import PopularSearches from './PopularSearches';
 
 const selectProducts = (reduxState) => {
   return reduxState.products.single;
@@ -11,29 +11,33 @@ const selectProducts = (reduxState) => {
 const selectDataNotFound = (reduxState) => {
   return reduxState.products.dataNotFound;
 };
+const selectSearchProduct = (reduxState) => {
+  return reduxState.search.product;
+};
+const selectSearchCity = (reduxState) => {
+  return reduxState.search.city;
+};
 
 export default function HomePageContainer() {
   const product = useSelector(selectProducts);
   const dataNotFound = useSelector(selectDataNotFound);
+  const theproduct = product ? product : dataNotFound && dataNotFound.product;
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(renewPage());
-  }, []);
+  const productSearchValue = useSelector(selectSearchProduct);
+  const citySearchValue = useSelector(selectSearchCity);
 
   return (
     <div>
       <SearchInput
         findProductByCity={findProductByCity}
-        singleProduct={product}
-        dataNotFound={dataNotFound}
+        theproduct={theproduct}
+        productSearchValue={productSearchValue}
+        citySearchValue={citySearchValue}
       />
-      {(product || (dataNotFound && dataNotFound.product)) && (
-        <SearchResults product={product} dataNotFound={dataNotFound} />
+      {productSearchValue && citySearchValue && (
+        <SearchResults product={theproduct} />
       )}
-      {!product && !dataNotFound && (
-        <PopularSearches findProductByCity={findProductByCity} />
-      )}
+      {/* <PopularSearches findProductByCity={findProductByCity} /> */}
     </div>
   );
 }
