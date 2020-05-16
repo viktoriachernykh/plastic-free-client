@@ -46,9 +46,6 @@ export default function Markers({ locations }) {
             lng: Number(location.coordinate_lng),
           }}
           onClick={(e) => setSelectedMarker(location)}
-          // icon={{
-          //   url: `3.png`,
-          // }}
         ></Marker>
       ))}
       {selectedMarker && (

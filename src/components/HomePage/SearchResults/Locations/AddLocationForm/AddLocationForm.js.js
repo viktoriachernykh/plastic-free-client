@@ -4,7 +4,7 @@ import { addLocation } from '../../../../../store/location/actions';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import SearchPlacesInput from './SearchPlacesInput';
 
-export default function SearchPlaceInput({ product, dataNotFound }) {
+export default function SearchPlaceInput({ product }) {
   const dispatch = useDispatch();
   const [address, setAddress] = useState('');
   const [location, setLocation] = useState('');
@@ -51,6 +51,8 @@ export default function SearchPlaceInput({ product, dataNotFound }) {
     const oldLocation =
       product.Location &&
       product.Location.find((loc) => loc.address === newLocation.address);
+    console.log(newLocation, product.id);
+
     oldLocation
       ? window.alert('this location is already on the map')
       : dispatch(addLocation(newLocation, product.id));

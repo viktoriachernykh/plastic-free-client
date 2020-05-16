@@ -7,24 +7,22 @@ const selectToken = (reduxState) => {
   return reduxState.session.jwt;
 };
 
-export default function AddLocation({ product, dataNotFound }) {
+export default function AddLocation({ product }) {
   const token = useSelector(selectToken);
   const [toggle, setToggle] = useState(false);
-  const theproduct = product ? product : dataNotFound.product;
 
   return (
     <div>
       <div>
-        <p>found plastic-free {theproduct.name} somewhere else?</p>
+        {product.Location && product.Location.length > 0 ? (
+          <p>found new location with plastic-free {product.name}?</p>
+        ) : (
+          <p>found location with plastic-free {product.name}?</p>
+        )}
         {token ? (
           <div>
             <button onClick={(e) => setToggle(!toggle)}>add location</button>
-            {toggle && (
-              <AddLocationForm
-                product={theproduct}
-                dataNotFound={dataNotFound}
-              />
-            )}
+            {toggle && <AddLocationForm product={product} />}
           </div>
         ) : (
           <div>

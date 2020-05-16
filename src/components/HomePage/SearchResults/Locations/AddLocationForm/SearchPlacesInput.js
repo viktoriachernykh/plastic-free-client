@@ -1,5 +1,5 @@
-import React from "react";
-import PlacesAutocomplete from "react-places-autocomplete";
+import React from 'react';
+import PlacesAutocomplete from 'react-places-autocomplete';
 
 export default function SearchPlacesInput({
   address,
@@ -16,21 +16,21 @@ export default function SearchPlacesInput({
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
         <div>
           <input
-            className="search-place"
+            className='search-place'
             {...getInputProps({
-              placeholder: "Search location ...",
+              placeholder: 'Search location ...',
             })}
           />
           <div>
             {loading && <div>Loading...</div>}
             {suggestions.map((suggestion) => {
               const style = {
-                backgroundColor: suggestion.active ? "#41b6e6" : "#fff",
+                backgroundColor: suggestion.active ? '#41b6e6' : '#fff',
               };
               return (
                 <div {...getSuggestionItemProps(suggestion, { style })}>
                   <span>{suggestion.description}</span>
-                  <p>{suggestion.formattedSuggestion.mainText}</p>
+                  {/* <p>{suggestion.formattedSuggestion.mainText}</p> */}
                 </div>
               );
             })}

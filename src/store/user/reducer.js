@@ -22,7 +22,7 @@ export default function (state = initialState, action = {}) {
       return { ...state, user: action.payload };
     }
     case 'FETCH_USER': {
-      // console.log(action.user);
+      console.log(action.user);
       return {
         ...state,
         user: action.user,

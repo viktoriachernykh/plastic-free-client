@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchUser } from "../store/user/actions";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchUser } from '../store/user/actions';
 
 const selectUser = (reduxState) => {
   return reduxState.session.user;
@@ -9,13 +9,12 @@ const selectUser = (reduxState) => {
 export default function UserPageContainer() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
-
   useEffect(() => {
     user && dispatch(fetchUser(user.id));
   }, []);
+
   return (
     <div>
-      <h2>Hello, {user.name}</h2>
       <h3>Saved Locations</h3>
       <ul>
         {user &&

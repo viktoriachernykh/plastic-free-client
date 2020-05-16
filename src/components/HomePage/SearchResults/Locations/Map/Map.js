@@ -1,12 +1,10 @@
-import React from "react";
-import { GoogleMap, withGoogleMap } from "react-google-maps";
+import React from 'react';
+import { GoogleMap, withGoogleMap } from 'react-google-maps';
 // import { usePosition } from "./UserLocation";
-import Markers from "./Markers";
+import Markers from './Markers';
 
-export default function Map({ product }) {
+export default function Map({ locations }) {
   // const { latitude, longitude } = usePosition();
-  const locations = product.Location;
-
   const centerLAT = locations
     .map((store) => Number(store.coordinate_lat).toFixed(4))
     .reduce((sum, lat) => sum + Number(lat) / locations.length, 0);

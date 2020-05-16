@@ -2,59 +2,68 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { findCities } from '../../store/city/actions';
 import { findProducts } from '../../store/product/actions';
-// import { renewPage } from '../../store/product/actions';
 import Categories from './Categories';
+import { setSearchProduct, setSearchCity } from '../../store/search/actions';
 
 const selectCities = (reduxState) => {
   return reduxState.cities;
 };
 const selectProducts = (reduxState) => {
-  console.log('reduxState', reduxState);
   return reduxState.products.list;
 };
-
 const selectNoProduct = (reduxState) => {
   return reduxState.products.noSuchProduct;
 };
+// const selectSearchProduct = (reduxState) => {
+//   return reduxState.search.product;
+// };
+// const selectSearchCity = (reduxState) => {
+//   return reduxState.search.city;
+// };
+
 export default function SearchProductInput({
-  singleProduct,
   findProductByCity,
-  dataNotFound,
+  theproduct,
+  productSearchValue,
+  citySearchValue,
 }) {
-  const dispatch = useDispatch();
+  const [product, setProduct] = useState('');
+  const [city, setCity] = useState('');
 
   const cities = useSelector(selectCities);
   const products = useSelector(selectProducts);
   const noProduct = useSelector(selectNoProduct);
-
-  const [product, setProduct] = useState('');
-  const [city, setCity] = useState('');
+  // const productSearchValue = useSelector(selectSearchProduct);
+  // const citySearchValue = useSelector(selectSearchCity);
 
   const [citySuggestions, showCitySuggestions] = useState(false);
   const [productSuggestions, showProductSuggestions] = useState(false);
 
-  useEffect(() => {
-    // dispatch(renewPage());
-    setProduct('');
-    setCity('');
-  }, []);
+  const dispatch = useDispatch();
 
   const onSubmit = (e) => {
     e.preventDefault();
     showCitySuggestions(false);
     showProductSuggestions(false);
-    if (product === '' || city === '') {
+
+    if ((!product && !productSearchValue) || (!city && !citySearchValue)) {
       window.alert('fill both fields');
     } else {
-      const selectedProduct =
-        products && products.length > 0
-          ? products.find((p) => p.name === product)
-          : singleProduct
-          ? singleProduct
-          : dataNotFound.product;
-      selectedProduct
-        ? dispatch(findProductByCity(selectedProduct.id, city))
-        : dispatch(findProductByCity(product.id, city));
+      const selectedProduct = theproduct
+        ? theproduct
+        : products.find((p) => p.name === product);
+
+      dispatch(setSearchCity(city ? city : citySearchValue));
+      dispatch(setSearchProduct(selectedProduct));
+
+      const theProductId = selectedProduct
+        ? selectedProduct.id
+        : productSearchValue.id;
+      const theCity = city ? city : citySearchValue;
+      dispatch(findProductByCity(theProductId, theCity));
+
+      setCity('');
+      setProduct('');
     }
   };
 
@@ -91,14 +100,18 @@ export default function SearchProductInput({
         <input
           type='text'
           name='product'
-          placeholder='product'
+          placeholder={
+            productSearchValue && productSearchValue.name
+              ? productSearchValue.name
+              : 'choose product'
+          }
           onChange={(e) => onProductChange(e.target.value)}
           value={product}
         />
         <input
           type='text'
           name='city'
-          placeholder='city'
+          placeholder={citySearchValue ? citySearchValue : 'choose city'}
           onChange={(e) => onCityChange(e.target.value)}
           value={city}
         />
@@ -137,7 +150,9 @@ export default function SearchProductInput({
             })}
         </ul>
       </form>
-      {!product && <Categories chooseProduct={chooseProduct} />}
+      {!productSearchValue.length && !citySearchValue && (
+        <Categories chooseProduct={chooseProduct} />
+      )}
     </div>
   );
 }
