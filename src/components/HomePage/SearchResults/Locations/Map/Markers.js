@@ -14,14 +14,13 @@ const selectUser = (reduxState) => {
 export default function Markers({ locations }) {
   const [selectedMarker, setMarker] = useState(null);
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
 
   const setSelectedMarker = (location) => {
     setMarker(location);
   };
 
-  const user = useSelector(selectUser);
   const allLikedLocations = user && user.Location;
-
   const allLocId = locations && locations.map((l) => l.id);
   const likedLocId = allLikedLocations && allLikedLocations.map((l) => l.id);
   let likedLocationsId =

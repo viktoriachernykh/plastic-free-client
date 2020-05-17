@@ -1,6 +1,5 @@
 import request from 'superagent';
-
-const baseUrl = 'http://localhost:4000';
+const baseUrl = process.env.REACT_APP_SERVER;
 
 export const fetchCategories = () => (dispatch) => {
   request(`${baseUrl}/category`)

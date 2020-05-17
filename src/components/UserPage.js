@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchUser } from '../store/user/actions';
 
 const selectUser = (reduxState) => {
+  console.log('reduxState', reduxState);
   return reduxState.session.user;
 };
 
@@ -23,16 +24,17 @@ export default function UserPageContainer() {
           user.Location.map((location, i) => (
             <li key={i}>
               {location.name}, {location.address}
+              {/* <button onClick */}
             </li>
           ))}
       </ul>
-      {/* <h3>Saved Online Stores</h3>
+      <h3>Saved Online Stores</h3>
       <ul>
         {user &&
           user.OnlineStore &&
           user.OnlineStore.length > 0 &&
           user.OnlineStore.map((store, i) => <li key={i}>{store.link}</li>)}
-      </ul> */}
+      </ul>
       {/* <p>email: {user.email}</p> */}
     </div>
   );
