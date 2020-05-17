@@ -1,6 +1,5 @@
-import request from "superagent";
-
-const baseUrl = "http://localhost:4000";
+import request from 'superagent';
+const baseUrl = process.env.REACT_APP_SERVER;
 
 export const findCities = (key) => (dispatch) => {
   request(`${baseUrl}/city/${key}`)
@@ -11,7 +10,7 @@ export const findCities = (key) => (dispatch) => {
 };
 function citiesFound(cities) {
   return {
-    type: "FOUND_CITIES",
+    type: 'FOUND_CITIES',
     cities,
   };
 }
