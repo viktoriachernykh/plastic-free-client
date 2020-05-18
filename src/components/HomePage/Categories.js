@@ -4,6 +4,8 @@ import { fetchCategories, findCategory } from '../../store/category/actions';
 import { setProduct } from '../../store/product/actions';
 
 const selectCategories = (reduxState) => {
+  console.log(reduxState);
+
   return reduxState.categories.list;
 };
 const selectCategory = (reduxState) => {
