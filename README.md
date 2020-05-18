@@ -1,6 +1,8 @@
-## App for people who want to use less plastic :whale:
+## Search all plastic free products in your city :whale:
 
-## Client repo of full-stack app for searching all plastic free products in your city
+Client repo of a full stack app
+
+## App for people who want to use less plastic
 
 - Only plastic-free products will be promoted with this app, making plastic-free lifestyle available for everyone
 - All users can search for products and see map with locations + list of online stores
@@ -33,6 +35,6 @@ In order to run this App:
 ## Features to implement
 
 - user can choose option “use my location” in city search
-- user can add to product search more than 1 product (up to 5-10 products) and get locations which have all the products
+- user can add several products to product search and get locations which have all these products
 - user can create and save shopping list and search for all locations with all the products from this shopping list
-- stores added by users get verified by admin + admin can approve or reject added stores and block users
+- stores added by users get verified by admin, admin can approve or reject added stores and block users
