@@ -143,9 +143,9 @@ export default function SearchProductInput({
             })}
         </ul>
       </form>
-      {!productSearchValue.length && !citySearchValue && (
-        <Categories chooseProduct={chooseProduct} />
-      )}
+      {(productSearchValue || !productSearchValue) &&
+        !productSearchValue.length &&
+        !citySearchValue && <Categories chooseProduct={chooseProduct} />}
     </div>
   );
 }
