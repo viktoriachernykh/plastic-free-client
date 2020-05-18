@@ -1,4 +1,4 @@
-## Search all plastic free products in your city :whale:
+## Search all plastic free products in your city :world_map:
 
 Client repo of a full stack app
 
