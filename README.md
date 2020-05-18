@@ -26,9 +26,9 @@ In order to run this App:
 - git clone git@github.com:viktoriachernykh/plastic-free-client.git
 - npm install
 - ensure you have Google API key set as environment variable (REACT_APP_GOOGLE_API_KEY="your key here")
-- ensure you have link to server set as environment variable, choose one option:
- 1. Link to deployed server (REACT_APP_SERVER="https://plastic-free-server.herokuapp.com")
- 2. Link to localhost (REACT_APP_SERVER="http://localhost:4000") - for this link to be active, install and run server repo from here: [https://github.com/viktoriachernykh/plastic-free-server]
+- ensure you have link to server set as environment variable, choose link:
+ - Link to deployed server (REACT_APP_SERVER="https://plastic-free-server.herokuapp.com")
+ - Link to localhost (REACT_APP_SERVER="http://localhost:4000") - for this link to be active, install and run server repo from here: [https://github.com/viktoriachernykh/plastic-free-server]
 - ensure you have server running
 - npm run start
 
