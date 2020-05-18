@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUser } from '../store/user/actions';
+import { dislikeLocation } from '../store/location/actions';
+import { dislikeOnlineStore } from '../store/online_store/actions';
 
 const selectUser = (reduxState) => {
-  console.log('reduxState', reduxState);
   return reduxState.session.user;
 };
 
@@ -13,6 +14,14 @@ export default function UserPageContainer() {
   useEffect(() => {
     user && dispatch(fetchUser(user.id));
   }, []);
+
+  const removeLocation = (locationId) => {
+    dispatch(dislikeLocation(user.id, locationId));
+  };
+
+  const removeOnlineStore = (onlineStoreId) => {
+    dispatch(dislikeOnlineStore(user.id, onlineStoreId));
+  };
 
   return (
     <div>
@@ -24,7 +33,7 @@ export default function UserPageContainer() {
           user.Location.map((location, i) => (
             <li key={i}>
               {location.name}, {location.address}
-              {/* <button onClick */}
+              <b onClick={(e) => removeLocation(location.id)}> delete</b>
             </li>
           ))}
       </ul>
@@ -33,9 +42,13 @@ export default function UserPageContainer() {
         {user &&
           user.OnlineStore &&
           user.OnlineStore.length > 0 &&
-          user.OnlineStore.map((store, i) => <li key={i}>{store.link}</li>)}
+          user.OnlineStore.map((store, i) => (
+            <li key={i}>
+              {store.link}
+              <b onClick={(e) => removeOnlineStore(store.id)}> delete</b>
+            </li>
+          ))}
       </ul>
-      {/* <p>email: {user.email}</p> */}
     </div>
   );
 }

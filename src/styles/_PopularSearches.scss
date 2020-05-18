@@ -1,6 +1,7 @@
 @import './variables';
 
-.PopularSearches {
+.PopularSearches,
+.Categories {
   li {
     width: 50vw;
     min-width: 280px;
@@ -10,5 +11,11 @@
     &:hover {
       color: $mainColor;
     }
+  }
+}
+
+.link {
+  &:hover {
+    color: $mainColor;
   }
 }

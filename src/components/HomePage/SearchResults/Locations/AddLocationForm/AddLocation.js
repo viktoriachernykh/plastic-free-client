@@ -26,7 +26,10 @@ export default function AddLocation({ product }) {
           </div>
         ) : (
           <div>
-            <Link to='/login'>Log in</Link> to add location
+            <Link to='/login'>
+              <b className='active-link'>Log in</b>
+            </Link>{' '}
+            to add location
           </div>
         )}
       </div>
