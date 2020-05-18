@@ -1,6 +1,6 @@
 ## Search all plastic free products in your city :world_map:
 
-Client repo of a full stack app
+Client repo of a full stack app. Server repo here: [https://github.com/viktoriachernykh/plastic-free-server]
 
 ## App for people who want to use less plastic :herb:
 
