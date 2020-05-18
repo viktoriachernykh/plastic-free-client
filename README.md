@@ -16,7 +16,7 @@ Client repo of a full stack app. Server repo here: [https://github.com/viktoriac
 - React, React Router DOM
 - Redux, Redux-Thunk, Redux-Persist
 - CSS3, Sass
-- REST API, SuperAgent
+- RESTful API, SuperAgent
 - Google Maps JavaScript API, Google Places API
 
 ## Setup
