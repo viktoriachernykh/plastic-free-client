@@ -25,7 +25,10 @@ export default function AddOnlineStore({ product }) {
         </div>
       ) : (
         <div>
-          <Link to='/login'>Log in</Link> to add online store
+          <Link to='/login'>
+            <b className='active-link'>Log in</b>
+          </Link>{' '}
+          to add online store
         </div>
       )}
     </div>

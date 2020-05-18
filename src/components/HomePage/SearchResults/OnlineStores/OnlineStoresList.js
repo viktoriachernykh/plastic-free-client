@@ -7,7 +7,6 @@ import {
 import OnlineStoreInfo from './OnlineStoreInfo';
 
 const selectUser = (reduxState) => {
-  console.log('reduxState', reduxState);
   return reduxState.session.user;
 };
 

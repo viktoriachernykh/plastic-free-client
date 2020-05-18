@@ -33,26 +33,36 @@ export default function Categories({ chooseProduct }) {
   };
 
   return (
-    <div className='PopularSearches'>
-      <h1 onClick={(e) => getCategories()}>Categories</h1>
-      <ul>
-        {categories &&
-          categories.map((c, i) => (
-            <li onClick={(e) => getCategory(c.id)} key={i}>
-              {c.name}
-            </li>
-          ))}
-        {category && (
-          <>
-            <h2>{category.name}</h2>
+    <div className='Categories'>
+      {categories && !category && (
+        <>
+          <h1>Categories</h1>
+          <ul>
+            {categories.map((c, i) => (
+              <li onClick={(e) => getCategory(c.id)} key={i}>
+                {c.name}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+      {category && category.products && (
+        <>
+          <h1>
+            <b className='link' onClick={(e) => getCategories()}>
+              Categories:{' '}
+            </b>
+            <b>{category.name}</b>
+          </h1>
+          <ul>
             {category.products.map((p, i) => (
               <li onClick={(e) => getProduct(p)} key={i}>
                 {p.name}
               </li>
             ))}
-          </>
-        )}
-      </ul>
+          </ul>
+        </>
+      )}
     </div>
   );
 }

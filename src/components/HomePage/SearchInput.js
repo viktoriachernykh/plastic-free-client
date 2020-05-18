@@ -14,12 +14,6 @@ const selectProducts = (reduxState) => {
 const selectNoProduct = (reduxState) => {
   return reduxState.products.noSuchProduct;
 };
-// const selectSearchProduct = (reduxState) => {
-//   return reduxState.search.product;
-// };
-// const selectSearchCity = (reduxState) => {
-//   return reduxState.search.city;
-// };
 
 export default function SearchProductInput({
   findProductByCity,
@@ -33,8 +27,6 @@ export default function SearchProductInput({
   const cities = useSelector(selectCities);
   const products = useSelector(selectProducts);
   const noProduct = useSelector(selectNoProduct);
-  // const productSearchValue = useSelector(selectSearchProduct);
-  // const citySearchValue = useSelector(selectSearchCity);
 
   const [citySuggestions, showCitySuggestions] = useState(false);
   const [productSuggestions, showProductSuggestions] = useState(false);
@@ -95,8 +87,9 @@ export default function SearchProductInput({
 
   return (
     <div>
-      <h1>All plastic-free products in your city</h1>
-      <form onSubmit={onSubmit} className='SearchInput'>
+      <h1 className='full-h1'>All plastic-free products in your city</h1>
+      <h1 className='short-h1'>All plastic-free products</h1>
+      <form onSubmit={onSubmit}>
         <input
           type='text'
           name='product'
