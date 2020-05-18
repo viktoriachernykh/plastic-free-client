@@ -4,8 +4,6 @@ import { fetchCategories, findCategory } from '../../store/category/actions';
 import { setProduct } from '../../store/product/actions';
 
 const selectCategories = (reduxState) => {
-  console.log(reduxState);
-
   return reduxState.categories.list;
 };
 const selectCategory = (reduxState) => {
@@ -36,7 +34,7 @@ export default function Categories({ chooseProduct }) {
 
   return (
     <div className='Categories'>
-      {categories && !category && (
+      {categories.length > 0 && !category && (
         <>
           <h1>Categories</h1>
           <ul>
