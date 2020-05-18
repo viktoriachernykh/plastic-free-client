@@ -1,8 +1,8 @@
-## Search all plastic free products in your city :tada:
+## Search all plastic free products in your city :earth_americas:
 
 Client repo of a full stack app
 
-## App for people who want to use less plastic :herb::earth_americas::whale:
+## App for people who want to use less plastic :whale:
 
 - Only plastic-free products will be promoted with this app, making plastic-free lifestyle available for everyone
 - All users can search for products and see map with locations + list of online stores
