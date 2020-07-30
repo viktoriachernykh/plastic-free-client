@@ -1,0 +1,170 @@
+.Header {
+  width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 0;
+}
+
+@media screen and (min-width: 601px) {
+  .Header {
+    margin-bottom: 2em;
+  }
+}
+
+input,
+button {
+  width: 280px;
+  height: 60px;
+  margin: 5px;
+  padding: 5px 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font: inherit;
+}
+
+input {
+  border: 1px solid white;
+  -webkit-box-shadow: 0 0 8px 2px #e7e7e7;
+          box-shadow: 0 0 8px 2px #e7e7e7;
+}
+
+button {
+  font-weight: bold;
+  color: white;
+  background-color: #6ece6e;
+  border: 1px solid #6ece6e;
+  -webkit-box-shadow: 0 0 8px 2px #e7e7e7;
+          box-shadow: 0 0 8px 2px #e7e7e7;
+}
+
+.validation-list {
+  display: inline-block;
+  margin: 1em auto;
+}
+
+@media screen and (min-width: 601px) {
+  .validation-list {
+    font-size: 0.8em;
+  }
+}
+
+.validation-list ul {
+  text-align: left;
+  list-style-position: inside;
+}
+
+.invalid {
+  list-style-type: circle;
+  color: lightgray;
+}
+
+.valid {
+  list-style-type: disc;
+  color: #6ece6e;
+}
+
+.PopularSearches li,
+.Categories li {
+  width: 50vw;
+  min-width: 280px;
+  padding: 15px 0;
+  margin: 10px auto;
+  border: 1px solid white;
+  -webkit-box-shadow: 0 0 8px 2px #e7e7e7;
+          box-shadow: 0 0 8px 2px #e7e7e7;
+}
+
+.PopularSearches li:hover,
+.Categories li:hover {
+  color: #6ece6e;
+}
+
+.link:hover {
+  color: #6ece6e;
+}
+
+.WindowSwitch {
+  margin: 15px auto;
+}
+
+.WindowSwitch b:hover {
+  color: #6ece6e;
+}
+
+.WindowSwitch .active {
+  color: #6ece6e;
+}
+
+body {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100vw;
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  font-family: 'Lato', 'Roboto Condensed', sans-serif;
+  color: #161616;
+}
+
+@media screen and (min-width: 601px) {
+  body {
+    font-size: 22px;
+  }
+  body h1 {
+    font-size: 2em;
+  }
+  body .full-h1 {
+    display: inline-block;
+  }
+  body .short-h1 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 1.2em;
+  }
+  body h1 {
+    font-size: 1.4em;
+  }
+  body .full-h1 {
+    display: none;
+  }
+  body .short-h1 {
+    display: inline-block;
+  }
+}
+
+body a {
+  color: #161616;
+  -webkit-text-decoration: solid;
+          text-decoration: solid;
+}
+
+body a:hover {
+  color: #6ece6e;
+}
+
+body .active-link {
+  color: #6ece6e;
+}
+
+body ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+body .suggestion:hover {
+  background-color: #6ece6e;
+}
+/*# sourceMappingURL=style.css.map */
